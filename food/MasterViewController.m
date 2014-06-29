@@ -10,6 +10,11 @@
 
 #import "DetailViewController.h"
 
+#import "FoodItem.h"
+#import "FoodItemView.h"
+#import "MenuCell.h"
+#import "Global.h"
+
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
@@ -30,11 +35,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+//    UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    [self.tableView setTableHeaderView: v];
+
+
+    for( int i=0; i<10; i++ ) {
+        [self insertNewObject:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,9 +60,10 @@
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [_objects insertObject:[FoodItem getRandomFood] atIndex:0];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -67,10 +80,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    MenuCell *cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    FoodItem *f = _objects[indexPath.row];
+    
+    cell.f_name.text = f.name;
+    cell.f_desc.text = f.description;
+    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.price] forState:UIControlStateNormal];
+    
     return cell;
 }
 
@@ -122,5 +139,19 @@
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+
+- (IBAction)addToOrder:(UIButton *)sender {
+    CGPoint pt = CGPointMake(0, 0);
+    pt = [sender convertPoint:pt toView:self.tableView];
+    NSIndexPath* path = [self.tableView indexPathForRowAtPoint:pt];
+    NSInteger index = path.row;
+    [global.order addObject:_objects[index]];
+    NSLog(@"add item to order. now order size = %lu", global.order.count);
+    for (int i=0; i<global.order.count; i++) {
+        [(FoodItem*)global.order[i] toString];
+    }
+    
+}
+
 
 @end

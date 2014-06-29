@@ -14,4 +14,9 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+
+
+- (IBAction)addToOrder:(UIButton *)sender;
+
+
 @end

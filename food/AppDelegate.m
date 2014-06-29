@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Global.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,9 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    global = [[Global alloc] init];
+
     return YES;
 }
 							
