@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 - (IBAction)payButton:(UIButton *)sender;
+- (IBAction)removeButtonPressed:(UIButton *)sender;
 
 @end

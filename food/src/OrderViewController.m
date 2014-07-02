@@ -38,12 +38,6 @@
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
     self.navigationItem.leftBarButtonItem = done;
 
-    float total = 0;
-    for (FoodItem* f in global.order) {
-        total += f.price;
-    }
-    
-    totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", total];
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
 //    self.tableView.contentInset = inset;
 //    self.tableView.scrollIndicatorInsets = inset;
@@ -160,4 +154,34 @@
 - (IBAction)payButton:(UIButton *)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.alipay.com"]];
 }
+
+- (IBAction)removeButtonPressed:(UIButton *)sender {
+    CGPoint pt = CGPointMake(0, 0);
+    pt = [sender convertPoint:pt toView:self.tableView];
+    NSIndexPath* path = [self.tableView indexPathForRowAtPoint:pt];
+    NSInteger index = path.row;
+    [self.tableView beginUpdates];
+    [global.order removeObjectAtIndex:index];
+    NSMutableArray* del = [[NSMutableArray alloc] initWithObjects:path, nil];
+    [self.tableView deleteRowsAtIndexPaths:del withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+    
+    [self updateTotalPrice];
+}
+
+- (void)updateTotalPrice {
+    float total = 0;
+    for (FoodItem* f in global.order) {
+        total += f.price;
+    }
+    totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", total];
+}
+
 @end
+
+
+
+
+
+
+
