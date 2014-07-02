@@ -16,6 +16,8 @@
 
 @implementation OrderViewController
 
+@synthesize totalLabel;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,6 +38,23 @@
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
     self.navigationItem.leftBarButtonItem = done;
 
+    float total = 0;
+    for (FoodItem* f in global.order) {
+        total += f.price;
+    }
+    
+    totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", total];
+//    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
+//    self.tableView.contentInset = inset;
+//    self.tableView.scrollIndicatorInsets = inset;
+//
+//    CGRect frame = self.view.bounds;
+//    frame.origin.y = frame.size.height - 80;
+//    frame.size.height = 80;
+//    UIView* totalView = [[UIView alloc] initWithFrame:frame];
+//    totalView.backgroundColor = [UIColor grayColor];
+//    [self.view.superview.superview addSubview:totalView];
+//    [self.view.superview.superview bringSubviewToFront:totalView];
 }
 
 - (void)doneButtonTapped:(id)sender {
@@ -138,4 +157,7 @@
 }
 */
 
+- (IBAction)payButton:(UIButton *)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.alipay.com"]];
+}
 @end

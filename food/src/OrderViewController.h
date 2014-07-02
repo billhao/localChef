@@ -10,4 +10,7 @@
 
 @interface OrderViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+- (IBAction)payButton:(UIButton *)sender;
+
 @end
