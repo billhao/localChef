@@ -38,6 +38,7 @@
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
     self.navigationItem.leftBarButtonItem = done;
 
+    [self updateTotalPrice];
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
 //    self.tableView.contentInset = inset;
 //    self.tableView.scrollIndicatorInsets = inset;
