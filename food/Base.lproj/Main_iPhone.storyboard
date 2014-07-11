@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZzQ-02-zVc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -96,10 +95,10 @@
                                 <state key="normal" image="food.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="qHJ-XA-YtT" kind="modal" id="6nw-BJ-dDq"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="0c8-JL-4Lo" kind="modal" id="xno-eT-TkT"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -285,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="517" y="-348"/>
         </scene>
-        <!--View Controller-->
+        <!--Publish View Controller-->
         <scene sceneID="cZ4-er-cAH">
             <objects>
-                <viewController id="qHJ-XA-YtT" sceneMemberID="viewController">
+                <viewController id="qHJ-XA-YtT" customClass="PublishViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w9g-DB-ejP"/>
                         <viewControllerLayoutGuide type="bottom" id="HIp-J3-UUQ"/>
@@ -297,58 +296,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="菜名" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="菜名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq">
                                 <rect key="frame" x="20" y="38" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="份数" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ItJ-t6-1io">
-                                <rect key="frame" x="20" y="81" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="价格" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="价格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
                                 <rect key="frame" x="20" y="126" width="176" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="priceTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="iTd-Ym-M1O"/>
+                                </connections>
                             </textField>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-ra-dHe">
-                                <rect key="frame" x="206" y="126" width="94" height="29"/>
-                            </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-ww-iFM">
-                                <rect key="frame" x="206" y="213" width="94" height="29"/>
-                            </stepper>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="开始提供时间" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sst-aa-3JF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="开始提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sst-aa-3JF">
                                 <rect key="frame" x="20" y="170" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="区域" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="区域" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
                                 <rect key="frame" x="20" y="257" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="提供时间" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
                                 <rect key="frame" x="20" y="213" width="176" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="timeTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="RQN-je-xQ8"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="地址" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
                                 <rect key="frame" x="20" y="301" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-ra-dHe">
+                                <rect key="frame" x="206" y="126" width="94" height="29"/>
+                                <connections>
+                                    <action selector="priceValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="cUd-dA-B5P"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-xV-61Y">
+                                <rect key="frame" x="206" y="81" width="94" height="29"/>
+                                <connections>
+                                    <action selector="quantityValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="8iO-IB-n4c"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minimumValue="30" maximumValue="300" stepValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-ww-iFM">
+                                <rect key="frame" x="206" y="213" width="94" height="29"/>
+                                <connections>
+                                    <action selector="timeValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="5je-Xx-9hG"/>
+                                    <action selector="timeValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="By5-Lo-o8K"/>
+                                </connections>
+                            </stepper>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
                                 <rect key="frame" x="20" y="518" width="280" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="立即发布"/>
+                                <connections>
+                                    <action selector="publish:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="C6T-A1-QTX"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cem-LX-3S4">
                                 <rect key="frame" x="20" y="346" width="280" height="160"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="份数" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ItJ-t6-1io">
+                                <rect key="frame" x="20" y="81" width="176" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="quantityTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="T7u-sS-w4J"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="food_name" destination="Z2a-Sm-gsq" id="Q4d-2I-y7e"/>
+                        <outlet property="food_price" destination="ynr-l2-YIR" id="aoZ-og-59i"/>
+                        <outlet property="food_quantity" destination="ItJ-t6-1io" id="rDK-cf-OAi"/>
+                        <outlet property="food_start_time" destination="sst-aa-3JF" id="ydi-To-nLn"/>
+                        <outlet property="food_time" destination="Ueh-fm-mwI" id="KEi-fi-5Zt"/>
+                        <outlet property="priceStepper" destination="tEa-ra-dHe" id="Yap-vr-qYQ"/>
+                        <outlet property="quantityStepper" destination="QXs-xV-61Y" id="dje-5G-jrJ"/>
+                        <outlet property="seller_address" destination="mkn-7T-kH2" id="mUB-1n-Sg8"/>
+                        <outlet property="seller_location" destination="JPm-Ku-pUa" id="hhI-Fo-Msq"/>
+                        <outlet property="timeStepper" destination="Te2-ww-iFM" id="udr-1e-Ukd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvy-S1-mvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
