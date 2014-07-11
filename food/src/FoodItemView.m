@@ -19,8 +19,8 @@
         // Initialization code
         food = foodItem;
         UILabel* title = [[UILabel alloc] init];
-        title.text = food.name;
-        [title setText:food.name];
+        title.text = food.food_name;
+        [title setText:food.food_name];
     }
     return self;
 }

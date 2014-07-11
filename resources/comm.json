@@ -1,0 +1,64 @@
+[
+	{
+	"seller_id": 1,
+	"seller_name": "王阿姨",
+	"seller_address": "王府井1号",
+	"seller_phone": "13810018888",
+	"seller_pickup_or_delivery": "both",
+	"seller_delivery_fee": 8,
+	"items":
+		[
+		  {
+		  "food_id": 1,
+		  "food_name": "红烧肉",
+		  "food_description": "不好吃不要钱",
+		  "food_image_url": "rou",
+		  "food_price": 20.0,
+		  "food_quantity": 2,
+		  "food_start_time": "12:30",
+		  "food_end_time": "13:30"
+		  },
+		  {
+		  "food_id": 2,
+		  "food_name": "清蒸鲈鱼",
+		  "food_description": "味道绝对好",
+		  "food_image_url": "fish",
+		  "food_price": 38.0,
+		  "food_quantity": 1,
+		  "food_start_time": "12:30",
+		  "food_end_time": "13:30"
+		  }
+		]
+	},
+	{
+	"seller_id": 2,
+	"seller_name": "张阿姨",
+	"seller_address": "张家界288号",
+	"seller_phone": "13288888888",
+	"seller_pickup_or_delivery": "both",
+	"seller_delivery_fee": "5",
+	"items":
+		[
+		  {
+		  "food_id": 3,
+		  "food_name": "麻婆豆腐",
+		  "food_description": "麻婆+豆腐",
+		  "food_image_url": "",
+		  "food_price": 16.0,
+		  "food_quantity": 2,
+		  "food_start_time": "12:00",
+		  "food_end_time": "14:00"
+		  },
+		  {
+		  "food_id": 4,
+		  "food_name": "清炒小菜",
+		  "food_description": "小菜",
+		  "food_image_url": "",
+		  "food_price": 12.0,
+		  "food_quantity": "5",
+		  "food_start_time": "12:00",
+		  "food_end_time": "14:00"
+		  }
+		]
+	}
+]

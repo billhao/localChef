@@ -44,15 +44,46 @@
 //    [self.tableView setTableHeaderView: v];
 
 
-    for( int i=0; i<10; i++ ) {
-        [self insertNewObject:nil];
-    }
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)refreshData {
+    NSArray* data = [global.server getDataForLocation:1];
+
+    if (!_objects) {
+        _objects = [[NSMutableArray alloc] init];
+    }
+    
+    for (NSDictionary* seller in data) {
+        NSDictionary* items = seller[@"items"];
+        for (NSDictionary* item in items) {
+            FoodItem* food = [[FoodItem alloc] init];
+            
+            food.seller_id          = [seller[@"seller_id"] integerValue];
+            food.seller_name        = seller[@"seller_name"];
+            food.seller_address     = seller[@"seller_address"];
+            food.seller_phone       = seller[@"seller_phone"];
+            
+            food.food_id            = [item[@"food_id"] integerValue];
+            food.food_name          = item[@"food_name"];
+            food.food_description   = item[@"food_description"];
+            food.food_image_url     = item[@"food_image_url"];
+            food.food_price         = [item[@"food_price"] doubleValue];
+            food.food_quantity      = [item[@"food_quantity"] integerValue];
+            food.food_start_time    = item[@"food_start_time"];
+            food.food_end_time      = item[@"food_end_time"];
+            
+            [_objects addObject:food];
+        }
+    }
+    
 }
 
 - (void)insertNewObject:(id)sender
@@ -84,9 +115,9 @@
 
     FoodItem *f = _objects[indexPath.row];
     
-    cell.f_name.text = f.name;
-    cell.f_desc.text = f.description;
-    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.price] forState:UIControlStateNormal];
+    cell.f_name.text = f.food_name;
+    cell.f_desc.text = f.food_description;
+    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.food_price] forState:UIControlStateNormal];
     
     return cell;
 }

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Global.h"
 
+#import "totServerCommController.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,6 +24,10 @@
     
     global = [[Global alloc] init];
 
+    // test
+//    totServerCommController* comm = [[totServerCommController alloc] init];
+//    [comm getDataForLocation:1];
+    
     return YES;
 }
 							

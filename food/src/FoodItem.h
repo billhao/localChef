@@ -10,18 +10,23 @@
 
 @interface FoodItem : NSObject
 
-@property(nonatomic, assign) NSInteger  id;
-@property(nonatomic, retain) NSString*  name;
-@property(nonatomic, retain) NSString*  description;
-@property(nonatomic, retain) NSString*  image_url;
-@property(nonatomic, retain) NSString*  seller;
+// seller
 @property(nonatomic, assign) NSInteger  seller_id;
-@property(nonatomic, retain) NSString*  address;
-@property(nonatomic, retain) NSString*  phone;
-@property(nonatomic, assign) float      price;
-@property(nonatomic, assign) int        quantity;
-@property(nonatomic, retain) NSDate*    start_time;
-@property(nonatomic, retain) NSDate*    end_time;
+@property(nonatomic, retain) NSString*  seller_name;
+@property(nonatomic, retain) NSString*  seller_address;
+@property(nonatomic, retain) NSString*  seller_phone;
+
+// food
+@property(nonatomic, assign) NSInteger  food_id;
+@property(nonatomic, retain) NSString*  food_name;
+@property(nonatomic, retain) NSString*  food_description;
+@property(nonatomic, retain) NSString*  food_image_url;
+@property(nonatomic, assign) double     food_price;
+@property(nonatomic, assign) long       food_quantity;
+@property(nonatomic, retain) NSDate*    food_start_time;
+@property(nonatomic, retain) NSDate*    food_end_time;
+
+// pickup/delivery
 
 + (FoodItem*)getRandomFood;
 

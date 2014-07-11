@@ -95,9 +95,9 @@
     NSLog(@"%ld", indexPath.row);
     FoodItem *f = global.order[indexPath.row];
     
-    cell.f_name.text = f.name;
-    cell.f_desc.text = f.description;
-    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.price] forState:UIControlStateNormal];
+    cell.f_name.text = f.food_name;
+    cell.f_desc.text = f.food_description;
+    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.food_price] forState:UIControlStateNormal];
     
     return cell;
 }
@@ -173,7 +173,7 @@
 - (void)updateTotalPrice {
     float total = 0;
     for (FoodItem* f in global.order) {
-        total += f.price;
+        total += f.food_price;
     }
     totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", total];
 }
