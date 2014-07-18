@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublishViewController : UIViewController
+@interface PublishViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 
 // steppers
 - (IBAction)timeValueChanged:(UIStepper *)sender;
@@ -18,6 +18,7 @@
 - (IBAction)publish:(UIButton *)sender;
 
 // text boxes
+- (IBAction)foodNameTextValueChanged:(UITextField *)sender;
 - (IBAction)quantityTextValueChanged:(UITextField *)sender;
 - (IBAction)priceTextValueChanged:(UITextField *)sender;
 - (IBAction)timeTextValueChanged:(UITextField *)sender;
