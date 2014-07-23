@@ -17,6 +17,7 @@
 
 #import <Foundation/Foundation.h>
 #import "totURLConnection.h"
+#import "FoodItem.h"
 
 #define HOSTNAME @"https://www.gettot.com"
 #define HOSTNAME_SHORT @"www.gettot.com"
@@ -42,9 +43,12 @@ enum SERVER_RESPONSE_CODE {
 - (void) sendUserActivityToServer: (NSString*) email withActivity: (NSString*) activity returnMessage:(NSString**)message
                         callback:(void(^)(int ret, NSString* msg))callback;
 
-
+// for buyer
 - (NSMutableArray*)getDataForLocation:(int)location;
 - (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id;
 
+// for seller
+- (int)publishItem:(FoodItem*)food_item;
+- (NSArray*)getPublishedItems:(int)seller_id;
 
 @end

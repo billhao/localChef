@@ -23,6 +23,8 @@
 - (IBAction)priceTextValueChanged:(UITextField *)sender;
 - (IBAction)timeTextValueChanged:(UITextField *)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *publishButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *food_name;
 @property (weak, nonatomic) IBOutlet UITextField *food_quantity;
 @property (weak, nonatomic) IBOutlet UITextField *food_price;

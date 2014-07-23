@@ -259,6 +259,8 @@
 
 
 //======================================================================================================
+// for buyer
+//======================================================================================================
 - (NSArray*)getDataForLocation:(int)location {
     NSString *filepath = [[NSBundle mainBundle] pathForResource:@"comm" ofType:@"json"];
     NSError *error;
@@ -294,6 +296,19 @@
 
 - (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id {
     return 0;
+}
+
+
+//======================================================================================================
+// for seller
+//======================================================================================================
+- (int)publishItem:(FoodItem*)food_item {
+    NSLog(@"Publishing food item %@ to server", food_item.food_name);
+    return 100;
+}
+
+- (NSArray*)getPublishedItems:(int)seller_id {
+    return [self getDataForLocation:0];
 }
 
 @end

@@ -17,7 +17,7 @@
 @implementation PublishViewController
 
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
-    quantityStepper, priceStepper, timeStepper, seller_address, seller_location;
+    quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView, publishButton;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +38,12 @@
     seller_location.delegate = self;
     seller_address.delegate = self;
 
+}
+
+-(void)viewDidLayoutSubviews {
+    CGRect f = scrollView.frame;
+    int h = publishButton.frame.origin.y + publishButton.frame.size.height + 20;
+    [scrollView setContentSize:CGSizeMake(f.size.width, h)];
 }
 
 - (void)didReceiveMemoryWarning

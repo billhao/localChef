@@ -38,6 +38,7 @@
 		3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA645195FBBDF0058F6D3 /* MenuCell.m */; };
 		3FABA649195FBEFB0058F6D3 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA648195FBEFB0058F6D3 /* Global.m */; };
 		3FABA64C195FC2B60058F6D3 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA64B195FC2B60058F6D3 /* OrderCell.m */; };
+		3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6CC63197F7D070082354E /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		3FABA648195FBEFB0058F6D3 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		3FABA64A195FC2B60058F6D3 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCell.h; path = src/OrderCell.h; sourceTree = "<group>"; };
 		3FABA64B195FC2B60058F6D3 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCell.m; path = src/OrderCell.m; sourceTree = "<group>"; };
+		3FD6CC62197F7D070082354E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = src/MenuViewController.h; sourceTree = "<group>"; };
+		3FD6CC63197F7D070082354E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = src/MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 				3FABA64B195FC2B60058F6D3 /* OrderCell.m */,
 				3F2CB86C196FBBAD00C32AED /* PublishViewController.h */,
 				3F2CB86D196FBBAD00C32AED /* PublishViewController.m */,
+				3FD6CC62197F7D070082354E /* MenuViewController.h */,
+				3FD6CC63197F7D070082354E /* MenuViewController.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				3F2543991952BA690000E6C9 /* AppDelegate.m in Sources */,
 				3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */,
 				3F2543A21952BA690000E6C9 /* MasterViewController.m in Sources */,
+				3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */,
 				3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */,
 				3F59F9DE196F99F700D67428 /* totUtility.m in Sources */,
 				3F59F9D8196F95E600D67428 /* Base64Encoder.m in Sources */,
