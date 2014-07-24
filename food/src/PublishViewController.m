@@ -17,7 +17,8 @@
 @implementation PublishViewController
 
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
-    quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView, publishButton;
+    quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
+    publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,11 +39,46 @@
     seller_location.delegate = self;
     seller_address.delegate = self;
 
+    // price
+    food_price.text = @"$ 8.00";
+    priceStepper.value = 8.0;
+    
+    // location
+    locations = @[@"Mountain View, CA",
+                  @"Blossom Hill, San Jose, CA"
+                  ];
+    seller_location.inputView = locationPicker;
+    seller_location.inputAccessoryView = [self createInputAccessoryView];
+    seller_location.text = locations[0];
+    
+
+    // start time
+    start_time = nil;
+    end_time = nil;
+
+    UIView* doneButton = [self createInputAccessoryView1];
+    food_start_time.inputView = startTimePicker;
+    food_start_time.inputAccessoryView = doneButton;
+    NSDate* d1 = [NSDate date];
+    NSDate* d2 = [NSDate dateWithTimeIntervalSinceNow: oneHour * 24 * 3]; // 3 days from now
+    startTimePicker.date = d1;
+    startTimePicker.minimumDate = d1;
+//    startTimePicker.maximumDate = d1;
+    [self startTimePickerDoneClicked:nil];
+    
+    // end time
+    UIView* doneButton2 = [self createInputAccessoryView2];
+    food_time.inputView = endTimePicker;
+    food_time.inputAccessoryView = doneButton2;
+    endTimePicker.minimumDate = d1;
+    endTimePicker.date = [d1 dateByAddingTimeInterval: oneHour * 3];
+    [self endTimePickerDoneClicked:nil];
+    
 }
 
 -(void)viewDidLayoutSubviews {
     CGRect f = scrollView.frame;
-    int h = publishButton.frame.origin.y + publishButton.frame.size.height + 20;
+    int h = publishButton.frame.origin.y + publishButton.frame.size.height - scrollView.contentOffset.y;
     [scrollView setContentSize:CGSizeMake(f.size.width, h)];
 }
 
@@ -68,7 +104,7 @@
 }
 
 - (IBAction)priceValueChanged:(UIStepper *)sender {
-    food_price.text = [NSString stringWithFormat:@"%.2f", sender.value];
+    food_price.text = [NSString stringWithFormat:@"$ %.0f", sender.value];
 }
 
 - (IBAction)quantityValueChanged:(UIStepper *)sender {
@@ -109,6 +145,25 @@
 
 - (IBAction)timeTextValueChanged:(UITextField *)sender {
     timeStepper.value = [sender.text intValue];
+}
+
+- (IBAction)locationTouchUpInside:(id)sender {
+    // show location picker
+    CGRect f = locationPicker.frame;
+    f.origin.y = self.view.bounds.size.height;
+    locationPicker.frame = f;
+    [UIView animateWithDuration:0.4 animations:^{
+        CGRect f1 = f;
+        f1.origin.y = f1.size.height;
+        locationPicker.frame = f1;
+    }];
+}
+
+- (IBAction)takePhotoButtonPressed:(UIButton *)sender {
+    [self takePhoto];
+}
+
+- (IBAction)textFieldReturn:(UITextField *)sender {
 }
 
 - (IBAction)foodNameTextValueChanged:(UITextField *)sender {
@@ -159,4 +214,207 @@
 //    [food_quantity resignFirstResponder];
 //}
 
+
+#pragma mark - PickerView DataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return locations.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return locations[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    seller_location.text = locations[row];
+}
+
+- (UIView*)createInputAccessoryView{
+    // create a done view + done button, attach to it a doneClicked action, and place it in a toolbar as an accessory input view...
+    // Prepare done button
+    UIToolbar* keyboardDoneButtonView	= [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle		= UIBarStyleDefault;
+    keyboardDoneButtonView.translucent	= YES;
+    keyboardDoneButtonView.tintColor	= nil;
+    [keyboardDoneButtonView sizeToFit];
+    
+    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone  target:self action:@selector(pickerDoneClicked:)];
+    
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer1    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil action:nil];
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil action:nil];
+    
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:spacer, spacer1, doneButton, nil]];
+    
+    return keyboardDoneButtonView;
+}
+
+- (void)pickerDoneClicked: (UIButton *)button {
+    [seller_location resignFirstResponder];
+    seller_location.text = locations[[locationPicker selectedRowInComponent:0]];
+}
+
+- (UIView*)createInputAccessoryView1 {
+    // create a done view + done button, attach to it a doneClicked action, and place it in a toolbar as an accessory input view...
+    // Prepare done button
+    UIToolbar* keyboardDoneButtonView	= [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle		= UIBarStyleDefault;
+    keyboardDoneButtonView.translucent	= YES;
+    keyboardDoneButtonView.tintColor	= nil;
+    [keyboardDoneButtonView sizeToFit];
+    
+    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone  target:self action:@selector(startTimePickerDoneClicked:)];
+    
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer1    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil action:nil];
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil action:nil];
+    
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:spacer, spacer1, doneButton, nil]];
+    
+    return keyboardDoneButtonView;
+}
+
+- (void)startTimePickerDoneClicked: (UIButton *)button {
+    [food_start_time resignFirstResponder];
+    food_start_time.text = [totUtility dateToString:startTimePicker.date];
+    start_time = startTimePicker.date;
+}
+
+
+- (UIView*)createInputAccessoryView2 {
+    // create a done view + done button, attach to it a doneClicked action, and place it in a toolbar as an accessory input view...
+    // Prepare done button
+    UIToolbar* keyboardDoneButtonView	= [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle		= UIBarStyleDefault;
+    keyboardDoneButtonView.translucent	= YES;
+    keyboardDoneButtonView.tintColor	= nil;
+    [keyboardDoneButtonView sizeToFit];
+    
+    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone  target:self action:@selector(endTimePickerDoneClicked:)];
+    
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer1    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil action:nil];
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil action:nil];
+    
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:spacer, spacer1, doneButton, nil]];
+    
+    return keyboardDoneButtonView;
+}
+
+- (void)endTimePickerDoneClicked: (UIButton *)button {
+    [food_time resignFirstResponder];
+    food_time.text = [totUtility dateToString:endTimePicker.date];
+    end_time = endTimePicker.date;
+}
+
+#pragma mark - Helper functions for taking photo
+
+
+- (void)takePhoto {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [takePhotoButton setTitle:@"" forState:UIControlStateNormal];
+    [takePhotoButton setTitle:@"" forState:UIControlStateHighlighted];
+    [takePhotoButton setTitle:@"" forState:UIControlStateSelected];
+    takePhotoButton.backgroundColor = [UIColor clearColor];
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    food_image.image = chosenImage;
+
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+//- (void)launchCamera:(UIViewController*)vc type:(UIImagePickerControllerSourceType)type {
+//    if (!imagePicker) {
+//        imagePicker = [[UIImagePickerController alloc] init];
+//    }
+//    if ( (type == UIImagePickerControllerSourceTypeCamera) &&
+//        [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString*)kUTTypeMovie, (NSString*)kUTTypeImage, nil];
+//        imagePicker.allowsEditing = NO;
+//        
+//        // create overlay button for go to photo library
+//        UIImage* photoLibImg = [UIImage imageNamed:@"photo_lib"];
+//        CGRect f = CGRectMake(imagePicker.view.bounds.size.width-photoLibImg.size.width-10,
+//                              imagePicker.view.bounds.size.height-photoLibImg.size.height-10-54-50,
+//                              photoLibImg.size.width,
+//                              photoLibImg.size.height);
+//        
+//        UIView *overlay_view = [[UIView alloc] initWithFrame:CGRectMake(f.origin.x, f.origin.y, f.size.width, f.size.height)];
+//        overlay_view.contentMode = UIViewContentModeTop;
+//        
+//        UIButton* overlay = [UIButton buttonWithType:UIButtonTypeCustom];
+//        // overlay.frame = f;
+//        overlay.frame = CGRectMake(0, 0, f.size.width, f.size.height);
+//        overlay.alpha = 0.5;
+//        [overlay setImage:photoLibImg forState:UIControlStateNormal];
+//        [overlay addTarget:self action:@selector(photoLibButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [overlay_view addSubview:overlay];
+//        
+//        // imagePicker.cameraOverlayView = overlay;
+//        imagePicker.cameraOverlayView = overlay_view;
+//        //UIView* v = imagePicker.cameraOverlayView;
+//        //[imagePicker.cameraOverlayView addSubview:overlay_view];
+//        //[imagePicker.cameraOverlayView bringSubviewToFront:overlay_view];
+//        [overlay_view release];
+//        
+//        [vc presentViewController:imagePicker animated:TRUE completion:nil];
+//    } else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString*)kUTTypeMovie, (NSString*)kUTTypeImage, nil];
+//        imagePicker.allowsEditing = NO;
+//        [vc presentViewController:imagePicker animated:TRUE completion:nil];
+//    }
+//}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

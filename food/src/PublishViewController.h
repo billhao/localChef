@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublishViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
+#define oneHour 3600 // one hour in seconds
+
+@interface PublishViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+    NSDate* start_time;
+    NSDate* end_time;
+    UIImagePickerController *imagePicker;
+    
+}
 
 // steppers
 - (IBAction)timeValueChanged:(UIStepper *)sender;
@@ -22,7 +29,15 @@
 - (IBAction)quantityTextValueChanged:(UITextField *)sender;
 - (IBAction)priceTextValueChanged:(UITextField *)sender;
 - (IBAction)timeTextValueChanged:(UITextField *)sender;
+- (IBAction)locationTouchUpInside:(id)sender;
+- (IBAction)takePhotoButtonPressed:(UIButton *)sender;
 
+- (IBAction)textFieldReturn:(UITextField *)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *locationPicker;
 @property (weak, nonatomic) IBOutlet UIButton *publishButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *food_name;
@@ -36,5 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *quantityStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *priceStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *timeStepper;
+
+@property (strong, nonatomic) NSArray *locations;
 
 @end

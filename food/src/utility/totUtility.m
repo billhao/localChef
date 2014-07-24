@@ -57,8 +57,8 @@
 +(NSString *)dateToString:(NSDate*)date{
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSString *dateString;
-	[formatter setDateStyle:NSDateFormatterFullStyle];
-	[formatter setTimeStyle:NSDateFormatterFullStyle];
+	[formatter setDateStyle:NSDateFormatterShortStyle];
+	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	dateString =[formatter stringFromDate:date];
     return  dateString;
 }
