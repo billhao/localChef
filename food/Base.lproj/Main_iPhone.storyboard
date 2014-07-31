@@ -367,10 +367,10 @@ my neighbors</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="AEw-0e-8ST">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fish" borderStyle="roundedRect" placeholder="菜名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fish" borderStyle="roundedRect" placeholder="菜名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq" userLabel="name">
                                         <rect key="frame" x="20" y="6" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
                                             <action selector="foodNameTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="ICy-mZ-D9t"/>
                                         </connections>
@@ -378,15 +378,15 @@ my neighbors</string>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="份数" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ItJ-t6-1io">
                                         <rect key="frame" x="20" y="42" width="176" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
                                             <action selector="quantityTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="T7u-sS-w4J"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$ 8.00" borderStyle="roundedRect" placeholder="价格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$ 8" borderStyle="roundedRect" placeholder="价格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
                                         <rect key="frame" x="20" y="80" width="176" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                         <connections>
                                             <action selector="priceTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="iTd-Ym-M1O"/>
                                         </connections>
@@ -394,9 +394,17 @@ my neighbors</string>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="开始提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sst-aa-3JF">
                                         <rect key="frame" x="20" y="117" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQd-eF-3dm">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
+                                        <rect key="frame" x="20" y="154" width="280" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="timeTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="RQN-je-xQ8"/>
+                                        </connections>
+                                    </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQd-eF-3dm">
                                         <rect key="frame" x="20" y="192" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
@@ -406,28 +414,35 @@ my neighbors</string>
                                             <action selector="locationTouchUpInside:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="rFf-HP-nhO"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="区域" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
-                                        <rect key="frame" x="20" y="191" width="280" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
+                                        <rect key="frame" x="20" y="192" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
+                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="jje-g4-2VF"/>
+                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="5xF-EW-TvU"/>
                                             <action selector="textFieldReturn:" destination="qHJ-XA-YtT" eventType="editingDidEndOnExit" id="gmJ-Ra-utx"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
-                                        <rect key="frame" x="20" y="154" width="176" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="timeTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="RQN-je-xQ8"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
                                         <rect key="frame" x="20" y="228" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="Svd-JP-BNq"/>
+                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="7D7-N4-diE"/>
+                                        </connections>
                                     </textField>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-ra-dHe">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2Q-D0-WRb" userLabel="phone #">
+                                        <rect key="frame" x="20" y="266" width="280" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="dkj-fa-hoF"/>
+                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="u6r-X5-UGM"/>
+                                        </connections>
+                                    </textField>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-ra-dHe">
                                         <rect key="frame" x="206" y="80" width="94" height="29"/>
                                         <connections>
                                             <action selector="priceValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="cUd-dA-B5P"/>
@@ -439,18 +454,8 @@ my neighbors</string>
                                             <action selector="quantityValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="8iO-IB-n4c"/>
                                         </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minimumValue="30" maximumValue="300" stepValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-ww-iFM">
-                                        <rect key="frame" x="206" y="154" width="94" height="29"/>
-                                        <connections>
-                                            <action selector="timeValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="5je-Xx-9hG"/>
-                                            <action selector="timeValueChanged:" destination="qHJ-XA-YtT" eventType="valueChanged" id="By5-Lo-o8K"/>
-                                        </connections>
-                                    </stepper>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cem-LX-3S4">
-                                        <rect key="frame" x="20" y="266" width="280" height="160"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdT-qr-JdJ">
-                                        <rect key="frame" x="20" y="266" width="280" height="160"/>
+                                        <rect key="frame" x="20" y="304" width="280" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
                                         <state key="normal" title="Take a Photo">
@@ -458,6 +463,24 @@ my neighbors</string>
                                         </state>
                                         <connections>
                                             <action selector="takePhotoButtonPressed:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="XIk-fW-9Pm"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cem-LX-3S4">
+                                        <rect key="frame" x="20" y="304" width="280" height="160"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" text="Some simple description" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-CY-Byb" userLabel="description">
+                                        <rect key="frame" x="20" y="472" width="280" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
+                                        <rect key="frame" x="20" y="550" width="280" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="立即发布"/>
+                                        <connections>
+                                            <action selector="publish:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="C6T-A1-QTX"/>
                                         </connections>
                                     </button>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOl-z1-hXo" userLabel="locationPicker">
@@ -481,7 +504,7 @@ my neighbors</string>
                                             <!--2014-12-31 11:00:00 +0000-->
                                         </date>
                                         <timeZone key="timeZone" name="America/Los_Angeles">
-                                            <mutableData key="data">
+                                            <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -499,7 +522,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                         </timeZone>
                                     </datePicker>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="NJI-Sc-xSp" userLabel="endTimePicker">
@@ -515,7 +538,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <!--2014-12-31 11:00:00 +0000-->
                                         </date>
                                         <timeZone key="timeZone" name="America/Los_Angeles">
-                                            <mutableData key="data">
+                                            <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -533,24 +556,9 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                         </timeZone>
                                     </datePicker>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" text="Some simple description" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-CY-Byb">
-                                        <rect key="frame" x="20" y="434" width="280" height="67"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
-                                        <rect key="frame" x="20" y="512" width="280" height="36"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="立即发布"/>
-                                        <connections>
-                                            <action selector="publish:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="C6T-A1-QTX"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -584,9 +592,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="scrollView" destination="AEw-0e-8ST" id="0Sf-6L-q2G"/>
                         <outlet property="seller_address" destination="mkn-7T-kH2" id="mUB-1n-Sg8"/>
                         <outlet property="seller_location" destination="JPm-Ku-pUa" id="hhI-Fo-Msq"/>
+                        <outlet property="seller_phone" destination="h2Q-D0-WRb" id="7RI-GH-FzT"/>
                         <outlet property="startTimePicker" destination="ag4-jo-MHo" id="AUH-mu-5eD"/>
                         <outlet property="takePhotoButton" destination="pdT-qr-JdJ" id="UuQ-im-uaS"/>
-                        <outlet property="timeStepper" destination="Te2-ww-iFM" id="udr-1e-Ukd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvy-S1-mvr" userLabel="First Responder" sceneMemberID="firstResponder"/>

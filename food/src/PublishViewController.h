@@ -14,7 +14,12 @@
     NSDate* start_time;
     NSDate* end_time;
     UIImagePickerController *imagePicker;
-    
+
+    // for scrolling & keyboard
+    UITextField* activeTextField;
+    UIEdgeInsets contentInset;
+    UIEdgeInsets scrollIndicatorInsets;
+
 }
 
 // steppers
@@ -32,8 +37,12 @@
 - (IBAction)locationTouchUpInside:(id)sender;
 - (IBAction)takePhotoButtonPressed:(UIButton *)sender;
 
+- (IBAction)textFieldDidBeginEditing:(UITextField *)textField;
+- (IBAction)textFieldDidEndEditing:(UITextField *)textField;
+
 - (IBAction)textFieldReturn:(UITextField *)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *seller_phone;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;

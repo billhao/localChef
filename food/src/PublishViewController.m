@@ -18,7 +18,8 @@
 
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
     quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
-    publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton;
+    publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton,
+    seller_phone;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,18 +40,22 @@
     seller_location.delegate = self;
     seller_address.delegate = self;
 
+    activeTextField = nil;
+    
     // price
     food_price.text = @"$ 8.00";
     priceStepper.value = 8.0;
     
     // location
-    locations = @[@"Mountain View, CA",
-                  @"Blossom Hill, San Jose, CA"
-                  ];
-    seller_location.inputView = locationPicker;
-    seller_location.inputAccessoryView = [self createInputAccessoryView];
-    seller_location.text = locations[0];
+//    locations = @[@"Mountain View, CA",
+//                  @"Blossom Hill, San Jose, CA"
+//                  ];
+//    seller_location.inputView = locationPicker;
+//    seller_location.inputAccessoryView = [self createInputAccessoryView];
+//    seller_location.text = locations[0];
     
+    seller_location.inputAccessoryView = [self createInputAccessoryView];
+    seller_phone.inputAccessoryView = [self createInputAccessoryView];
 
     // start time
     start_time = nil;
@@ -74,6 +79,7 @@
     endTimePicker.date = [d1 dateByAddingTimeInterval: oneHour * 3];
     [self endTimePickerDoneClicked:nil];
     
+    [self registerForKeyboardNotifications];
 }
 
 -(void)viewDidLayoutSubviews {
@@ -104,7 +110,10 @@
 }
 
 - (IBAction)priceValueChanged:(UIStepper *)sender {
-    food_price.text = [NSString stringWithFormat:@"$ %.0f", sender.value];
+    if( sender.value == 0 )
+        food_price.text = @"Free";
+    else
+        food_price.text = [NSString stringWithFormat:@"$ %.0f", sender.value];
 }
 
 - (IBAction)quantityValueChanged:(UIStepper *)sender {
@@ -242,7 +251,7 @@
     keyboardDoneButtonView.tintColor	= nil;
     [keyboardDoneButtonView sizeToFit];
     
-    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone  target:self action:@selector(pickerDoneClicked:)];
+    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone  target:self action:@selector(textFieldDoneButtonClicked:)];
     
     // I put the spacers in to push the doneButton to the right side of the picker view
     UIBarButtonItem *spacer1    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
@@ -254,6 +263,11 @@
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:spacer, spacer1, doneButton, nil]];
     
     return keyboardDoneButtonView;
+}
+
+- (void)textFieldDoneButtonClicked: (id *)control {
+    [seller_phone resignFirstResponder];
+    [seller_location resignFirstResponder];
 }
 
 - (void)pickerDoneClicked: (UIButton *)button {
@@ -398,6 +412,66 @@
 //        [vc presentViewController:imagePicker animated:TRUE completion:nil];
 //    }
 //}
+
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    // save original insets
+    contentInset = scrollView.contentInset;
+    scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
+
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    CGPoint origin = activeTextField.frame.origin;
+    origin.y -= scrollView.contentOffset.y;
+    if (!CGRectContainsPoint(aRect, origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeTextField.frame.origin.y-(aRect.size.height));
+        [scrollView setContentOffset:scrollPoint animated:YES];
+    }
+    else {
+        scrollView.contentInset = contentInset;
+        scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    scrollView.contentInset = contentInset;
+    scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
+}
+
+- (IBAction)textFieldDidBeginEditing:(UITextField *)textField
+{
+    activeTextField = textField;
+}
+
+- (IBAction)textFieldDidEndEditing:(UITextField *)textField
+{
+    activeTextField = nil;
+}
+
 
 @end
 
