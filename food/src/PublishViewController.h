@@ -16,10 +16,11 @@
     UIImagePickerController *imagePicker;
 
     // for scrolling & keyboard
-    UITextField* activeTextField;
+    UIView* activeTextField;
     UIEdgeInsets contentInset;
     UIEdgeInsets scrollIndicatorInsets;
 
+    bool keyboardShown;
 }
 
 // steppers
@@ -42,6 +43,7 @@
 
 - (IBAction)textFieldReturn:(UITextField *)sender;
 
+@property (weak, nonatomic) IBOutlet UITextView *food_description;
 @property (weak, nonatomic) IBOutlet UITextField *seller_phone;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;

@@ -473,7 +473,10 @@ my neighbors</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qHJ-XA-YtT" id="Zai-1g-bDM"/>
+                                        </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
                                         <rect key="frame" x="20" y="550" width="280" height="36"/>
@@ -579,6 +582,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <connections>
                         <outlet property="endTimePicker" destination="NJI-Sc-xSp" id="bgZ-WY-zgL"/>
+                        <outlet property="food_description" destination="KN9-CY-Byb" id="WIQ-ea-bKJ"/>
                         <outlet property="food_image" destination="Cem-LX-3S4" id="nUi-KF-Zog"/>
                         <outlet property="food_name" destination="Z2a-Sm-gsq" id="Q4d-2I-y7e"/>
                         <outlet property="food_price" destination="ynr-l2-YIR" id="aoZ-og-59i"/>

@@ -19,7 +19,7 @@
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
     quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
     publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton,
-    seller_phone;
+    seller_phone, food_description;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +56,7 @@
     
     seller_location.inputAccessoryView = [self createInputAccessoryView];
     seller_phone.inputAccessoryView = [self createInputAccessoryView];
+    food_description.inputAccessoryView = [self createInputAccessoryView];
 
     // start time
     start_time = nil;
@@ -79,6 +80,7 @@
     endTimePicker.date = [d1 dateByAddingTimeInterval: oneHour * 3];
     [self endTimePickerDoneClicked:nil];
     
+    keyboardShown = false;
     [self registerForKeyboardNotifications];
 }
 
@@ -268,6 +270,7 @@
 - (void)textFieldDoneButtonClicked: (id *)control {
     [seller_phone resignFirstResponder];
     [seller_location resignFirstResponder];
+    [food_description resignFirstResponder];
 }
 
 - (void)pickerDoneClicked: (UIButton *)button {
@@ -428,10 +431,15 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+    NSLog(@"keyboardWasShown");
+    
     // save original insets
-    contentInset = scrollView.contentInset;
-    scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
-
+    if( !keyboardShown )
+    {
+        contentInset = scrollView.contentInset;
+        scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
+    }
+    
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
@@ -441,18 +449,21 @@
     
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your app might not need or want this behavior.
+    int margin = 10;
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     CGPoint origin = activeTextField.frame.origin;
     origin.y -= scrollView.contentOffset.y;
     if (!CGRectContainsPoint(aRect, origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, activeTextField.frame.origin.y-(aRect.size.height));
+        CGPoint scrollPoint = CGPointMake(0.0, activeTextField.frame.origin.y+activeTextField.frame.size.height-(aRect.size.height) + margin);
         [scrollView setContentOffset:scrollPoint animated:YES];
     }
     else {
         scrollView.contentInset = contentInset;
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
     }
+    
+    keyboardShown = true;
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
@@ -460,6 +471,7 @@
 {
     scrollView.contentInset = contentInset;
     scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
+    keyboardShown = false;
 }
 
 - (IBAction)textFieldDidBeginEditing:(UITextField *)textField
@@ -469,6 +481,14 @@
 
 - (IBAction)textFieldDidEndEditing:(UITextField *)textField
 {
+    activeTextField = nil;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    activeTextField = textView;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
     activeTextField = nil;
 }
 
