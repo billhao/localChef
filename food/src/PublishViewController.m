@@ -96,17 +96,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)timeValueChanged:(UIStepper *)sender {
     food_time.text = [NSString stringWithFormat:@"%.0f", sender.value];
 }
@@ -138,6 +127,9 @@
     
     // add this item to the list
     [global.myPublishItems insertObject:item atIndex:0];
+    
+    [self performSegueWithIdentifier:@"goToMyList" sender:self];
+    return;
     
     // publish completed. publish more or go to the list of published items
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
@@ -493,6 +485,21 @@
     activeTextField = nil;
 }
 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIButton* btn = (UIButton*)sender;
+    if( btn == publishButton ) {
+        
+    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+*/
 
 @end
 

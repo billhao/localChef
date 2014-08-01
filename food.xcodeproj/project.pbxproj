@@ -24,6 +24,7 @@
 		3F2543B81952BA690000E6C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F2543B61952BA690000E6C9 /* InfoPlist.strings */; };
 		3F2543BA1952BA690000E6C9 /* foodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2543B91952BA690000E6C9 /* foodTests.m */; };
 		3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CB86D196FBBAD00C32AED /* PublishViewController.m */; };
+		3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385703198B68DA005F9A09 /* MyListTableViewController.m */; };
 		3F59F9D8196F95E600D67428 /* Base64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9D3196F95E600D67428 /* Base64Encoder.m */; };
 		3F59F9D9196F95E600D67428 /* totServerCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9D5196F95E600D67428 /* totServerCommController.m */; };
 		3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9D7196F95E600D67428 /* totURLConnection.m */; };
@@ -76,6 +77,8 @@
 		3F2543B91952BA690000E6C9 /* foodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = foodTests.m; sourceTree = "<group>"; };
 		3F2CB86C196FBBAD00C32AED /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublishViewController.h; path = src/PublishViewController.h; sourceTree = "<group>"; };
 		3F2CB86D196FBBAD00C32AED /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PublishViewController.m; path = src/PublishViewController.m; sourceTree = "<group>"; };
+		3F385702198B68DA005F9A09 /* MyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyListTableViewController.h; path = src/MyListTableViewController.h; sourceTree = "<group>"; };
+		3F385703198B68DA005F9A09 /* MyListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyListTableViewController.m; path = src/MyListTableViewController.m; sourceTree = "<group>"; };
 		3F59F9D2196F95E600D67428 /* Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Encoder.h; sourceTree = "<group>"; };
 		3F59F9D3196F95E600D67428 /* Base64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Encoder.m; sourceTree = "<group>"; };
 		3F59F9D4196F95E600D67428 /* totServerCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totServerCommController.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				3F2CB86D196FBBAD00C32AED /* PublishViewController.m */,
 				3FD6CC62197F7D070082354E /* MenuViewController.h */,
 				3FD6CC63197F7D070082354E /* MenuViewController.m */,
+				3F385702198B68DA005F9A09 /* MyListTableViewController.h */,
+				3F385703198B68DA005F9A09 /* MyListTableViewController.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				3FABA64C195FC2B60058F6D3 /* OrderCell.m in Sources */,
 				3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */,
 				3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */,
+				3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */,
 				3FABA643195FAC5A0058F6D3 /* OrderViewController.m in Sources */,
 				3FABA649195FBEFB0058F6D3 /* Global.m in Sources */,
 				3F2543951952BA690000E6C9 /* main.m in Sources */,
