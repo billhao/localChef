@@ -133,8 +133,11 @@
     
     item.food_name = food_name.text;
     
-    // send the order to server
+    // send the item to server
     item.food_id = [global.server publishItem:item];
+    
+    // add this item to the list
+    [global.myPublishItems insertObject:item atIndex:0];
     
     // publish completed. publish more or go to the list of published items
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
@@ -431,8 +434,6 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    NSLog(@"keyboardWasShown");
-    
     // save original insets
     if( !keyboardShown )
     {

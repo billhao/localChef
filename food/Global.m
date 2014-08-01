@@ -10,7 +10,7 @@
 
 @implementation Global
 
-@synthesize order, server;
+@synthesize order, server, myPublishItems;
 
 Global* global = nil;
 
@@ -18,7 +18,7 @@ Global* global = nil;
 - (id)init {
     if( self = [super init] ) {
         order = [[NSMutableArray alloc] init];
-        
+        myPublishItems = [[NSMutableArray alloc] init];
         server = [[totServerCommController alloc] init];
     }
     return self;

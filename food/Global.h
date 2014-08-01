@@ -12,6 +12,8 @@
 
 @interface Global : NSObject
 
+@property (nonatomic, retain, readonly) NSMutableArray* myPublishItems;
+
 @property (nonatomic, retain, readonly) NSMutableArray* order;
 
 @property (nonatomic, retain) totServerCommController* server;
