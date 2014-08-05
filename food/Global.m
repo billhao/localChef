@@ -10,7 +10,7 @@
 
 @implementation Global
 
-@synthesize order, server, myPublishItems;
+@synthesize order, server, myPublishItems, user;
 
 Global* global = nil;
 
@@ -20,6 +20,7 @@ Global* global = nil;
         order = [[NSMutableArray alloc] init];
         myPublishItems = [[NSMutableArray alloc] init];
         server = [[totServerCommController alloc] init];
+        user = nil;
     }
     return self;
 }

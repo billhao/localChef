@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FoodItem.h"
 #import "totServerCommController.h"
+#import "totUser.h"
 
 @interface Global : NSObject
 
@@ -17,6 +18,8 @@
 @property (nonatomic, retain, readonly) NSMutableArray* order;
 
 @property (nonatomic, retain) totServerCommController* server;
+
+@property (nonatomic, retain) totUser* user;
 
 @end
 

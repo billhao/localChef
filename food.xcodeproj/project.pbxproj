@@ -39,6 +39,17 @@
 		3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA645195FBBDF0058F6D3 /* MenuCell.m */; };
 		3FABA649195FBEFB0058F6D3 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA648195FBEFB0058F6D3 /* Global.m */; };
 		3FABA64C195FC2B60058F6D3 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA64B195FC2B60058F6D3 /* OrderCell.m */; };
+		3FC2FA061990AF3C00457F6D /* totUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA051990AF3C00457F6D /* totUser.m */; };
+		3FC2FA091990AF7400457F6D /* totModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA081990AF7400457F6D /* totModel.m */; };
+		3FC2FA0D1990AFC100457F6D /* totEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA0B1990AFC100457F6D /* totEvent.m */; };
+		3FC2FA1F1990B01400457F6D /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA121990B01400457F6D /* RNCryptor.m */; };
+		3FC2FA201990B01400457F6D /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA141990B01400457F6D /* RNCryptorEngine.m */; };
+		3FC2FA211990B01400457F6D /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA161990B01400457F6D /* RNDecryptor.m */; };
+		3FC2FA221990B01400457F6D /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA181990B01400457F6D /* RNEncryptor.m */; };
+		3FC2FA231990B01400457F6D /* RNOpenSSLCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1A1990B01400457F6D /* RNOpenSSLCryptor.m */; };
+		3FC2FA241990B01400457F6D /* RNOpenSSLDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1C1990B01400457F6D /* RNOpenSSLDecryptor.m */; };
+		3FC2FA251990B01400457F6D /* RNOpenSSLEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */; };
+		3FC2FA271990B13600457F6D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2FA261990B13600457F6D /* libsqlite3.dylib */; };
 		3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6CC63197F7D070082354E /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +114,30 @@
 		3FABA648195FBEFB0058F6D3 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		3FABA64A195FC2B60058F6D3 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCell.h; path = src/OrderCell.h; sourceTree = "<group>"; };
 		3FABA64B195FC2B60058F6D3 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCell.m; path = src/OrderCell.m; sourceTree = "<group>"; };
+		3FC2FA041990AF3C00457F6D /* totUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totUser.h; sourceTree = "<group>"; };
+		3FC2FA051990AF3C00457F6D /* totUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totUser.m; sourceTree = "<group>"; };
+		3FC2FA071990AF7400457F6D /* totModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totModel.h; sourceTree = "<group>"; };
+		3FC2FA081990AF7400457F6D /* totModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totModel.m; sourceTree = "<group>"; };
+		3FC2FA0A1990AFC100457F6D /* totEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totEvent.h; sourceTree = "<group>"; };
+		3FC2FA0B1990AFC100457F6D /* totEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totEvent.m; sourceTree = "<group>"; };
+		3FC2FA0C1990AFC100457F6D /* totEventName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totEventName.h; sourceTree = "<group>"; };
+		3FC2FA0F1990B01400457F6D /* RNCryptor+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor+Private.h"; sourceTree = "<group>"; };
+		3FC2FA101990B01400457F6D /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
+		3FC2FA111990B01400457F6D /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		3FC2FA121990B01400457F6D /* RNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptor.m; sourceTree = "<group>"; };
+		3FC2FA131990B01400457F6D /* RNCryptorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptorEngine.h; sourceTree = "<group>"; };
+		3FC2FA141990B01400457F6D /* RNCryptorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptorEngine.m; sourceTree = "<group>"; };
+		3FC2FA151990B01400457F6D /* RNDecryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDecryptor.h; sourceTree = "<group>"; };
+		3FC2FA161990B01400457F6D /* RNDecryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDecryptor.m; sourceTree = "<group>"; };
+		3FC2FA171990B01400457F6D /* RNEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEncryptor.h; sourceTree = "<group>"; };
+		3FC2FA181990B01400457F6D /* RNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEncryptor.m; sourceTree = "<group>"; };
+		3FC2FA191990B01400457F6D /* RNOpenSSLCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNOpenSSLCryptor.h; sourceTree = "<group>"; };
+		3FC2FA1A1990B01400457F6D /* RNOpenSSLCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNOpenSSLCryptor.m; sourceTree = "<group>"; };
+		3FC2FA1B1990B01400457F6D /* RNOpenSSLDecryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNOpenSSLDecryptor.h; sourceTree = "<group>"; };
+		3FC2FA1C1990B01400457F6D /* RNOpenSSLDecryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNOpenSSLDecryptor.m; sourceTree = "<group>"; };
+		3FC2FA1D1990B01400457F6D /* RNOpenSSLEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNOpenSSLEncryptor.h; sourceTree = "<group>"; };
+		3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNOpenSSLEncryptor.m; sourceTree = "<group>"; };
+		3FC2FA261990B13600457F6D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3FD6CC62197F7D070082354E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = src/MenuViewController.h; sourceTree = "<group>"; };
 		3FD6CC63197F7D070082354E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = src/MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC2FA271990B13600457F6D /* libsqlite3.dylib in Frameworks */,
 				3F25438B1952BA690000E6C9 /* CoreGraphics.framework in Frameworks */,
 				3F25438D1952BA690000E6C9 /* UIKit.framework in Frameworks */,
 				3F2543891952BA690000E6C9 /* Foundation.framework in Frameworks */,
@@ -154,6 +190,7 @@
 		3F2543871952BA690000E6C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FC2FA261990B13600457F6D /* libsqlite3.dylib */,
 				3F2543881952BA690000E6C9 /* Foundation.framework */,
 				3F25438A1952BA690000E6C9 /* CoreGraphics.framework */,
 				3F25438C1952BA690000E6C9 /* UIKit.framework */,
@@ -165,6 +202,14 @@
 		3F25438E1952BA690000E6C9 /* food */ = {
 			isa = PBXGroup;
 			children = (
+				3FC2FA0E1990B01400457F6D /* RNCryptor */,
+				3FC2FA0A1990AFC100457F6D /* totEvent.h */,
+				3FC2FA0B1990AFC100457F6D /* totEvent.m */,
+				3FC2FA0C1990AFC100457F6D /* totEventName.h */,
+				3FC2FA071990AF7400457F6D /* totModel.h */,
+				3FC2FA081990AF7400457F6D /* totModel.m */,
+				3FC2FA041990AF3C00457F6D /* totUser.h */,
+				3FC2FA051990AF3C00457F6D /* totUser.m */,
 				3F59F9DB196F99F700D67428 /* utility */,
 				3F59F9D1196F95E600D67428 /* server */,
 				3F2543971952BA690000E6C9 /* AppDelegate.h */,
@@ -261,6 +306,29 @@
 				3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		3FC2FA0E1990B01400457F6D /* RNCryptor */ = {
+			isa = PBXGroup;
+			children = (
+				3FC2FA0F1990B01400457F6D /* RNCryptor+Private.h */,
+				3FC2FA101990B01400457F6D /* RNCryptor-Prefix.pch */,
+				3FC2FA111990B01400457F6D /* RNCryptor.h */,
+				3FC2FA121990B01400457F6D /* RNCryptor.m */,
+				3FC2FA131990B01400457F6D /* RNCryptorEngine.h */,
+				3FC2FA141990B01400457F6D /* RNCryptorEngine.m */,
+				3FC2FA151990B01400457F6D /* RNDecryptor.h */,
+				3FC2FA161990B01400457F6D /* RNDecryptor.m */,
+				3FC2FA171990B01400457F6D /* RNEncryptor.h */,
+				3FC2FA181990B01400457F6D /* RNEncryptor.m */,
+				3FC2FA191990B01400457F6D /* RNOpenSSLCryptor.h */,
+				3FC2FA1A1990B01400457F6D /* RNOpenSSLCryptor.m */,
+				3FC2FA1B1990B01400457F6D /* RNOpenSSLDecryptor.h */,
+				3FC2FA1C1990B01400457F6D /* RNOpenSSLDecryptor.m */,
+				3FC2FA1D1990B01400457F6D /* RNOpenSSLEncryptor.h */,
+				3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */,
+			);
+			path = RNCryptor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,22 +434,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F2543991952BA690000E6C9 /* AppDelegate.m in Sources */,
+				3FC2FA241990B01400457F6D /* RNOpenSSLDecryptor.m in Sources */,
 				3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */,
 				3F2543A21952BA690000E6C9 /* MasterViewController.m in Sources */,
 				3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */,
 				3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */,
+				3FC2FA251990B01400457F6D /* RNOpenSSLEncryptor.m in Sources */,
 				3F59F9DE196F99F700D67428 /* totUtility.m in Sources */,
+				3FC2FA221990B01400457F6D /* RNEncryptor.m in Sources */,
 				3F59F9D8196F95E600D67428 /* Base64Encoder.m in Sources */,
 				3F8ABBF6195F858600A9C7DE /* FoodItem.m in Sources */,
+				3FC2FA061990AF3C00457F6D /* totUser.m in Sources */,
 				3FABA64C195FC2B60058F6D3 /* OrderCell.m in Sources */,
+				3FC2FA091990AF7400457F6D /* totModel.m in Sources */,
+				3FC2FA201990B01400457F6D /* RNCryptorEngine.m in Sources */,
 				3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */,
 				3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */,
 				3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */,
+				3FC2FA0D1990AFC100457F6D /* totEvent.m in Sources */,
 				3FABA643195FAC5A0058F6D3 /* OrderViewController.m in Sources */,
+				3FC2FA211990B01400457F6D /* RNDecryptor.m in Sources */,
 				3FABA649195FBEFB0058F6D3 /* Global.m in Sources */,
+				3FC2FA1F1990B01400457F6D /* RNCryptor.m in Sources */,
 				3F2543951952BA690000E6C9 /* main.m in Sources */,
 				3F59F9D9196F95E600D67428 /* totServerCommController.m in Sources */,
 				3F2543A51952BA690000E6C9 /* DetailViewController.m in Sources */,
+				3FC2FA231990B01400457F6D /* RNOpenSSLCryptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

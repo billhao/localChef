@@ -7,14 +7,6 @@
         <!--Master View Controller - Menu-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CLu-zq-oiA">
-                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="food.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
                 <tableViewController title="Menu" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="240" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -113,8 +105,16 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CLu-zq-oiA">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="food.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="-348"/>
+            <point key="canvasLocation" x="1027" y="274"/>
         </scene>
         <!--Order View Controller - Orders-->
         <scene sceneID="fCA-tT-Tna">
@@ -230,7 +230,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGc-l6-l7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="362"/>
+            <point key="canvasLocation" x="2756" y="388"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -266,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="-348"/>
+            <point key="canvasLocation" x="1470" y="274"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HFq-j6-Uxq">
@@ -284,7 +284,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pby-A7-VsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="-348"/>
+            <point key="canvasLocation" x="599" y="274"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="6vp-HZ-qgY">
@@ -332,10 +332,11 @@ my neighbors</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BYk-q5-AE7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSq-qh-7va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="362"/>
+            <point key="canvasLocation" x="57" y="-107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VEE-mz-9Wh">
@@ -350,7 +351,7 @@ my neighbors</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJD-3y-uRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="-967"/>
+            <point key="canvasLocation" x="599" y="-537"/>
         </scene>
         <!--Publish View Controller - Share Food-->
         <scene sceneID="cZ4-er-cAH">
@@ -591,7 +592,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <segue destination="366-Ow-uFp" kind="modal" id="FS2-Zc-7Jo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="My List" id="eI5-79-grj"/>
+                        <barButtonItem key="rightBarButtonItem" title="My Listing" id="eI5-79-grj">
+                            <connections>
+                                <segue destination="rGr-TE-OBg" kind="push" id="ZfB-JR-nPP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="endTimePicker" destination="NJI-Sc-xSp" id="bgZ-WY-zgL"/>
@@ -616,7 +621,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvy-S1-mvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="-967"/>
+            <point key="canvasLocation" x="1027" y="-537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jUM-KP-FXO">
@@ -634,7 +639,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYA-Ce-EYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="362"/>
+            <point key="canvasLocation" x="2313" y="388"/>
         </scene>
         <!--My List Table View Controller - Menu-->
         <scene sceneID="URo-eo-Yvv">
@@ -706,28 +711,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="IJ8-5H-Rxm">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="M0U-Wp-5UV"/>
-                        <view key="titleView" contentMode="scaleToFill" id="RMc-rv-48o">
-                            <rect key="frame" x="96" y="6" width="128" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-ka-TKb">
-                                    <rect key="frame" x="-36" y="-11" width="200" height="44"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" image="food.png" style="plain" id="hpn-R4-qw0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zVY-gw-OjL">
-                                <rect key="frame" x="264" y="2" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="food.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                    <navigationItem key="navigationItem" title="What I'm Sharing" id="IJ8-5H-Rxm">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="M0U-Wp-5UV">
+                            <connections>
+                                <segue destination="366-Ow-uFp" kind="push" id="kpq-ma-ikf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="KIw-6l-7Zx">
+                            <connections>
+                                <segue destination="qHJ-XA-YtT" kind="push" id="7CP-fM-KtX"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -741,7 +734,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </state>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1393" y="-967"/>
+            <point key="canvasLocation" x="1475" y="-537"/>
         </scene>
     </scenes>
     <resources>
@@ -755,6 +748,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FS2-Zc-7Jo"/>
+        <segue reference="kpq-ma-ikf"/>
+        <segue reference="ZfB-JR-nPP"/>
+        <segue reference="7CP-fM-KtX"/>
     </inferredMetricsTieBreakers>
 </document>
