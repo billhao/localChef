@@ -25,11 +25,18 @@
     global = [[Global alloc] init];
 
     // test
-//    totServerCommController* comm = [[totServerCommController alloc] init];
-//    [comm getDataForLocation:1];
+    [self testLogin];
     
     return YES;
 }
+
+- (void)testLogin
+{
+    totServerCommController* server = [[totServerCommController alloc] init];
+    totUser* user = [server sendLoginInfo:@"billhao" withPasscode:@"111111" returnMessage:nil];
+    global.user = user;
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

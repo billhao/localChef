@@ -18,7 +18,7 @@
 @property(nonatomic, retain) NSString*  seller_phone;
 
 // food
-@property(nonatomic, assign) NSInteger  food_id;
+@property(nonatomic, assign) NSString*  food_id;
 @property(nonatomic, retain) NSString*  food_name;
 @property(nonatomic, retain) NSString*  food_description;
 @property(nonatomic, retain) NSString*  food_image_url;

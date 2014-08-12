@@ -7,8 +7,14 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "totServerCommController.h"
+#import "Global.h"
 
-@interface foodTests : XCTestCase
+@interface foodTests : XCTestCase {
+
+totServerCommController* server;
+
+}
 
 @end
 
@@ -18,17 +24,39 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    [self printLine];
+
+    server = [[totServerCommController alloc] init];
 }
 
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    [self printLine];
 }
 
-- (void)testExample
+- (void)test_1_Login
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    totUser* user = [server sendLoginInfo:@"billhao" withPasscode:@"111111" returnMessage:nil];
+    global.user = user;
+    NSLog(@"user=%@\nsecret=%@", user.email, user.secret);
+}
+
+- (void)test_3_Publish
+{
+    FoodItem* food = [FoodItem getRandomFood];
+    [server publishItem:food];
+}
+
+- (void)test_2_GetSellerItems
+{
+    NSArray* items = [server getPublishedItems:global.user.id_str secret:global.user.secret];
+    NSLog(@"cnt = %lu", items.count);
+}
+
+- (void)printLine {
+    NSLog(@"============================================");
 }
 
 @end

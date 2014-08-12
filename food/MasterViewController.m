@@ -71,7 +71,7 @@
             food.seller_address     = seller[@"seller_address"];
             food.seller_phone       = seller[@"seller_phone"];
             
-            food.food_id            = [item[@"food_id"] integerValue];
+            food.food_id            = item[@"food_id"];
             food.food_name          = item[@"food_name"];
             food.food_description   = item[@"food_description"];
             food.food_image_url     = item[@"food_image_url"];

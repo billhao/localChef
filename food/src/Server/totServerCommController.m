@@ -10,11 +10,12 @@
 #import "Base64Encoder.h"
 #import "totUtility.h"
 #import "FoodItem.h"
+#import "Global.h"
 
 // class extention for private method declaration
 @interface totServerCommController()
 
-- (int) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message;
+- (id) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message;
 - (void) sendStrAsync:(NSString*)post toURL:(NSString *)dest_url returnMessage:(NSString**)message
              callback:(totURLConnectionCallback)callback;
 
@@ -29,11 +30,13 @@
 - (id) init {
     self = [super init];
     if (self) {
-        m_reg_url            = [NSString stringWithFormat:@"%@/m/reg",    HOSTNAME];
-        m_login_url          = [NSString stringWithFormat:@"%@/m/login",  HOSTNAME];
+        m_reg_url            = [NSString stringWithFormat:@"%@/login",    HOSTNAME];
+        m_login_url          = [NSString stringWithFormat:@"%@/login",    HOSTNAME];
         m_changePasscode_url = [NSString stringWithFormat:@"%@/m/reset",  HOSTNAME];
         m_forgetPasscode_url = [NSString stringWithFormat:@"%@/m/forget", HOSTNAME];
         m_sendUsrAct_url     = [NSString stringWithFormat:@"%@/m/usract", HOSTNAME];
+
+        m_data_url           = [NSString stringWithFormat:@"%@/data",     HOSTNAME];
     }
     return self;
 }
@@ -44,15 +47,20 @@
 //    -> call sendUsrName to send the usr reg info
 //       to reg handler on server side
 // -----------------------------------------------
-- (int) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message
+- (totUser*) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message
 {
-    NSString* regInfo = @"name=";
-    regInfo = [regInfo stringByAppendingString:usrname];
-    regInfo = [regInfo stringByAppendingString:@"&email="];
-    regInfo = [regInfo stringByAppendingString:email];
-    regInfo = [regInfo stringByAppendingString:@"&passcode="];
-    regInfo = [regInfo stringByAppendingString:passcode];
-    return [self sendStr:regInfo toURL:m_reg_url returnMessage:message];
+    NSString* data = [NSString stringWithFormat:@"type=register&usr=%@&pwd=%@", email, passcode];
+    NSDictionary* resp = (NSDictionary*)[self sendStr:data toURL:m_reg_url returnMessage:message];
+    
+    if( resp[@"status"] != nil ) {
+        long status = [resp[@"status"] intValue];
+        if( status == 0 )
+            return 0;
+    }
+    totUser* user = [[totUser alloc] init];
+    user.email = resp[@"username"];
+    user.secret = resp[@"secret"];
+    return user;
 }
 
 // -----------------------------------------------
@@ -60,12 +68,21 @@
 //    -> call sendUsrName to send the usr login
 //       info to login handler on server side
 // -----------------------------------------------
-- (int) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message {
-    NSString* loginInfo = @"email=";
-    loginInfo = [loginInfo stringByAppendingString:email];
-    loginInfo = [loginInfo stringByAppendingString:@"&passcode="];
-    loginInfo = [loginInfo stringByAppendingString:passcode];
-    return [self sendStr:loginInfo toURL:m_login_url returnMessage:message];
+- (totUser*) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message {
+    NSString* data = [NSString stringWithFormat:@"type=login&usr=%@&pwd=%@", email, passcode];
+    NSDictionary* resp = [self sendStr:data toURL:m_login_url returnMessage:message];
+
+    if( resp[@"status"] != nil ) {
+        long status = [resp[@"status"] intValue];
+        if( status == 0 )
+            return 0;
+    }
+    totUser* user = [[totUser alloc] init];
+    user.email = resp[@"username"];
+    user.secret = resp[@"secret"];
+    user.id_str = resp[@"id"];
+    
+    return user;
 }
 
 // -----------------------------------------------
@@ -108,15 +125,16 @@
 // -----------------------------------------------
 //  basic func to send POST req to server
 //    -> remember to check whether the return is nil
+//  returns NSDictionary or NSArray
 // -----------------------------------------------
-- (int) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message {
-    //NSLog(@"post string: %@", post);
+- (id) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message {
+    NSLog(@"post string: %@", post);
     
     // TODO add try catch here
     NSMutableURLRequest* request = [self getRequest:post toURL:dest_url];
 
     // Send the req syncrhonously [will be async later]
-    NSURLResponse *response;
+    //NSURLResponse *response;
     
     totURLConnection* conn = [[totURLConnection alloc] initWithRequest:request
                                                               delegate:self
@@ -135,22 +153,14 @@
     // Debug printout
     if (strReply == nil) {
         NSLog(@"post response: empty");
+        return nil;
     } else {
-        //NSLog(@"post response: %@", strReply);
+        NSLog(@"post response: %@", strReply);
     }
-    int ret = SERVER_RESPONSE_CODE_FAIL;
-    NSArray* ss = [strReply componentsSeparatedByString:@"::"];
-    
-    if( ss.count >= 1 && ss.count <= 2 ) {
-        ret = [(NSString*)ss[0] intValue];
-        if( ss.count == 2 ) {
-            *message = (NSString*)ss[1];
-        }
-    } else
-        *message = @"Cannot understand server's response";
-    
-    // release connection?
-    return ret;
+
+    // parse the response
+    id resp = [totUtility JSONToObject:strReply];
+    return resp;
 }
 
 - (void) sendStrAsync:(NSString*)post toURL:(NSString *)dest_url returnMessage:(NSString**)message
@@ -302,13 +312,58 @@
 //======================================================================================================
 // for seller
 //======================================================================================================
-- (int)publishItem:(FoodItem*)food_item {
-    NSLog(@"Publishing food item %@ to server", food_item.food_name);
-    return 100;
+- (NSString*)publishItem:(FoodItem*)food {
+    NSLog(@"Publishing food item %@ to server", food.food_name);
+
+    NSMutableDictionary* req = [[NSMutableDictionary alloc] init];
+    req[@"seller_id"]          = [NSNumber numberWithLong:food.seller_id];
+    req[@"seller_name"]        = food.seller_name;
+    req[@"seller_address"]     = food.seller_address;
+    req[@"seller_location"]    = food.seller_location;
+    req[@"seller_phone"]       = food.seller_phone;
+    
+    req[@"food_id"]            = [NSNumber numberWithLong:food.food_id];
+    req[@"food_name"]          = food.food_name;
+    req[@"food_description"]   = food.food_description;
+    req[@"food_image_url"]     = food.food_image_url;
+    req[@"food_price"]         = [NSNumber numberWithDouble:food.food_price];
+    req[@"food_quantity"]      = [NSNumber numberWithLong:food.food_quantity];
+    req[@"food_start_time"]    = [food.food_start_time description];
+    req[@"food_end_time"]      = [food.food_end_time description];
+
+    NSString* reqStr = [totUtility ObjectToJSON:req];
+    NSString* data = [NSString stringWithFormat:@"type=dish&data=%@&secret=%@", reqStr, global.user.secret];
+    NSDictionary* resp = [self sendStr:data toURL:m_data_url returnMessage:nil];
+    
+    if( resp[@"status"] == nil )
+        return 0;
+    
+    long status = [resp[@"status"] intValue];
+    if( status == 0 )
+        return 0;
+
+    return @"100";
 }
 
-- (NSArray*)getPublishedItems:(int)seller_id {
-    return [self getDataForLocation:0];
+- (NSArray*)getPublishedItems:(NSString*)seller_id secret:(NSString*)secret {
+    NSString* req = [NSString stringWithFormat:@"type=listdish&secret=%@&seller=%@", secret, seller_id];
+    id resp = [self sendStr:req toURL:m_data_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 0 )
+                return 0;
+        }
+        if( resp[@"login"] != nil ) {
+            long login = [resp[@"login"] intValue];
+            if( login == 0 )
+                return 0;
+        }
+    }
+    
+    // success
+    return (NSArray*) resp;
 }
 
 @end

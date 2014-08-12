@@ -13,6 +13,7 @@
 #import "FoodItemView.h"
 #import "MenuCell.h"
 #import "Global.h"
+#import "totUtility.h"
 
 @interface MyListTableViewController ()
 
@@ -62,35 +63,29 @@
 
 
 - (void)refreshData {
-    NSArray* data = [global.server getPublishedItems:1];
-    
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
     
-    for (NSDictionary* seller in data) {
-        NSDictionary* items = seller[@"items"];
-        for (NSDictionary* item in items) {
-            FoodItem* food = [[FoodItem alloc] init];
-            
-            food.seller_id          = [seller[@"seller_id"] integerValue];
-            food.seller_name        = seller[@"seller_name"];
-            food.seller_address     = seller[@"seller_address"];
-            food.seller_phone       = seller[@"seller_phone"];
-            
-            food.food_id            = [item[@"food_id"] integerValue];
-            food.food_name          = item[@"food_name"];
-            food.food_description   = item[@"food_description"];
-            food.food_image_url     = item[@"food_image_url"];
-            food.food_price         = [item[@"food_price"] doubleValue];
-            food.food_quantity      = [item[@"food_quantity"] integerValue];
-            food.food_start_time    = item[@"food_start_time"];
-            food.food_end_time      = item[@"food_end_time"];
-            
-            [_objects addObject:food];
-        }
-    }
+    NSArray* items = [global.server getPublishedItems:global.user.id_str secret:global.user.secret];
     
+    
+    for (NSDictionary* item in items) {
+        FoodItem* food = [[FoodItem alloc] init];
+        
+        food.food_id            = item[@"dish_id"];
+        NSString* str           = item[@"dish_data"];
+        NSDictionary* item1     = (NSDictionary*)[totUtility JSONToObject:str];
+        food.food_name          = item1[@"food_name"];
+        food.food_description   = item1[@"food_description"];
+        food.food_image_url     = item1[@"food_image_url"];
+        food.food_price         = [item1[@"food_price"] doubleValue];
+        food.food_quantity      = [item[@"stock"] integerValue];
+        food.food_start_time    = item1[@"food_start_time"];
+        food.food_end_time      = item1[@"food_end_time"];
+        
+        [_objects addObject:food];
+    }
 }
 
 - (void)insertNewObject:(id)sender

@@ -121,6 +121,17 @@
     FoodItem* item = [[FoodItem alloc] init];
     
     item.food_name = food_name.text;
+    item.food_description = food_description.text;
+    item.food_image_url = @"";
+    item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$" withString:@""] doubleValue];
+    item.food_quantity = [food_quantity.text intValue];
+    item.food_start_time = [NSDate date];// food_start_time.text;
+    item.food_end_time = [NSDate date];//food_time.text;
+    item.seller_id = 1;
+    item.seller_name = @"test seller";
+    item.seller_address = seller_address.text;
+    item.seller_location = seller_location.text;
+    item.seller_phone = seller_phone.text;
     
     // send the item to server
     item.food_id = [global.server publishItem:item];

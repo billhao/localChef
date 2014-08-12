@@ -18,9 +18,10 @@
 #import <Foundation/Foundation.h>
 #import "totURLConnection.h"
 #import "FoodItem.h"
+#import "totUser.h"
 
-#define HOSTNAME @"https://www.gettot.com"
-#define HOSTNAME_SHORT @"www.gettot.com"
+#define HOSTNAME @"http://54.187.194.66"
+#define HOSTNAME_SHORT @"54.187.194.66"
 
 enum SERVER_RESPONSE_CODE {
     SERVER_RESPONSE_CODE_FAIL = -1,
@@ -34,21 +35,27 @@ enum SERVER_RESPONSE_CODE {
     NSString *m_changePasscode_url;  // url to the change passcode handler
     NSString *m_forgetPasscode_url;  // url to the forget passcode handler
     NSString *m_sendUsrAct_url;  // usl to the user activity handler
+
+    NSString *m_data_url;
 }
 
-- (int) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
-- (int) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (totUser*) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (totUser*) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;
 - (int) sendForgetPasscodeforUser: (NSString*) email returnMessage:(NSString**)message;
 - (void) sendUserActivityToServer: (NSString*) email withActivity: (NSString*) activity returnMessage:(NSString**)message
                         callback:(void(^)(int ret, NSString* msg))callback;
+
+// common
+//- (totUser*)register:(NSString*)username passwd:(NSString*)passwd;
+//- (totUser*)login:(NSString*)username passwd:(NSString*)passwd;
 
 // for buyer
 - (NSMutableArray*)getDataForLocation:(int)location;
 - (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id;
 
 // for seller
-- (int)publishItem:(FoodItem*)food_item;
-- (NSArray*)getPublishedItems:(int)seller_id;
+- (NSString*)publishItem:(FoodItem*)food_item;
+- (NSArray*)getPublishedItems:(NSString*)seller_id secret:(NSString*)secret;
 
 @end
