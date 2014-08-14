@@ -60,6 +60,7 @@
     totUser* user = [[totUser alloc] init];
     user.email = resp[@"username"];
     user.secret = resp[@"secret"];
+    user.id_str = resp[@"id"];
     return user;
 }
 
@@ -271,37 +272,25 @@
 //======================================================================================================
 // for buyer
 //======================================================================================================
-- (NSArray*)getDataForLocation:(int)location {
-    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"comm" ofType:@"json"];
-    NSError *error;
-    NSString *fileContents = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
-
-    NSArray* data = [totUtility JSONToObject:fileContents];
+- (NSArray*)getDataForLocation:(NSString*)location secret:(NSString*)secret {
+    NSString* req = [NSString stringWithFormat:@"type=listdishregion&secret=%@&region=%@", secret, location];
+    id resp = [self sendStr:req toURL:m_data_url returnMessage:nil];
     
-    printf("%lu", (unsigned long)data.count);
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 0 )
+                return 0;
+        }
+        if( resp[@"login"] != nil ) {
+            long login = [resp[@"login"] intValue];
+            if( login == 0 )
+                return 0;
+        }
+    }
     
-//    for (NSDictionary* seller in data) {
-//        NSDictionary* items = seller[@"items"];
-//        for (NSDictionary* item in items) {
-//            FoodItem* food = [[FoodItem alloc] init];
-//            
-//            food.seller_id          = seller[@"seller_id"];
-//            food.seller_name        = seller[@"seller_name"];
-//            food.seller_address     = seller[@"seller_address"];
-//            food.seller_phone       = seller[@"seller_phone"];
-//
-//            food.food_id            = seller[@"food_id"];
-//            food.food_name          = seller[@"food_name"];
-//            food.food_description   = seller[@"food_description"];
-//            food.food_image_url     = seller[@"food_image_url"];
-////            food.food_price         = seller[@"food_price"];
-//            food.food_quantity      = seller[@"food_quantity"];
-//            food.food_start_time    = seller[@"food_start_time"];
-//            food.food_end_time      = seller[@"food_end_time"];
-//
-//        }
-//    }
-    return data;
+    // success
+    return (NSArray*) resp;
 }
 
 - (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id {
@@ -315,22 +304,7 @@
 - (NSString*)publishItem:(FoodItem*)food {
     NSLog(@"Publishing food item %@ to server", food.food_name);
 
-    NSMutableDictionary* req = [[NSMutableDictionary alloc] init];
-    req[@"seller_id"]          = [NSNumber numberWithLong:food.seller_id];
-    req[@"seller_name"]        = food.seller_name;
-    req[@"seller_address"]     = food.seller_address;
-    req[@"seller_location"]    = food.seller_location;
-    req[@"seller_phone"]       = food.seller_phone;
-    
-    req[@"food_id"]            = [NSNumber numberWithLong:food.food_id];
-    req[@"food_name"]          = food.food_name;
-    req[@"food_description"]   = food.food_description;
-    req[@"food_image_url"]     = food.food_image_url;
-    req[@"food_price"]         = [NSNumber numberWithDouble:food.food_price];
-    req[@"food_quantity"]      = [NSNumber numberWithLong:food.food_quantity];
-    req[@"food_start_time"]    = [food.food_start_time description];
-    req[@"food_end_time"]      = [food.food_end_time description];
-
+    NSDictionary* req = [FoodItem toDictionary:food];
     NSString* reqStr = [totUtility ObjectToJSON:req];
     NSString* data = [NSString stringWithFormat:@"type=dish&data=%@&secret=%@", reqStr, global.user.secret];
     NSDictionary* resp = [self sendStr:data toURL:m_data_url returnMessage:nil];

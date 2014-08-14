@@ -51,7 +51,7 @@ enum SERVER_RESPONSE_CODE {
 //- (totUser*)login:(NSString*)username passwd:(NSString*)passwd;
 
 // for buyer
-- (NSMutableArray*)getDataForLocation:(int)location;
+- (NSArray*)getDataForLocation:(NSString*)location secret:(NSString*)secret;
 - (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id;
 
 // for seller

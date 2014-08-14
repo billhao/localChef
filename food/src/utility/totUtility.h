@@ -39,6 +39,14 @@
 // crop image
 + (UIImage *)crop:(UIImage*)image rect:(CGRect)rect;
 
+// encode and decode image to/from string
++ (NSString *)imageToString:(UIImage *)image;
++ (UIImage *)stringToImage:(NSString *)strEncodeData;
+
+// save image to disk
++ (NSString*)saveImage:(UIImage*)image filename:(NSString*)filename;
++ (NSString*)saveImageData:(NSData*)imageData filename:(NSString*)filename;
+
 @end
 
 extern void print(NSString* str);

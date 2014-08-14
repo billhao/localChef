@@ -15,7 +15,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="240" id="m0d-ak-lc9" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -89,6 +89,9 @@
                                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKM-JP-RQF">
                                     <rect key="frame" x="-36" y="-11" width="200" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="pGg-6v-bdr" id="fBL-Sg-Es2"/>
+                                    </connections>
                                 </searchBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -104,6 +107,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="XKM-JP-RQF" id="nX9-yu-Abp"/>
+                    </connections>
                 </tableViewController>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CLu-zq-oiA">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -415,7 +421,7 @@ my neighbors</string>
                                             <action selector="locationTouchUpInside:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="rFf-HP-nhO"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95123" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
                                         <rect key="frame" x="20" y="558" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
@@ -652,7 +658,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="240" id="hJy-HV-ttp" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJy-HV-ttp" id="kPk-pE-eUK">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -748,8 +754,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kpq-ma-ikf"/>
-        <segue reference="ZfB-JR-nPP"/>
+        <segue reference="xsL-GD-E5T"/>
         <segue reference="7CP-fM-KtX"/>
+        <segue reference="ZfB-JR-nPP"/>
     </inferredMetricsTieBreakers>
 </document>

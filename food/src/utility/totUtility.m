@@ -155,4 +155,32 @@ void print(NSString* str) {
 }
 
 
++ (NSString *)imageToString:(UIImage *)image {
+    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
++ (UIImage *)stringToImage:(NSString *)strEncodeData {
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:data];
+}
+
++ (NSString*)saveImage:(UIImage*)image filename:(NSString*)filename {
+    NSData* imageData = UIImagePNGRepresentation(image);
+    return [totUtility saveImageData:imageData filename:filename];
+}
+
++ (NSString*)saveImageData:(NSData*)imageData filename:(NSString*)filename {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:filename];
+    
+    if (![imageData writeToFile:imagePath atomically:NO]){
+        NSLog((@"Failed to cache image data to disk"));
+    }
+    else{
+        NSLog(@"the cachedImagedPath is %@",imagePath);
+    }
+    return imagePath;
+}
+
 @end

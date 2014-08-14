@@ -36,22 +36,36 @@ totServerCommController* server;
     [self printLine];
 }
 
+//- (void)test_0_Register
+//{
+//    totUser* user = [server sendRegInfo:@"billhao" withEmail:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
+//    global.user = user;
+//    NSLog(@"user=%@\nid=%@\nsecret=%@", user.email, user.id_str, user.secret);
+//}
+
 - (void)test_1_Login
 {
-    totUser* user = [server sendLoginInfo:@"billhao" withPasscode:@"111111" returnMessage:nil];
+    totUser* user = [server sendLoginInfo:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
     global.user = user;
-    NSLog(@"user=%@\nsecret=%@", user.email, user.secret);
+    NSLog(@"user=%@\nid=%@\nsecret=%@", user.email, user.id_str, user.secret);
 }
 
-- (void)test_3_Publish
-{
-    FoodItem* food = [FoodItem getRandomFood];
-    [server publishItem:food];
-}
+//- (void)test_3_Publish
+//{
+//    FoodItem* food = [FoodItem getRandomFood];
+//    [server publishItem:food];
+//}
 
 - (void)test_2_GetSellerItems
 {
     NSArray* items = [server getPublishedItems:global.user.id_str secret:global.user.secret];
+    NSLog(@"cnt = %lu", items.count);
+}
+
+- (void)test_4_GetItemsAtLocation
+{
+    NSString* location = @"1";
+    NSArray* items = [global.server getDataForLocation:location secret:global.user.secret];
     NSLog(@"cnt = %lu", items.count);
 }
 

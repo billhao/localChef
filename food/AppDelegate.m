@@ -33,7 +33,7 @@
 - (void)testLogin
 {
     totServerCommController* server = [[totServerCommController alloc] init];
-    totUser* user = [server sendLoginInfo:@"billhao" withPasscode:@"111111" returnMessage:nil];
+    totUser* user = [server sendLoginInfo:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
     global.user = user;
 }
 

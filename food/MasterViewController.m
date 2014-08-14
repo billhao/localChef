@@ -14,13 +14,16 @@
 #import "FoodItemView.h"
 #import "MenuCell.h"
 #import "Global.h"
+#import "totUtility.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *objects;
 }
 @end
 
 @implementation MasterViewController
+
+@synthesize searchBar;
 
 - (void)awakeFromNib
 {
@@ -44,7 +47,7 @@
 //    [self.tableView setTableHeaderView: v];
 
 
-    [self refreshData];
+    [self refreshData:@"1"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,45 +57,40 @@
 }
 
 
-- (void)refreshData {
-    NSArray* data = [global.server getDataForLocation:1];
+- (void)refreshData:(NSString*)location {
+    NSLog(@"Loading dishes from %@", location);
+    NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
 
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!objects) {
+        objects = [[NSMutableArray alloc] init];
     }
+    else
+        [objects removeAllObjects];
     
     for (NSDictionary* seller in data) {
         NSDictionary* items = seller[@"items"];
         for (NSDictionary* item in items) {
-            FoodItem* food = [[FoodItem alloc] init];
+            NSDictionary* dict = [totUtility JSONToObject:item[@"dish_data"]];
+            FoodItem* food = [FoodItem fromDictionary:dict food_id:item[@"dish_id"]];
             
-            food.seller_id          = [seller[@"seller_id"] integerValue];
+            food.seller_id          = seller[@"seller_id"];
             food.seller_name        = seller[@"seller_name"];
             food.seller_address     = seller[@"seller_address"];
             food.seller_phone       = seller[@"seller_phone"];
             
-            food.food_id            = item[@"food_id"];
-            food.food_name          = item[@"food_name"];
-            food.food_description   = item[@"food_description"];
-            food.food_image_url     = item[@"food_image_url"];
-            food.food_price         = [item[@"food_price"] doubleValue];
-            food.food_quantity      = [item[@"food_quantity"] integerValue];
-            food.food_start_time    = item[@"food_start_time"];
-            food.food_end_time      = item[@"food_end_time"];
-            
-            [_objects addObject:food];
+            [objects addObject:food];
         }
     }
-    
+    [self.tableView reloadData];
 }
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!objects) {
+        objects = [[NSMutableArray alloc] init];
     }
     
-    [_objects insertObject:[FoodItem getRandomFood] atIndex:0];
+    [objects insertObject:[FoodItem getRandomFood] atIndex:0];
     //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -106,14 +104,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuCell *cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
 
-    FoodItem *f = _objects[indexPath.row];
+    FoodItem *f = objects[indexPath.row];
     
     cell.f_name.text = f.food_name;
     cell.f_desc.text = f.food_description;
@@ -131,7 +129,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -157,7 +155,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
+        NSDate *object = objects[indexPath.row];
         self.detailViewController.detailItem = object;
     }
 }
@@ -166,7 +164,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        NSDate *object = objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
@@ -176,7 +174,7 @@
     pt = [sender convertPoint:pt toView:self.tableView];
     NSIndexPath* path = [self.tableView indexPathForRowAtPoint:pt];
     NSInteger index = path.row;
-    [global.order addObject:_objects[index]];
+    [global.order addObject:objects[index]];
     NSLog(@"add item to order. now order size = %lu", global.order.count);
     for (int i=0; i<global.order.count; i++) {
         [(FoodItem*)global.order[i] toString];
@@ -184,5 +182,12 @@
     
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)search {
+    NSString* location = search.text;
+    if( location.length > 0 ) {
+        [self refreshData:location];
+    }
+    [search resignFirstResponder];
+}
 
 @end

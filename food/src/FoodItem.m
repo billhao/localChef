@@ -7,6 +7,7 @@
 //
 
 #import "FoodItem.h"
+#import "totUtility.h"
 
 @implementation FoodItem
 
@@ -26,7 +27,7 @@
         f.food_start_time = [NSDate date];
         f.food_end_time = [NSDate dateWithTimeIntervalSinceNow:3600];
         f.seller_name = @"王阿姨";
-        f.seller_id = 1;
+        f.seller_id = @"1";
         f.seller_address = @"王府井1号";
         f.seller_location = @"95123";
         f.seller_phone = @"13810018888";
@@ -77,7 +78,43 @@
 }
 
 - (void)toString {
-    NSLog(@"%ld %@ %@ %.0f", self.food_id, self.food_name, self.seller_name, self.food_price);
+    NSLog(@"%@ %@ %@ %.0f", self.food_id, self.food_name, self.seller_name, self.food_price);
+}
+
++ (FoodItem*)fromDictionary:(NSDictionary*)item food_id:(NSString*)food_id {
+    FoodItem* food = [[FoodItem alloc] init];
+    food.food_id            = food_id;
+    food.food_name          = item[@"food-name"];
+    food.food_description   = item[@"food_description"];
+    food.food_price         = [item[@"food-price"] doubleValue];
+    food.food_quantity      = [item[@"food-quantity"] integerValue];
+    food.food_start_time    = item[@"food-start-time"];
+    food.food_end_time      = item[@"food-end-time"];
+    if( item[@"food_image_url"] != nil && [item[@"food_image_url"] length] > 0 ) {
+        UIImage* img = [totUtility stringToImage:item[@"food_image_url"]];
+        NSString* path = [totUtility saveImage:img filename:food.food_name];
+        food.food_image_url = path;
+    }
+    return food;
+}
+
++ (NSDictionary*)toDictionary:(FoodItem*)food {
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    dict[@"seller_id"]          = food.seller_id;
+    dict[@"seller_name"]        = food.seller_name;
+    dict[@"seller_address"]     = food.seller_address;
+    dict[@"seller_location"]    = food.seller_location;
+    dict[@"seller_phone"]       = food.seller_phone;
+    
+//    dict[@"food_id"]            = food.food_id;
+    dict[@"food_name"]          = food.food_name;
+    dict[@"food_description"]   = food.food_description;
+    dict[@"food_image_url"]     = [totUtility imageToString:[UIImage imageNamed:food.food_image_url]];
+    dict[@"food_price"]         = [NSNumber numberWithDouble:food.food_price];
+    dict[@"food_quantity"]      = [NSNumber numberWithLong:food.food_quantity];
+    dict[@"food_start_time"]    = [food.food_start_time description];
+    dict[@"food_end_time"]      = [food.food_end_time description];
+    return dict;
 }
 
 @end

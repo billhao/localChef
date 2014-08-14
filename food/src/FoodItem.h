@@ -11,7 +11,7 @@
 @interface FoodItem : NSObject
 
 // seller
-@property(nonatomic, assign) NSInteger  seller_id;
+@property(nonatomic, assign) NSString*  seller_id;
 @property(nonatomic, retain) NSString*  seller_name;
 @property(nonatomic, retain) NSString*  seller_address;
 @property(nonatomic, retain) NSString*  seller_location;
@@ -32,5 +32,8 @@
 + (FoodItem*)getRandomFood;
 
 - (void)toString;
+
++ (FoodItem*)fromDictionary:(NSDictionary*)item food_id:(NSString*)food_id;
++ (NSDictionary*)toDictionary:(FoodItem*)item;
 
 @end
