@@ -18,7 +18,7 @@
 #import <Foundation/Foundation.h>
 #import "totURLConnection.h"
 #import "FoodItem.h"
-#import "totUser.h"
+#import "totUser.h"    
 
 #define HOSTNAME @"http://54.187.194.66"
 #define HOSTNAME_SHORT @"54.187.194.66"
