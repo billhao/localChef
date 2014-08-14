@@ -19,6 +19,8 @@
 // initializer
 -(id) initWithID:(NSString*)_email;    // init to an existing user
 
+-(void) persistUser;
+
 +(void) setModel:(totModel*)model;
 
 // add a new user

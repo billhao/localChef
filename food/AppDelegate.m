@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Global.h"
-
+#import "totUtility.h"
 #import "totServerCommController.h"
 
 @implementation AppDelegate
@@ -25,7 +25,18 @@
     global = [[Global alloc] init];
 
     // test
-    [self testLogin];
+//    [self testLogin];
+
+    // clear saved user for testing login
+    //[totUtility resetSettings];
+    
+    totUser* user = [totUser getLoggedInUser];
+    if (user == nil) {
+        UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+        UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
+        self.window.rootViewController = loginController;
+        [self.window makeKeyAndVisible];
+    }
     
     return YES;
 }

@@ -47,6 +47,11 @@
 + (NSString*)saveImage:(UIImage*)image filename:(NSString*)filename;
 + (NSString*)saveImageData:(NSData*)imageData filename:(NSString*)filename;
 
+// get/set settings
++ (void)setSetting:(NSString*)key value:(NSString*)value;
++ (NSString*)getSetting:(NSString*)key;
++ (void)resetSettings;
+
 @end
 
 extern void print(NSString* str);

@@ -11,6 +11,7 @@
 #import "Global.h"
 #import "RNEncryptor.h"
 #import "totServerCommController.h"
+#import "totUtility.h"
 
 @implementation totUser
 
@@ -141,10 +142,24 @@ static totModel* _model;
 
 // get the user that is logged in last time, this function is used at startup
 +(totUser*) getLoggedInUser {
-    NSString* email = [_model getPreferenceNoBaby:PREFERENCE_LOGGED_IN];
-    if( email == nil ) return nil;
+    NSString* email  = [totUtility getSetting:@"email"];
+    NSString* secret = [totUtility getSetting:@"secret"];
+    NSString* id_str = [totUtility getSetting:@"id_str"];
     
-    return [[totUser alloc] initWithID:email];
+    if( email == nil || secret == nil || id_str == nil )
+        return nil;
+    
+    totUser* user = [[totUser alloc] initWithID:email];
+    user.secret = secret;
+    user.id_str = id_str;
+    
+    return user;
+}
+
+-(void) persistUser {
+    [totUtility setSetting:@"email"  value:self.email];
+    [totUtility setSetting:@"secret" value:self.secret];
+    [totUtility setSetting:@"id_str" value:self.id_str];
 }
 
 @end

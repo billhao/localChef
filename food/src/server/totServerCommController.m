@@ -76,7 +76,7 @@
     if( resp[@"status"] != nil ) {
         long status = [resp[@"status"] intValue];
         if( status == 0 )
-            return 0;
+            return nil;
     }
     totUser* user = [[totUser alloc] init];
     user.email = resp[@"username"];

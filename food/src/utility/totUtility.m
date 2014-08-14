@@ -163,6 +163,9 @@ void print(NSString* str) {
     return [UIImage imageWithData:data];
 }
 
+
+
+
 + (NSString*)saveImage:(UIImage*)image filename:(NSString*)filename {
     NSData* imageData = UIImagePNGRepresentation(image);
     return [totUtility saveImageData:imageData filename:filename];
@@ -183,4 +186,23 @@ void print(NSString* str) {
     return imagePath;
 }
 
+
+
+
++ (void)setSetting:(NSString*)key value:(NSString*)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:value forKey:key];
+    [userDefaults synchronize];
+}
+
++ (NSString*)getSetting:(NSString*)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults stringForKey:key];
+}
++ (void)resetSettings {
+    NSDictionary *defaultsDict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+    for (NSString *key in [defaultsDict allKeys])
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end
