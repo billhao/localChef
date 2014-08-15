@@ -11,14 +11,14 @@
 @interface FoodItem : NSObject
 
 // seller
-@property(nonatomic, assign) NSString*  seller_id;
+@property(nonatomic, retain) NSString*  seller_id;
 @property(nonatomic, retain) NSString*  seller_name;
 @property(nonatomic, retain) NSString*  seller_address;
 @property(nonatomic, retain) NSString*  seller_location;
 @property(nonatomic, retain) NSString*  seller_phone;
 
 // food
-@property(nonatomic, assign) NSString*  food_id;
+@property(nonatomic, retain) NSString*  food_id;
 @property(nonatomic, retain) NSString*  food_name;
 @property(nonatomic, retain) NSString*  food_description;
 @property(nonatomic, retain) NSString*  food_image_url;

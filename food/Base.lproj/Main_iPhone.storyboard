@@ -102,6 +102,9 @@
                                 <state key="normal" image="food.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="9zE-PB-xZ6" kind="push" id="pOS-V7-lwK"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -227,7 +230,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Order" id="fKx-TQ-Nbf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="VnA-U8-Wlf"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="VnA-U8-Wlf">
+                            <connections>
+                                <segue destination="pGg-6v-bdr" kind="push" id="C3r-TE-W3s"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="totalLabel" destination="kJu-il-kfp" id="h4l-OQ-UHS"/>
@@ -235,7 +242,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGc-l6-l7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="388"/>
+            <point key="canvasLocation" x="1470" y="982"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -707,24 +714,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-609" y="-107"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jUM-KP-FXO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0c8-JL-4Lo" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xVt-oO-qtA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9zE-PB-xZ6" kind="relationship" relationship="rootViewController" id="HfU-kc-7Ip"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mYA-Ce-EYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2313" y="388"/>
-        </scene>
         <!--My List Table View Controller - Menu-->
         <scene sceneID="URo-eo-Yvv">
             <objects>
@@ -832,6 +821,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="C3r-TE-W3s"/>
         <segue reference="xsL-GD-E5T"/>
         <segue reference="7CP-fM-KtX"/>
         <segue reference="ZfB-JR-nPP"/>

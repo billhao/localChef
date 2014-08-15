@@ -35,8 +35,8 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
-    self.navigationItem.leftBarButtonItem = done;
+//    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
+//    self.navigationItem.leftBarButtonItem = done;
 
     [self updateTotalPrice];
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);

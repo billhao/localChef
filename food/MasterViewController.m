@@ -92,7 +92,6 @@
             for (NSDictionary* item in items) {
                 NSDictionary* dict = [totUtility JSONToObject:item[@"dish_data"]];
                 FoodItem* food = [FoodItem fromDictionary:dict food_id:item[@"dish_id"]];
-                
                 food.seller_id          = seller[@"seller_id"];
                 food.seller_name        = seller[@"seller_name"];
                 food.seller_address     = seller[@"seller_address"];
