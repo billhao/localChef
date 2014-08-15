@@ -169,6 +169,7 @@
     if( user == nil )
         [self showAlert:@"Email address or password does not match"];
     else {
+        user.passcode = pwd;
         global.user = user;
         [self setLoggedIn:user];
         [self showHomeView];
@@ -187,6 +188,7 @@
     if( user == nil )
         [self showAlert:@"Fail to add user"];
     else {
+        user.passcode = pwd;
         global.user = user;
         [self setLoggedIn:user];
         [self showHomeView];

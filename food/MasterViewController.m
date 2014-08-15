@@ -46,8 +46,23 @@
 //    UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 //    [self.tableView setTableHeaderView: v];
 
+    noItemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, self.view.bounds.size.width-20, 160)];
+    noItemLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    noItemLabel.numberOfLines = 0;
+    noItemLabel.font = [UIFont fontWithName:@"Helvetica Neue Thin" size:20];
+    noItemLabel.textColor = [UIColor grayColor];
+    noItemLabel.textAlignment = NSTextAlignmentCenter;
+    noItemLabel.text = @"No item found in this area\nBe the first one to share some food or drink with your neighbor";
+    noItemLabel.hidden = true;
+    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
 
-    [self refreshData:@"1"];
+    searchBar.inputAccessoryView = [self createInputAccessoryView];
+
+    // load search bar default zip code
+    NSString* defaultZip = [totUtility getSetting:@"searchLocation"];
+    if( defaultZip == nil ) defaultZip = @"";
+    searchBar.text = defaultZip;
+    [self refreshData:defaultZip];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,30 +73,46 @@
 
 
 - (void)refreshData:(NSString*)location {
-    NSLog(@"Loading dishes from %@", location);
-    NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
-
     if (!objects) {
         objects = [[NSMutableArray alloc] init];
     }
     else
         [objects removeAllObjects];
-    
-    for (NSDictionary* seller in data) {
-        NSDictionary* items = seller[@"items"];
-        for (NSDictionary* item in items) {
-            NSDictionary* dict = [totUtility JSONToObject:item[@"dish_data"]];
-            FoodItem* food = [FoodItem fromDictionary:dict food_id:item[@"dish_id"]];
-            
-            food.seller_id          = seller[@"seller_id"];
-            food.seller_name        = seller[@"seller_name"];
-            food.seller_address     = seller[@"seller_address"];
-            food.seller_phone       = seller[@"seller_phone"];
-            
-            [objects addObject:food];
+
+    if( location.length > 0 ) {
+        NSLog(@"Loading dishes from %@", location);
+
+        // save as default location
+        [totUtility setSetting:@"searchLocation" value:location];
+
+        NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
+        
+        for (NSDictionary* seller in data) {
+            NSDictionary* items = seller[@"items"];
+            for (NSDictionary* item in items) {
+                NSDictionary* dict = [totUtility JSONToObject:item[@"dish_data"]];
+                FoodItem* food = [FoodItem fromDictionary:dict food_id:item[@"dish_id"]];
+                
+                food.seller_id          = seller[@"seller_id"];
+                food.seller_name        = seller[@"seller_name"];
+                food.seller_address     = seller[@"seller_address"];
+                food.seller_phone       = seller[@"seller_phone"];
+                
+                [objects addObject:food];
+            }
         }
     }
     [self.tableView reloadData];
+    
+    if( objects.count == 0 ) {
+        if( location.length == 0 )
+            noItemLabel.text = @"Type in your zip code to start a search";
+        else
+            noItemLabel.text = @"No item found in this area\nBe the first one to share some food or drink with your neighbor";
+        noItemLabel.hidden = false;
+    }
+    else
+        noItemLabel.hidden = true;
 }
 
 - (void)insertNewObject:(id)sender
@@ -184,10 +215,39 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)search {
     NSString* location = search.text;
-    if( location.length > 0 ) {
-        [self refreshData:location];
-    }
+    [self refreshData:location];
     [search resignFirstResponder];
 }
+
+#pragma mark - Helper functions
+- (UIView*)createInputAccessoryView{
+    // create a done view + done button, attach to it a doneClicked action, and place it in a toolbar as an accessory input view...
+    // Prepare done button
+    UIToolbar* keyboardDoneButtonView	= [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle		= UIBarStyleDefault;
+    keyboardDoneButtonView.translucent	= YES;
+    keyboardDoneButtonView.tintColor	= nil;
+    [keyboardDoneButtonView sizeToFit];
+    
+    UIBarButtonItem* doneButton    = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleDone  target:self action:@selector(searchInputDoneButtonClicked:)];
+    
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer1    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil action:nil];
+    // I put the spacers in to push the doneButton to the right side of the picker view
+    UIBarButtonItem *spacer    = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil action:nil];
+    
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:spacer, spacer1, doneButton, nil]];
+    
+    return keyboardDoneButtonView;
+}
+
+- (void)searchInputDoneButtonClicked: (id *)control {
+    [searchBar resignFirstResponder];
+    [self searchBarSearchButtonClicked:searchBar];
+}
+
+
 
 @end

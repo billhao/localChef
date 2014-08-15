@@ -10,7 +10,9 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController<UISearchBarDelegate>
+@interface MasterViewController : UITableViewController<UISearchBarDelegate> {
+    UILabel* noItemLabel;
+}
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) DetailViewController *detailViewController;

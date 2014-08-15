@@ -14,7 +14,7 @@
 @property(nonatomic,retain) NSString* email;
 @property(nonatomic,retain) NSString* secret;
 @property(nonatomic,retain) NSString* id_str;
-
+@property(nonatomic,retain) NSString* passcode;
 
 // initializer
 -(id) initWithID:(NSString*)_email;    // init to an existing user

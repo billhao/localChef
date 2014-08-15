@@ -145,14 +145,14 @@ static totModel* _model;
     NSString* email  = [totUtility getSetting:@"email"];
     NSString* secret = [totUtility getSetting:@"secret"];
     NSString* id_str = [totUtility getSetting:@"id_str"];
+    NSString* passcode = [totUtility getSetting:@"passcode"];
     
-    if( email == nil || secret == nil || id_str == nil )
+    if( email == nil || secret == nil || id_str == nil || passcode == nil )
         return nil;
-    
-    totUser* user = [[totUser alloc] initWithID:email];
-    user.secret = secret;
-    user.id_str = id_str;
-    
+
+    totUser* user = [global.server sendLoginInfo:email withPasscode:passcode returnMessage:nil];
+    global.user = user;
+
     return user;
 }
 
@@ -160,6 +160,7 @@ static totModel* _model;
     [totUtility setSetting:@"email"  value:self.email];
     [totUtility setSetting:@"secret" value:self.secret];
     [totUtility setSetting:@"id_str" value:self.id_str];
+    [totUtility setSetting:@"passcode" value:self.passcode];
 }
 
 @end
