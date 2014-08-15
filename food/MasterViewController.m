@@ -81,10 +81,13 @@
 
     if( location.length > 0 ) {
         NSLog(@"Loading dishes from %@", location);
+<<<<<<< HEAD
 
         // save as default location
         [totUtility setSetting:@"searchLocation" value:location];
 
+=======
+>>>>>>> 9f1e67682c37a75b8a58546ce3786db8cc5e147f
         NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
         
         for (NSDictionary* seller in data) {
