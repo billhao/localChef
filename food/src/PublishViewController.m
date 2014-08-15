@@ -86,7 +86,7 @@
 
 -(void)viewDidLayoutSubviews {
     CGRect f = scrollView.frame;
-    int h = publishButton.frame.origin.y + publishButton.frame.size.height - scrollView.contentOffset.y;
+    int h = publishButton.frame.origin.y + publishButton.frame.size.height - scrollView.contentOffset.y + 60;
     [scrollView setContentSize:CGSizeMake(f.size.width, h)];
 }
 
