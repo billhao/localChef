@@ -109,7 +109,7 @@
 //    dict[@"food_id"]            = food.food_id;
     dict[@"food_name"]          = food.food_name;
     dict[@"food_description"]   = food.food_description;
-    dict[@"food_image_url"]     = [totUtility imageToString:[UIImage imageNamed:food.food_image_url]];
+    dict[@"food_image_url"]     = @"";//[totUtility imageToString:[UIImage imageNamed:food.food_image_url]];
     dict[@"food_price"]         = [NSNumber numberWithDouble:food.food_price];
     dict[@"food_quantity"]      = [NSNumber numberWithLong:food.food_quantity];
     dict[@"food_start_time"]    = [food.food_start_time description];

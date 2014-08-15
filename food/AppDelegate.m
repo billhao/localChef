@@ -41,10 +41,9 @@
     return YES;
 }
 
-- (void)testLogin
+- (void)loginDefaultUser
 {
-    totServerCommController* server = [[totServerCommController alloc] init];
-    totUser* user = [server sendLoginInfo:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
+    totUser* user = [global.server sendLoginInfo:global.user.email withPasscode:global.user.passcode returnMessage:nil];
     global.user = user;
 }
 
