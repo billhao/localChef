@@ -84,12 +84,12 @@
 + (FoodItem*)fromDictionary:(NSDictionary*)item food_id:(NSString*)food_id {
     FoodItem* food = [[FoodItem alloc] init];
     food.food_id            = food_id;
-    food.food_name          = item[@"food-name"];
+    food.food_name          = item[@"food_name"];
     food.food_description   = item[@"food_description"];
-    food.food_price         = [item[@"food-price"] doubleValue];
-    food.food_quantity      = [item[@"food-quantity"] integerValue];
-    food.food_start_time    = item[@"food-start-time"];
-    food.food_end_time      = item[@"food-end-time"];
+    food.food_price         = [item[@"food_price"] doubleValue];
+    food.food_quantity      = [item[@"food_quantity"] integerValue];
+    food.food_start_time    = item[@"food_start_time"];
+    food.food_end_time      = item[@"food_end_time"];
     if( item[@"food_image_url"] != nil && [item[@"food_image_url"] length] > 0 ) {
         UIImage* img = [totUtility stringToImage:item[@"food_image_url"]];
         NSString* path = [totUtility saveImage:img filename:food.food_name];
