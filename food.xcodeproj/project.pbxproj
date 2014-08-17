@@ -35,6 +35,7 @@
 		3F8ABBFD195F8C7E00A9C7DE /* rou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */; };
 		3F8ABBFE195F8C7E00A9C7DE /* fish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */; };
 		3F9C8615199C8704003340E9 /* totLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8614199C8704003340E9 /* totLoginController.m */; };
+		3F9C8618199F3153003340E9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8617199F3153003340E9 /* Order.m */; };
 		3FABA640195F9BDB0058F6D3 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FABA63F195F9BDB0058F6D3 /* food.png */; };
 		3FABA643195FAC5A0058F6D3 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA642195FAC5A0058F6D3 /* OrderViewController.m */; };
 		3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA645195FBBDF0058F6D3 /* MenuCell.m */; };
@@ -108,6 +109,8 @@
 		3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fish.jpg; sourceTree = "<group>"; };
 		3F9C8613199C8704003340E9 /* totLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totLoginController.h; sourceTree = "<group>"; };
 		3F9C8614199C8704003340E9 /* totLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totLoginController.m; sourceTree = "<group>"; };
+		3F9C8616199F3153003340E9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = src/Order.h; sourceTree = "<group>"; };
+		3F9C8617199F3153003340E9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Order.m; path = src/Order.m; sourceTree = "<group>"; };
 		3FABA63F195F9BDB0058F6D3 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 		3FABA641195FAC5A0058F6D3 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderViewController.h; path = src/OrderViewController.h; sourceTree = "<group>"; };
 		3FABA642195FAC5A0058F6D3 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderViewController.m; path = src/OrderViewController.m; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				3FD6CC63197F7D070082354E /* MenuViewController.m */,
 				3F385702198B68DA005F9A09 /* MyListTableViewController.h */,
 				3F385703198B68DA005F9A09 /* MyListTableViewController.m */,
+				3F9C8616199F3153003340E9 /* Order.h */,
+				3F9C8617199F3153003340E9 /* Order.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				3FC2FA201990B01400457F6D /* RNCryptorEngine.m in Sources */,
 				3F9C8615199C8704003340E9 /* totLoginController.m in Sources */,
 				3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */,
+				3F9C8618199F3153003340E9 /* Order.m in Sources */,
 				3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */,
 				3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */,
 				3FC2FA0D1990AFC100457F6D /* totEvent.m in Sources */,

@@ -165,7 +165,7 @@
     if( ![self checkEmail] ) return;
     if( ![totLoginController checkPwd:pwd] ) return;
     
-    totUser* user = [global.server sendLoginInfo:email withPasscode:pwd returnMessage:nil];
+    totUser* user = [global.server login:email withPasscode:pwd returnMessage:nil];
     if( user == nil )
         [self showAlert:@"Email address or password does not match"];
     else {
@@ -184,7 +184,7 @@
     if( ![self checkEmail] ) return;
     if( ![totLoginController checkPwd:pwd] ) return;
     
-    totUser* user = [global.server sendRegInfo:email withEmail:email withPasscode:pwd returnMessage:nil];
+    totUser* user = [global.server register:email withEmail:email withPasscode:pwd returnMessage:nil];
     if( user == nil )
         [self showAlert:@"Fail to add user"];
     else {

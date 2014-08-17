@@ -45,7 +45,7 @@ totServerCommController* server;
 
 - (void)test_1_Login
 {
-    totUser* user = [server sendLoginInfo:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
+    totUser* user = [server login:@"billhao@gmail.com" withPasscode:@"111111" returnMessage:nil];
     global.user = user;
     NSLog(@"user=%@\nid=%@\nsecret=%@", user.email, user.id_str, user.secret);
 }

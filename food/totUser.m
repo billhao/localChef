@@ -45,7 +45,7 @@ static totModel* _model;
     
     // register with server
     totServerCommController* server = [[totServerCommController alloc] init];
-    int retCode = [server sendRegInfo:@"" withEmail:email withPasscode:pwd returnMessage:message];
+    int retCode = [server register:@"" withEmail:email withPasscode:pwd returnMessage:message];
     if( retCode == SERVER_RESPONSE_CODE_SUCCESS ) {
         BOOL re = [self addAccount:email password:pwd];
         if( re ) {
@@ -70,7 +70,7 @@ static totModel* _model;
 //    NSString* pwdhash = [self getPasswordHash:pwd salt:salt];
     
     totServerCommController* server = [[totServerCommController alloc] init];
-    int ret = [server sendLoginInfo:email withPasscode:pwd returnMessage:message];
+    int ret = [server login:email withPasscode:pwd returnMessage:message];
     if( ret == SERVER_RESPONSE_CODE_SUCCESS ) {
         return TRUE;
     } else {
@@ -150,7 +150,7 @@ static totModel* _model;
     if( email == nil || secret == nil || id_str == nil || passcode == nil )
         return nil;
 
-    totUser* user = [global.server sendLoginInfo:email withPasscode:passcode returnMessage:nil];
+    totUser* user = [global.server login:email withPasscode:passcode returnMessage:nil];
     global.user = user;
 
     return user;

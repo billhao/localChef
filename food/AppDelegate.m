@@ -43,7 +43,7 @@
 
 - (void)loginDefaultUser
 {
-    totUser* user = [global.server sendLoginInfo:global.user.email withPasscode:global.user.passcode returnMessage:nil];
+    totUser* user = [global.server login:global.user.email withPasscode:global.user.passcode returnMessage:nil];
     global.user = user;
 }
 

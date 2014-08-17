@@ -1,9 +1,8 @@
 {
   "images" : [
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "AppIcon57x57@2x.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
