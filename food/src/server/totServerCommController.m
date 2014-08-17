@@ -37,6 +37,7 @@
         m_sendUsrAct_url     = [NSString stringWithFormat:@"%@/m/usract", HOSTNAME];
 
         m_data_url           = [NSString stringWithFormat:@"%@/data",     HOSTNAME];
+        m_data_url           = [NSString stringWithFormat:@"%@/order",    HOSTNAME];
     }
     return self;
 }
@@ -47,7 +48,7 @@
 //    -> call sendUsrName to send the usr reg info
 //       to reg handler on server side
 // -----------------------------------------------
-- (totUser*) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message
+- (totUser*) register: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message
 {
     NSString* data = [NSString stringWithFormat:@"type=register&usr=%@&pwd=%@", email, passcode];
     NSDictionary* resp = (NSDictionary*)[self sendStr:data toURL:m_reg_url returnMessage:message];
@@ -69,7 +70,7 @@
 //    -> call sendUsrName to send the usr login
 //       info to login handler on server side
 // -----------------------------------------------
-- (totUser*) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message {
+- (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message {
     NSString* data = [NSString stringWithFormat:@"type=login&usr=%@&pwd=%@", email, passcode];
     NSDictionary* resp = [self sendStr:data toURL:m_login_url returnMessage:message];
 
@@ -174,7 +175,7 @@
 - (NSMutableURLRequest*)getRequest:(NSString*)post toURL: (NSString *)dest_url {
     // Construct a HTTP POST req
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLen = [NSString stringWithFormat:@"%d", [postData length]];
+    NSString *postLen = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:dest_url]];
     [request setHTTPMethod:@"POST"];
@@ -266,11 +267,38 @@
 }
 
 
+//======================================================================================================
+#pragma mark - Common
+//======================================================================================================
+- (NSArray*)listOrderForSeller {
+    return [self listOrderFor:@"seller"];
+}
 
+- (NSArray*)listOrderForBuyer {
+    return [self listOrderFor:@"buyer"];
+}
+
+- (NSArray*)listOrderFor:(NSString*)user_type {
+    NSString* req = [NSString stringWithFormat:@"type=listorder&secret=%@&user_type=%@", global.user.secret, user_type];
+    id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSArray class]]) {
+        return resp;
+    }
+    else if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 0 )
+                return nil;
+        }
+    }
+    
+    return nil;
+}
 
 
 //======================================================================================================
-// for buyer
+#pragma mark - for buyer
 //======================================================================================================
 - (NSArray*)getDataForLocation:(NSString*)location secret:(NSString*)secret {
     NSString* req = [NSString stringWithFormat:@"type=listdishregion&secret=%@&region=%@", secret, location];
@@ -293,13 +321,40 @@
     return (NSArray*) resp;
 }
 
-- (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id {
-    return 0;
+// return order_id
+- (NSString*)addOrder:(NSString*)dish_id {
+    NSString* req = [NSString stringWithFormat:@"type=addorder&secret=%@&dish_id=%@", global.user.secret, dish_id];
+    id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 1 )
+                return resp[@"order_id"];
+        }
+    }
+    
+    return nil;
+}
+
+- (BOOL)deleteOrder:(NSString*)order_id {
+    NSString* req = [NSString stringWithFormat:@"type=deleteorder&secret=%@&order_id=%@", global.user.secret, order_id];
+    id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 1 )
+                return true;
+        }
+    }
+    
+    return false;
 }
 
 
 //======================================================================================================
-// for seller
+#pragma mark - for seller
 //======================================================================================================
 - (NSString*)publishItem:(FoodItem*)food {
     NSLog(@"Publishing food item %@ to server", food.food_name);
@@ -338,6 +393,23 @@
     
     // success
     return (NSArray*) resp;
+}
+
+// for seller confirmation
+- (BOOL)updateOrder:(Order*)order {
+    NSString* order_json = @"{\"order_id\":\"\", \"order_status\":\"\"}";
+    NSString* req = [NSString stringWithFormat:@"type=updateorder&secret=%@&order=%@", global.user.secret, order_json];
+    id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 1 )
+                return true;
+        }
+    }
+    
+    return false;
 }
 
 @end

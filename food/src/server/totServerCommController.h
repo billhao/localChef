@@ -18,7 +18,8 @@
 #import <Foundation/Foundation.h>
 #import "totURLConnection.h"
 #import "FoodItem.h"
-#import "totUser.h"    
+#import "Order.h"
+#import "totUser.h"
 
 #define HOSTNAME @"http://54.187.194.66"
 #define HOSTNAME_SHORT @"54.187.194.66"
@@ -37,25 +38,34 @@ enum SERVER_RESPONSE_CODE {
     NSString *m_sendUsrAct_url;  // usl to the user activity handler
 
     NSString *m_data_url;
+    NSString *m_order_url;
 }
 
-- (totUser*) sendRegInfo: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
-- (totUser*) sendLoginInfo: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+#pragma mark - common
+- (totUser*) register: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (NSArray*)listOrderForSeller;
+- (NSArray*)listOrderForBuyer;
+- (NSArray*)listOrderFor:(NSString*)user_type; // do not use this one directly
+
+
+#pragma mark - for buyer
+- (NSArray*)getDataForLocation:(NSString*)location secret:(NSString*)secret;
+- (NSString*)addOrder:(NSString*)dish_id;
+- (BOOL)deleteOrder:(NSString*)order_id;
+
+
+#pragma mark - for seller
+- (NSString*)publishItem:(FoodItem*)food_item;
+- (NSArray*)getPublishedItems:(NSString*)seller_id secret:(NSString*)secret;
+- (BOOL)updateOrder:(Order*)order; // for seller confirmation
+
+
+
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;
 - (int) sendForgetPasscodeforUser: (NSString*) email returnMessage:(NSString**)message;
 - (void) sendUserActivityToServer: (NSString*) email withActivity: (NSString*) activity returnMessage:(NSString**)message
-                        callback:(void(^)(int ret, NSString* msg))callback;
+                         callback:(void(^)(int ret, NSString* msg))callback;
 
-// common
-//- (totUser*)register:(NSString*)username passwd:(NSString*)passwd;
-//- (totUser*)login:(NSString*)username passwd:(NSString*)passwd;
-
-// for buyer
-- (NSArray*)getDataForLocation:(NSString*)location secret:(NSString*)secret;
-- (int)submitOrder:(int)food_id quantity:(int)quantity buyer_id:(int)user_id;
-
-// for seller
-- (NSString*)publishItem:(FoodItem*)food_item;
-- (NSArray*)getPublishedItems:(NSString*)seller_id secret:(NSString*)secret;
 
 @end
