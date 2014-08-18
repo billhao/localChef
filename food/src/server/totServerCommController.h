@@ -61,7 +61,7 @@ enum SERVER_RESPONSE_CODE {
 - (BOOL)updateOrder:(Order*)order; // for seller confirmation
 
 
-
+#pragma mark - old ones from tot
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;
 - (int) sendForgetPasscodeforUser: (NSString*) email returnMessage:(NSString**)message;
 - (void) sendUserActivityToServer: (NSString*) email withActivity: (NSString*) activity returnMessage:(NSString**)message

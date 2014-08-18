@@ -37,7 +37,7 @@
         m_sendUsrAct_url     = [NSString stringWithFormat:@"%@/m/usract", HOSTNAME];
 
         m_data_url           = [NSString stringWithFormat:@"%@/data",     HOSTNAME];
-        m_data_url           = [NSString stringWithFormat:@"%@/order",    HOSTNAME];
+        m_order_url          = [NSString stringWithFormat:@"%@/order",    HOSTNAME];
     }
     return self;
 }
@@ -283,7 +283,11 @@
     id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
     
     if( [resp isKindOfClass:[NSArray class]]) {
-        return resp;
+        NSMutableArray* orderList = [[NSMutableArray alloc] initWithCapacity:((NSArray*)resp).count];
+        for (NSDictionary* dict in resp) {
+            [orderList addObject:[[Order alloc] initWithDict:dict]];
+        }
+        return orderList;
     }
     else if( [resp isKindOfClass:[NSDictionary class]]) {
         if( resp[@"status"] != nil ) {

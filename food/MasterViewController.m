@@ -10,7 +10,6 @@
 
 #import "DetailViewController.h"
 
-#import "FoodItem.h"
 #import "FoodItemView.h"
 #import "MenuCell.h"
 #import "Global.h"
@@ -38,6 +37,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    currentOrder = nil;
+    
 //    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 //    self.navigationItem.rightBarButtonItem = addButton;
@@ -145,7 +147,7 @@
     
     cell.f_name.text = f.food_name;
     cell.f_desc.text = f.food_description;
-    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.food_price] forState:UIControlStateNormal];
+    cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
     
     return cell;
 }
@@ -204,18 +206,42 @@
     pt = [sender convertPoint:pt toView:self.tableView];
     NSIndexPath* path = [self.tableView indexPathForRowAtPoint:pt];
     NSInteger index = path.row;
-    [global.order addObject:objects[index]];
-    NSLog(@"add item to order. now order size = %lu", global.order.count);
-    for (int i=0; i<global.order.count; i++) {
-        [(FoodItem*)global.order[i] toString];
-    }
+    currentOrder = objects[index];
+    NSString* msg = [NSString stringWithFormat:@"Please confirm your order of %@", currentOrder.food_name];
+    [totUtility showConfirmation:msg delegate:self];
+//    [global.order addObject:objects[index]];
+//    NSLog(@"add item to order. now order size = %lu", global.order.count);
+//    for (int i=0; i<global.order.count; i++) {
+//        [(FoodItem*)global.order[i] toString];
+//    }
     
+}
+
+- (void)placeOrder {
+    BOOL re = [global.server addOrder:currentOrder.food_id];
+    if( re ) {
+        // order successful, go to order list page
+        [self performSegueWithIdentifier:@"goToOrderListPage" sender:self];
+    }
+    else {
+        // order failed, prompt user and do something
+        [totUtility showAlert:@"Something went wrong. Place order failed. Please try order something else"];
+    }
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)search {
     NSString* location = search.text;
     [self refreshData:location];
     [search resignFirstResponder];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if( buttonIndex == 1 ) {
+        // YES
+        [self placeOrder];
+    }
+    else
+        currentOrder = nil; // clear this order
 }
 
 #pragma mark - Helper functions

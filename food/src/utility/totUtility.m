@@ -110,6 +110,16 @@ void print(NSString* str) {
     [alert show];
 }
 
++ (void)showConfirmation:(NSString*)text delegate:(id<UIAlertViewDelegate>)delegate {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:text
+                                                   delegate:delegate
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Yes", nil];
+    [alert show];
+}
+
+
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContext( newSize );
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];

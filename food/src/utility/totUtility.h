@@ -26,6 +26,7 @@
 + (CGRect)getWindowRect;
 
 + (void)showAlert:(NSString*)text;
++ (void)showConfirmation:(NSString*)text delegate:(id<UIAlertViewDelegate>)delegate;
 
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 
