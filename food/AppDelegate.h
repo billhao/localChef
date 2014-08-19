@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NotificationManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    NotificationManager* nm;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

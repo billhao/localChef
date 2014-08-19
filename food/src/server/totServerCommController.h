@@ -39,11 +39,13 @@ enum SERVER_RESPONSE_CODE {
 
     NSString *m_data_url;
     NSString *m_order_url;
+    NSString *m_notification_url;
 }
 
 #pragma mark - common
 - (totUser*) register: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
 - (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (BOOL)updateDeviceToken:(NSString*)devToken;
 - (NSArray*)listOrderForSeller;
 - (NSArray*)listOrderForBuyer;
 - (NSArray*)listOrderFor:(NSString*)user_type; // do not use this one directly

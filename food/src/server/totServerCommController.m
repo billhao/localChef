@@ -38,6 +38,7 @@
 
         m_data_url           = [NSString stringWithFormat:@"%@/data",     HOSTNAME];
         m_order_url          = [NSString stringWithFormat:@"%@/order",    HOSTNAME];
+        m_notification_url   = [NSString stringWithFormat:@"%@/notification", HOSTNAME];
     }
     return self;
 }
@@ -270,6 +271,20 @@
 //======================================================================================================
 #pragma mark - Common
 //======================================================================================================
+- (BOOL)updateDeviceToken:(NSString*)devToken {
+    NSString* req = [NSString stringWithFormat:@"type=updatedevicetoken&secret=%@&token=%@", global.user.secret, devToken];
+    id resp = [self sendStr:req toURL:m_notification_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 1 )
+                return true;
+        }
+    }
+    return false;
+}
+
 - (NSArray*)listOrderForSeller {
     return [self listOrderFor:@"seller"];
 }

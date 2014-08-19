@@ -31,6 +31,7 @@
 		3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9D7196F95E600D67428 /* totURLConnection.m */; };
 		3F59F9DE196F99F700D67428 /* totUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9DD196F99F700D67428 /* totUtility.m */; };
 		3F59F9E0196F9ABE00D67428 /* comm.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F59F9DF196F9ABE00D67428 /* comm.json */; };
+		3F84EC9E19A3047800765B0F /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F84EC9D19A3047800765B0F /* NotificationManager.m */; };
 		3F8ABBF6195F858600A9C7DE /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF5195F858600A9C7DE /* FoodItem.m */; };
 		3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF8195F880600A9C7DE /* FoodItemView.m */; };
 		3F8ABBFD195F8C7E00A9C7DE /* rou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */; };
@@ -104,6 +105,8 @@
 		3F59F9DC196F99F700D67428 /* totUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totUtility.h; sourceTree = "<group>"; };
 		3F59F9DD196F99F700D67428 /* totUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totUtility.m; sourceTree = "<group>"; };
 		3F59F9DF196F9ABE00D67428 /* comm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comm.json; sourceTree = "<group>"; };
+		3F84EC9C19A3047800765B0F /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = src/NotificationManager.h; sourceTree = "<group>"; };
+		3F84EC9D19A3047800765B0F /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = src/NotificationManager.m; sourceTree = "<group>"; };
 		3F8ABBF4195F858600A9C7DE /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItem.h; path = src/FoodItem.h; sourceTree = "<group>"; };
 		3F8ABBF5195F858600A9C7DE /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItem.m; path = src/FoodItem.m; sourceTree = "<group>"; };
 		3F8ABBF7195F880600A9C7DE /* FoodItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItemView.h; path = src/FoodItemView.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				3F385703198B68DA005F9A09 /* MyListTableViewController.m */,
 				3F9C8616199F3153003340E9 /* Order.h */,
 				3F9C8617199F3153003340E9 /* Order.m */,
+				3F84EC9C19A3047800765B0F /* NotificationManager.h */,
+				3F84EC9D19A3047800765B0F /* NotificationManager.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -393,6 +398,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = food;
 				TargetAttributes = {
+					3F2543841952BA690000E6C9 = {
+						DevelopmentTeam = HZEE45B54F;
+					};
 					3F2543AB1952BA690000E6C9 = {
 						TestTargetID = 3F2543841952BA690000E6C9;
 					};
@@ -465,6 +473,7 @@
 				3FC2FA091990AF7400457F6D /* totModel.m in Sources */,
 				3FC2FA201990B01400457F6D /* RNCryptorEngine.m in Sources */,
 				3F9C8615199C8704003340E9 /* totLoginController.m in Sources */,
+				3F84EC9E19A3047800765B0F /* NotificationManager.m in Sources */,
 				3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */,
 				3F9C8618199F3153003340E9 /* Order.m in Sources */,
 				3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */,
@@ -569,6 +578,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1b20c0b4-2f0a-402d-a5a6-4408101785c6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -601,6 +611,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "1b20c0b4-2f0a-402d-a5a6-4408101785c6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -612,10 +623,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "food/food-Prefix.pch";
 				INFOPLIST_FILE = "food/food-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e9f4a6bd-855b-43aa-8fcb-9fc8cbb1e350";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -625,10 +639,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "food/food-Prefix.pch";
 				INFOPLIST_FILE = "food/food-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e9f4a6bd-855b-43aa-8fcb-9fc8cbb1e350";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
