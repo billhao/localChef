@@ -40,7 +40,6 @@
 
     orders = [[NSMutableArray alloc] init];
     
-    [self loadOrders];
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
 //    self.tableView.contentInset = inset;
 //    self.tableView.scrollIndicatorInsets = inset;
@@ -52,6 +51,11 @@
 //    totalView.backgroundColor = [UIColor grayColor];
 //    [self.view.superview.superview addSubview:totalView];
 //    [self.view.superview.superview bringSubviewToFront:totalView];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self loadOrders];
+
 }
 
 - (void)doneButtonTapped:(id)sender {

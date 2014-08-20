@@ -12,6 +12,6 @@
 
 -(void) register;
 -(void) updateDeviceToken:(NSData*)devToken;
--(void) processNotification:(NSDictionary*)dict;
+-(void) processNotification:(NSDictionary*)dict source:(int)source;
 
 @end

@@ -22,16 +22,6 @@
 
     nm = [[NotificationManager alloc] init];
     
-    if (launchOptions != nil)
-	{
-		NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-		if (dictionary != nil)
-		{
-			NSLog(@"Launched from push notification: %@", dictionary);
-			[nm processNotification:dictionary];
-		}
-	}
-    
     [nm register];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -52,7 +42,18 @@
         UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
         self.window.rootViewController = loginController;
         [self.window makeKeyAndVisible];
+        return YES;
     }
+    
+    if (launchOptions != nil)
+	{
+		NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			//NSLog(@"Launched from push notification: %@", dictionary);
+			[nm processNotification:dictionary source:1];
+		}
+	}
     
     return YES;
 }
@@ -97,7 +98,12 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received notification: %@", userInfo);
-    [nm processNotification:userInfo];
+    int source;
+    if( application.applicationState == UIApplicationStateActive )
+        source = 2; // active
+    else
+        source = 3; // inactive or background
+    [nm processNotification:userInfo source:source];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

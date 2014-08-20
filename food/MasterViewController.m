@@ -221,7 +221,7 @@
     BOOL re = [global.server addOrder:currentOrder.food_id];
     if( re ) {
         // order successful, go to order list page
-        [self performSegueWithIdentifier:@"goToOrderListPage" sender:self];
+        [self performSegueWithIdentifier:@"goToBuyerOrderListPage" sender:self];
     }
     else {
         // order failed, prompt user and do something

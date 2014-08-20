@@ -52,6 +52,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     [self refreshData];
 }
 
@@ -122,7 +125,7 @@
     
     cell.f_name.text = f.food_name;
     cell.f_desc.text = f.food_description;
-    cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
+    //cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
     
     return cell;
 }

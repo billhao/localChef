@@ -16,7 +16,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="346" id="m0d-ak-lc9" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="346"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="346"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="346"/>
@@ -129,7 +129,7 @@ NOW</string>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="XKM-JP-RQF" id="nX9-yu-Abp"/>
-                        <segue destination="ST0-qJ-a9T" kind="push" identifier="goToOrderListPage" id="Err-i5-o3q"/>
+                        <segue destination="ST0-qJ-a9T" kind="push" identifier="goToBuyerOrderListPage" id="Err-i5-o3q"/>
                     </connections>
                 </tableViewController>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CLu-zq-oiA">
@@ -370,7 +370,7 @@ my neighbors</string>
         <!--Navigation Controller-->
         <scene sceneID="VEE-mz-9Wh">
             <objects>
-                <navigationController definesPresentationContext="YES" id="bFs-hA-0Mj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sellerNavigationController" definesPresentationContext="YES" id="bFs-hA-0Mj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4cq-mE-6yC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -556,7 +556,7 @@ my neighbors</string>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="rGr-TE-OBg" kind="push" identifier="goToMyList" id="aBw-P8-4Ly"/>
+                                            <segue destination="rGr-TE-OBg" kind="push" identifier="goToSellerOrderListPage" id="aBw-P8-4Ly"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -687,7 +687,7 @@ my neighbors</string>
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="240" id="hJy-HV-ttp" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJy-HV-ttp" id="kPk-pE-eUK">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -782,7 +782,7 @@ my neighbors</string>
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="130" id="xHl-VZ-boV" customClass="OrderCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="130"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xHl-VZ-boV" id="RIi-LP-4VL">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
@@ -873,10 +873,10 @@ my neighbors</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xsL-GD-E5T"/>
-        <segue reference="v1a-UG-MNm"/>
+        <segue reference="p2s-G3-qEA"/>
+        <segue reference="FS2-Zc-7Jo"/>
+        <segue reference="h2x-E4-m8j"/>
+        <segue reference="aBw-P8-4Ly"/>
         <segue reference="Err-i5-o3q"/>
-        <segue reference="7CP-fM-KtX"/>
-        <segue reference="ZfB-JR-nPP"/>
     </inferredMetricsTieBreakers>
 </document>

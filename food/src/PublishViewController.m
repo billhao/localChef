@@ -139,7 +139,7 @@
     // add this item to the list
     [global.myPublishItems insertObject:item atIndex:0];
     
-    [self performSegueWithIdentifier:@"goToMyList" sender:self];
+    [self performSegueWithIdentifier:@"goToSellerOrderListPage" sender:self];
     return;
     
     // publish completed. publish more or go to the list of published items
