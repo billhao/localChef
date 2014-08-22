@@ -683,6 +683,7 @@ my neighbors</string>
                     </view>
                     <connections>
                         <outlet property="mLogin" destination="ynu-Re-nKt" id="e6a-iT-kCJ"/>
+                        <outlet property="mName" destination="Z91-cz-0Pe" id="Ufc-kz-pkV"/>
                         <outlet property="mNewuser" destination="35U-uA-Nyo" id="2sV-pP-ZWe"/>
                         <outlet property="mPhone" destination="voN-jc-lhl" id="hk8-m8-A3i"/>
                         <outlet property="mPwd" destination="FrS-nT-NH0" id="3vw-2u-T42"/>

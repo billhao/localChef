@@ -135,16 +135,16 @@
     [self backgroundTap:nil]; // dismiss keyboard
 
     // check if email and pwd matches db
-    NSString* email = mPhone.text;
+    NSString* phone = mPhone.text;
     NSString* pwd = mPwd.text;
     
     // check validity of email and pwd
     if( ![self checkEmail] ) return;
     if( ![totLoginController checkPwd:pwd] ) return;
     
-    totUser* user = [global.server login:email withPasscode:pwd returnMessage:nil];
+    totUser* user = [global.server login:phone withPasscode:pwd returnMessage:nil];
     if( user == nil )
-        [self showAlert:@"Email address or password does not match"];
+        [self showAlert:@"Phone number or passcode does not match"];
     else {
         user.passcode = pwd;
         global.user = user;
@@ -154,14 +154,15 @@
 }
 
 - (void)NewUserButtonClicked: (UIButton *)button {
-    NSString* email = mPhone.text;
+    NSString* name = mName.text;
+    NSString* phone = mPhone.text;
     NSString* pwd = mPwd.text;
     
     // check validity of email and pwd
     if( ![self checkEmail] ) return;
     if( ![totLoginController checkPwd:pwd] ) return;
     
-    totUser* user = [global.server register:email withEmail:email withPasscode:pwd returnMessage:nil];
+    totUser* user = [global.server register:name phone:phone passcode:pwd returnMessage:nil];
     if( user == nil )
         [self showAlert:@"Fail to add user"];
     else {

@@ -19,6 +19,7 @@
     IBOutlet UIButton*    mNewuser;
     IBOutlet UIButton*    mPrivacy;
     IBOutlet UIButton*    mForgotPwd;
+    __weak IBOutlet UITextField *mName;
 
     totModel* model;
 }

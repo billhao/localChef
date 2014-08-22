@@ -49,9 +49,9 @@
 //    -> call sendUsrName to send the usr reg info
 //       to reg handler on server side
 // -----------------------------------------------
-- (totUser*) register: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message
+- (totUser*) register:(NSString*)username phone:(NSString*)phone passcode:(NSString*)passcode returnMessage:(NSString**)message
 {
-    NSString* data = [NSString stringWithFormat:@"type=register&usr=%@&pwd=%@", email, passcode];
+    NSString* data = [NSString stringWithFormat:@"type=register&usr=%@&name=%@&phone=%@&pwd=%@", phone, username, phone, passcode];
     NSDictionary* resp = (NSDictionary*)[self sendStr:data toURL:m_reg_url returnMessage:message];
     
     if( resp[@"status"] != nil ) {

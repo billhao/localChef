@@ -43,7 +43,7 @@ enum SERVER_RESPONSE_CODE {
 }
 
 #pragma mark - common
-- (totUser*) register: (NSString*) usrname withEmail: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
+- (totUser*) register:(NSString*)username phone:(NSString*)phone passcode:(NSString*)passcode returnMessage:(NSString**)message;
 - (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
 - (BOOL)updateDeviceToken:(NSString*)devToken;
 - (NSArray*)listOrderForSeller;

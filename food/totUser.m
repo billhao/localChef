@@ -52,25 +52,27 @@ static totModel* _model;
 }
 
 // add a new user
-+(totUser*) newUser:(NSString*)email password:(NSString*)pwd message:(NSString**)message {
++(totUser*) newUser:(NSString*)name phone:(NSString*)phone password:(NSString*)pwd message:(NSString**)message {
     // clean the email
-    email = [email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    name  = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    phone = [phone stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     // register with server
     totServerCommController* server = [[totServerCommController alloc] init];
-    int retCode = [server register:@"" withEmail:email withPasscode:pwd returnMessage:message];
-    if( retCode == SERVER_RESPONSE_CODE_SUCCESS ) {
-        BOOL re = [self addAccount:email password:pwd];
-        if( re ) {
-            return [[totUser alloc] initWithID:email];
-        } else {
-            *message = @"Cannot add user to database";
-            // TODO should we delete this user from server? otherwise it wouldn't be possible to create the user next time
-            return nil;
-        }
-    } else {
-        return nil;
-    }
+    return [server register:name phone:phone passcode:pwd returnMessage:message];
+    
+//    if( retCode == SERVER_RESPONSE_CODE_SUCCESS ) {
+//        BOOL re = [self addAccount:email password:pwd];
+//        if( re ) {
+//            return [[totUser alloc] initWithID:email];
+//        } else {
+//            *message = @"Cannot add user to database";
+//            // TODO should we delete this user from server? otherwise it wouldn't be possible to create the user next time
+//            return nil;
+//        }
+//    } else {
+//        return nil;
+//    }
 }
 
 +(BOOL)verifyPassword:(NSString*)pwd email:(NSString*)email message:(NSString**)message {
