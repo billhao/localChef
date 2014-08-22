@@ -16,7 +16,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="405" id="m0d-ak-lc9" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="405"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="405"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
@@ -328,6 +328,19 @@ are cooking</string>
                                     <segue destination="ZzQ-02-zVc" kind="modal" id="dKJ-t0-LOW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-in-utd">
+                                <rect key="frame" x="41" y="468" width="259" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="HRR-lU-gBt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                <state key="normal" title="sign out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signoutButtonPressed:" destination="366-Ow-uFp" eventType="touchUpInside" id="IvF-oF-CJT"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="q7l-jw-hEP">
                                 <rect key="frame" x="41" y="152" width="229" height="80"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
@@ -343,8 +356,14 @@ my neighbors</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="40w-en-WAY" firstAttribute="top" secondItem="BDf-in-utd" secondAttribute="bottom" constant="20" id="P1q-EI-1aG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BYk-q5-AE7"/>
+                    <connections>
+                        <segue destination="HFA-Ws-Tnp" kind="modal" identifier="goToLoginPage" id="WNA-gB-oQn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSq-qh-7va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -601,38 +620,46 @@ my neighbors</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2139059092" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="voN-jc-lhl" userLabel="phone">
-                                <rect key="frame" x="37" y="123" width="247" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="voN-jc-lhl" userLabel="phone">
+                                <rect key="frame" x="37" y="139" width="247" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZsL-z4-bAP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="111111" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FrS-nT-NH0" userLabel="passcode">
-                                <rect key="frame" x="37" y="161" width="247" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name (sign up only)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-cz-0Pe" userLabel="phone">
+                                <rect key="frame" x="37" y="101" width="247" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ynu-Re-nKt">
-                                <rect key="frame" x="37" y="199" width="102" height="47"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FrS-nT-NH0" userLabel="passcode">
+                                <rect key="frame" x="37" y="177" width="247" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ynu-Re-nKt">
+                                <rect key="frame" x="37" y="215" width="102" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="3fk-rg-Rvb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="buyButtonPressed:" destination="366-Ow-uFp" eventType="touchUpInside" id="5fH-Bj-Yvt"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="35U-uA-Nyo">
-                                <rect key="frame" x="158" y="199" width="126" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="35U-uA-Nyo">
+                                <rect key="frame" x="158" y="215" width="126" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="S2F-tg-tlW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="Sign me up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="buyButtonPressed:" destination="366-Ow-uFp" eventType="touchUpInside" id="FNv-H7-45d"/>
-                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Sharing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crd-cn-8UF">
-                                <rect key="frame" x="59" y="45" width="203" height="47"/>
+                                <rect key="frame" x="59" y="36" width="203" height="47"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -647,11 +674,17 @@ my neighbors</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="voN-jc-lhl" firstAttribute="top" secondItem="Z91-cz-0Pe" secondAttribute="bottom" constant="8" id="NFg-wr-nKO"/>
+                            <constraint firstItem="ynu-Re-nKt" firstAttribute="top" secondItem="FrS-nT-NH0" secondAttribute="bottom" constant="8" id="PJT-95-7Sg"/>
+                            <constraint firstItem="FrS-nT-NH0" firstAttribute="top" secondItem="voN-jc-lhl" secondAttribute="bottom" constant="8" id="mnn-DE-JLb"/>
+                            <constraint firstItem="35U-uA-Nyo" firstAttribute="top" secondItem="FrS-nT-NH0" secondAttribute="bottom" constant="8" id="wH8-wg-vds"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="mEmail" destination="voN-jc-lhl" id="pb3-5H-bRY"/>
                         <outlet property="mLogin" destination="ynu-Re-nKt" id="e6a-iT-kCJ"/>
                         <outlet property="mNewuser" destination="35U-uA-Nyo" id="2sV-pP-ZWe"/>
+                        <outlet property="mPhone" destination="voN-jc-lhl" id="hk8-m8-A3i"/>
                         <outlet property="mPwd" destination="FrS-nT-NH0" id="3vw-2u-T42"/>
                     </connections>
                 </viewController>
@@ -670,7 +703,7 @@ my neighbors</string>
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="240" id="hJy-HV-ttp" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJy-HV-ttp" id="kPk-pE-eUK">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -765,7 +798,7 @@ my neighbors</string>
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="216" id="xHl-VZ-boV" customClass="OrderCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xHl-VZ-boV" id="RIi-LP-4VL">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
@@ -870,7 +903,7 @@ my neighbors</string>
     <inferredMetricsTieBreakers>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
-        <segue reference="xsL-GD-E5T"/>
+        <segue reference="6bv-uo-8TO"/>
         <segue reference="h2x-E4-m8j"/>
         <segue reference="aBw-P8-4Ly"/>
     </inferredMetricsTieBreakers>

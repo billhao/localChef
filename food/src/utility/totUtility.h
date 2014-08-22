@@ -64,6 +64,7 @@
 // get/set settings
 + (void)setSetting:(NSString*)key value:(NSString*)value;
 + (NSString*)getSetting:(NSString*)key;
++ (void)removeSetting:(NSString*)key;
 + (void)resetSettings;
 
 @end

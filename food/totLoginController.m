@@ -44,31 +44,8 @@
     // set up events
     [mLogin addTarget:self action:@selector(LoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [mNewuser addTarget:self action:@selector(NewUserButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    mEmail = [[UITextField alloc] initWithFrame:CGRectMake(60, 71, 180, 37)];
-//    mPwd = [[UITextField alloc] initWithFrame:CGRectMake(60, 131, 180, 37)];
-    
-    [mEmail setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-//    [mEmail setBorderStyle:UITextBorderStyleNone];
-    [mEmail setPlaceholder:NSLocalizedString(@"Email", @"")];
-    [mEmail setTextColor:[UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.0f]];
-    [self.view addSubview:mEmail];
-    mEmail.autocorrectionType = UITextAutocorrectionTypeNo;
-    mEmail.keyboardType = UIKeyboardTypeEmailAddress;
-    mEmail.returnKeyType = UIReturnKeyDone;
-    mEmail.enablesReturnKeyAutomatically = TRUE;
-    
-    [mPwd setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-//    [mPwd setBorderStyle:UITextBorderStyleNone];
-    [mPwd setPlaceholder:NSLocalizedString(@"Password", @"")];
-    [mPwd setTextColor:[UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.0f]];
-    mPwd.autocorrectionType = UITextAutocorrectionTypeNo;
-    mPwd.returnKeyType = UIReturnKeyDone;
-    mPwd.enablesReturnKeyAutomatically = TRUE;
-    mPwd.secureTextEntry = TRUE;
-    [self.view addSubview:mPwd];
-    
-    [mEmail setDelegate:self];
+
+    [mPhone setDelegate:self];
     [mPwd setDelegate:self];
     
 //    NSString* email_string = @"Email";
@@ -158,7 +135,7 @@
     [self backgroundTap:nil]; // dismiss keyboard
 
     // check if email and pwd matches db
-    NSString* email = mEmail.text;
+    NSString* email = mPhone.text;
     NSString* pwd = mPwd.text;
     
     // check validity of email and pwd
@@ -177,7 +154,7 @@
 }
 
 - (void)NewUserButtonClicked: (UIButton *)button {
-    NSString* email = mEmail.text;
+    NSString* email = mPhone.text;
     NSString* pwd = mPwd.text;
     
     // check validity of email and pwd
@@ -198,7 +175,7 @@
 - (void)ForgotPwdButtonClicked: (UIButton *)button {
     if( ![self checkEmail] ) return;
 
-    NSString* email = mEmail.text;
+    NSString* email = mPhone.text;
     NSString* msg = nil;
     BOOL re = [totUser forgotPassword:email message:&msg];
     if( msg )
@@ -230,7 +207,7 @@
 
 // check email against a regex
 - (BOOL)checkEmail {
-    NSString* email = mEmail.text;
+    NSString* email = mPhone.text;
     email = [email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     // check
@@ -277,8 +254,8 @@
 
 // dismiss the keyboard when tapping on background
 - (IBAction) backgroundTap:(id) sender{
-    if( mCurrentControl == mEmail ) {
-        [mEmail resignFirstResponder];
+    if( mCurrentControl == mPhone ) {
+        [mPhone resignFirstResponder];
     }
     else if( mCurrentControl == mPwd ) {
         [mPwd resignFirstResponder];

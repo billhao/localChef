@@ -176,4 +176,11 @@ static totModel* _model;
     [totUtility setSetting:@"passcode" value:self.passcode];
 }
 
+-(void) removePersistedUser {
+    [totUtility removeSetting:@"email"];
+    [totUtility removeSetting:@"secret"];
+    [totUtility removeSetting:@"id_str"];
+    [totUtility removeSetting:@"passcode"];
+}
+
 @end

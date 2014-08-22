@@ -11,5 +11,6 @@
 @interface MenuViewController : UIViewController
 - (IBAction)sellButtonPressed:(UIButton *)sender;
 - (IBAction)buyButtonPressed:(UIButton *)sender;
+- (IBAction)signoutButtonPressed:(UIButton *)sender;
 
 @end

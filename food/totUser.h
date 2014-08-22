@@ -25,6 +25,7 @@
 -(id) initWithDict:(NSDictionary*)dict;
 
 -(void) persistUser;
+-(void) removePersistedUser;
 
 +(void) setModel:(totModel*)model;
 

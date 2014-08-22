@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "Global.h"
 
 @interface MenuViewController ()
 
@@ -53,4 +54,10 @@
 - (IBAction)buyButtonPressed:(UIButton *)sender {
     
 }
+
+- (IBAction)signoutButtonPressed:(UIButton *)sender {
+    [global.user removePersistedUser];
+    [self performSegueWithIdentifier:@"goToLoginPage" sender:self];
+}
+
 @end

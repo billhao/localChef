@@ -14,7 +14,7 @@
 @class AppDelegate;
 
 @interface totLoginController : UIViewController <UITextFieldDelegate> {
-    IBOutlet UITextField *mEmail, *mPwd, *mCurrentControl;
+    IBOutlet UITextField *mPhone, *mPwd, *mCurrentControl;
     IBOutlet UIButton*    mLogin;
     IBOutlet UIButton*    mNewuser;
     IBOutlet UIButton*    mPrivacy;
