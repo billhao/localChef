@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *f_image;
 @property (weak, nonatomic) IBOutlet UILabel *f_name;
-@property (weak, nonatomic) IBOutlet UILabel *f_desc;
+@property (weak, nonatomic) IBOutlet UITextView *f_desc;
 @property (weak, nonatomic) IBOutlet UILabel *f_price;
 
 

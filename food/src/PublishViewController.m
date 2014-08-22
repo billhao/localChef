@@ -43,8 +43,12 @@
     activeTextField = nil;
     
     // price
-    food_price.text = @"$ 8.00";
+    food_price.text = @"$ 8";
     priceStepper.value = 8.0;
+    seller_address.text = @"Blossom Hill Rd And Lean Ave";
+    seller_phone.text = @"213-784-2526";
+    food_description.text = @"Delicious fish";
+    food_name.text = @"Fried fish";
     
     // location
 //    locations = @[@"Mountain View, CA",
@@ -125,10 +129,10 @@
     item.food_image_url = @"fish.jpg";
     item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$" withString:@""] doubleValue];
     item.food_quantity = [food_quantity.text intValue];
-    item.food_start_time = [NSDate date];// food_start_time.text;
-    item.food_end_time = [NSDate date];//food_time.text;
-    item.seller_id = @"1";
-    item.seller_name = @"test seller";
+    item.food_start_time = start_time;
+    item.food_end_time = end_time;
+    item.seller_id = global.user.id_str;
+    item.seller_name = global.user.email;
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
     item.seller_phone = seller_phone.text;
@@ -309,7 +313,7 @@
 
 - (void)startTimePickerDoneClicked: (UIButton *)button {
     [food_start_time resignFirstResponder];
-    food_start_time.text = [totUtility dateToString:startTimePicker.date];
+    food_start_time.text = [totUtility dateToStringHumanReadable:startTimePicker.date];
     start_time = startTimePicker.date;
 }
 
@@ -339,7 +343,7 @@
 
 - (void)endTimePickerDoneClicked: (UIButton *)button {
     [food_time resignFirstResponder];
-    food_time.text = [totUtility dateToString:endTimePicker.date];
+    food_time.text = [totUtility dateToStringHumanReadable:endTimePicker.date];
     end_time = endTimePicker.date;
 }
 

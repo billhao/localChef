@@ -9,28 +9,35 @@
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Menu" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="405" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="346" id="m0d-ak-lc9" customClass="MenuCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="346"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="405" id="m0d-ak-lc9" customClass="MenuCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="405"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="346"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fish.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="P9V-nK-Jf2">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="231"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHd-AX-s36">
-                                            <rect key="frame" x="0.0" y="228" width="320" height="118"/>
+                                            <rect key="frame" x="0.0" y="231" width="320" height="165"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="王家红烧肉 - 王阿姨私房菜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iI-Eq-eDz">
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-hI-Vih">
+                                                    <rect key="frame" x="11" y="41" width="206" height="124"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="王家红烧肉 - 王阿姨" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iI-Eq-eDz">
                                                     <rect key="frame" x="11" y="0.0" width="240" height="46"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -40,27 +47,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Serves between 12:00 - 1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0b-zF-DUm">
-                                                    <rect key="frame" x="11" y="60" width="240" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Only 1 left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLf-jL-9Mk">
-                                                    <rect key="frame" x="11" y="41" width="240" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blossom Hill Rd &amp; Lean Ave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsT-5O-Tsk">
-                                                    <rect key="frame" x="11" y="80" width="240" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-sL-aJA">
-                                                    <rect key="frame" x="209" y="41" width="98" height="77"/>
+                                                    <rect key="frame" x="253" y="79" width="54" height="48"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
-                                                    <state key="normal">
-                                                        <string key="title">ORDER
-NOW</string>
+                                                    <state key="normal" image="order.png">
                                                         <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -79,7 +69,7 @@ NOW</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
-                                    <outlet property="f_desc" destination="W0b-zF-DUm" id="8NB-71-rhN"/>
+                                    <outlet property="f_desc" destination="yMg-hI-Vih" id="y7L-Ue-x9t"/>
                                     <outlet property="f_image" destination="P9V-nK-Jf2" id="2hI-7l-zdo"/>
                                     <outlet property="f_name" destination="4iI-Eq-eDz" id="QJ4-Do-OnF"/>
                                     <outlet property="f_price" destination="HKw-f0-1Ay" id="GXX-V5-7Gm"/>
@@ -113,17 +103,10 @@ NOW</string>
                                 </searchBar>
                             </subviews>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="food.png" style="plain" id="sKz-rq-iLr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K8P-yu-CUb">
-                                <rect key="frame" x="264" y="2" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="food.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ST0-qJ-a9T" kind="push" id="tyl-vn-yNY"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Orders" id="Cgq-4y-ZSd">
+                            <connections>
+                                <segue destination="ST0-qJ-a9T" kind="push" id="joA-Sr-uUI"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -453,7 +436,7 @@ my neighbors</string>
                                             <action selector="textFieldReturn:" destination="qHJ-XA-YtT" eventType="editingDidEndOnExit" id="gmJ-Ra-utx"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
                                         <rect key="frame" x="20" y="481" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -775,45 +758,55 @@ my neighbors</string>
         <scene sceneID="yts-bY-5xS">
             <objects>
                 <tableViewController title="Orders" id="ST0-qJ-a9T" customClass="OrderListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="jii-Nn-nqp">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="216" sectionHeaderHeight="22" sectionFooterHeight="22" id="jii-Nn-nqp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="130" id="xHl-VZ-boV" customClass="OrderCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="130"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="216" id="xHl-VZ-boV" customClass="OrderCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xHl-VZ-boV" id="RIi-LP-4VL">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rou.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-fE-fcJ">
-                                            <rect key="frame" x="10" y="-1" width="135" height="119"/>
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txm-wD-6fP">
+                                            <rect key="frame" x="0.0" y="207" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="ddu-hd-vGx"/>
+                                                <constraint firstAttribute="width" constant="320" id="wZW-47-sMc"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" ambiguous="YES" image="rou.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-fE-fcJ">
+                                            <rect key="frame" x="4" y="62" width="135" height="119"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="119" id="fL8-d0-W44"/>
+                                                <constraint firstAttribute="width" constant="135" id="hBZ-N5-1vN"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="王家红烧肉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBS-zo-1oy">
-                                            <rect key="frame" x="152" y="5" width="85" height="21"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="$ 8 Fried fish" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="172" translatesAutoresizingMaskIntoConstraints="NO" id="BBS-zo-1oy">
+                                            <rect key="frame" x="148" y="62" width="172" height="119"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="168" id="hjs-Hu-Pmq"/>
+                                                <constraint firstAttribute="height" priority="250" constant="50" id="rdO-Sl-6xV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="106" translatesAutoresizingMaskIntoConstraints="NO" id="kc6-Ov-r2S">
-                                            <rect key="frame" x="152" y="34" width="106" height="45"/>
-                                            <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">提供时间
-12:00 - 1:00</string>
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="17" name="STHeitiSC-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="L22-GD-kUX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                            <color key="backgroundColor" white="0.94525547445255476" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">  Ordered on 8/20 1:20 PM
+  Waiting for Henry's confirmation</string>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl1-fh-XGn">
-                                            <rect key="frame" x="282" y="88" width="46" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="282" y="-4" width="48" height="48"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                             <state key="normal" title="X">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -821,26 +814,27 @@ my neighbors</string>
                                                 <action selector="removeButtonPressed:" destination="ST0-qJ-a9T" eventType="touchUpInside" id="ptb-da-Rto"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szh-J9-Jx0">
-                                            <rect key="frame" x="266" y="-15" width="54" height="62"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <state key="normal" title="￥20">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6V-kI-KxD">
-                                            <rect key="frame" x="0.0" y="118" width="320" height="10"/>
-                                            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
-                                        </view>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Available between xxxxxxxxx and yyyyyyyyy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEF-8f-SoW">
+                                            <rect key="frame" x="4" y="182" width="320" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Y6u-fE-fcJ" firstAttribute="leading" secondItem="RIi-LP-4VL" secondAttribute="leading" constant="4" id="P9G-Dd-ywN"/>
+                                        <constraint firstAttribute="trailing" secondItem="BBS-zo-1oy" secondAttribute="trailing" id="TLA-QI-uMU"/>
+                                        <constraint firstAttribute="bottom" secondItem="Txm-wD-6fP" secondAttribute="bottom" id="YFQ-sF-5kz"/>
+                                        <constraint firstItem="BBS-zo-1oy" firstAttribute="leading" secondItem="Y6u-fE-fcJ" secondAttribute="trailing" constant="4" id="d5M-7O-X5X"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="f_desc" destination="kc6-Ov-r2S" id="mlu-0r-toF"/>
                                     <outlet property="f_image" destination="RIi-LP-4VL" id="bNm-PT-mfa"/>
                                     <outlet property="f_name" destination="BBS-zo-1oy" id="Fcw-pO-DJl"/>
-                                    <outlet property="f_price" destination="szh-J9-Jx0" id="w2W-iy-mQo"/>
+                                    <outlet property="f_start_end_time" destination="rEF-8f-SoW" id="427-xL-mKB"/>
+                                    <outlet property="f_time_status" destination="L22-GD-kUX" id="jm9-lP-lf1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -865,6 +859,7 @@ my neighbors</string>
     <resources>
         <image name="fish.jpg" width="800" height="600"/>
         <image name="food.png" width="102" height="102"/>
+        <image name="order.png" width="128" height="113"/>
         <image name="rou.jpg" width="482" height="308"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -873,10 +868,10 @@ my neighbors</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p2s-G3-qEA"/>
-        <segue reference="FS2-Zc-7Jo"/>
+        <segue reference="v1a-UG-MNm"/>
+        <segue reference="joA-Sr-uUI"/>
+        <segue reference="xsL-GD-E5T"/>
         <segue reference="h2x-E4-m8j"/>
         <segue reference="aBw-P8-4Ly"/>
-        <segue reference="Err-i5-o3q"/>
     </inferredMetricsTieBreakers>
 </document>

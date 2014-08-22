@@ -98,10 +98,21 @@
     
     //NSLog(@"%ld", indexPath.row);
     Order* order = orders[indexPath.row];
-    
-    cell.f_name.text = order.food.food_name;
-    cell.f_desc.text = order.food.food_description;
-    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", order.food.food_price] forState:UIControlStateNormal];
+    FoodItem* f = order.food;
+
+    NSString* status;
+    if( [order.order_status isEqualToString:ORDER_STATUS_ORDERED] )
+        status = [NSString stringWithFormat:@"Waiting for %@'s confirmation", order.seller.email];
+    else if( [order.order_status isEqualToString:ORDER_STATUS_CONFIRMED] )
+        status = @"Confirmed";
+    else if( [order.order_status isEqualToString:ORDER_STATUS_COMPLETED] )
+        status = @"Completed";
+    else
+        status = @"Status Unknown";
+    cell.f_time_status.text = [NSString stringWithFormat:@"  Ordered on %@\n  %@", [totUtility dateToStringHumanReadable:order.created_at], status];
+    cell.f_name.text = [NSString stringWithFormat:@"$ %.0f %@\nBy %@\n%@\n%@", f.food_price, f.food_name, order.seller.email, @"Blossom Hill Rd & Lean Ave", @"213-784-2526"];
+    cell.f_start_end_time.text = [NSString stringWithFormat:@"Available %@ - %@", [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time]];
+//    [cell.f_name sizeToFit];
     
     return cell;
 }

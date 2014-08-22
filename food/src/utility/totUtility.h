@@ -13,9 +13,22 @@
 
 
 +(UIImage *)squareCropImage:(UIImage *)origImage;  
+
+////////////////////////////////////////////////////
+// date functions
 +(NSString *)nowTimeString;
+
 +(NSString *)dateToString:(NSDate*)date;
 +(NSDate *)stringToDate:(NSString*)dateStr;
+
++(NSString *)dateToStringShort:(NSDate*)date;
++(NSDate *)stringToDateShort:(NSString*)dateStr;
+
++(NSString *)dateToStringFull:(NSDate*)date;
++(NSDate *)stringToDateFull:(NSString*)dateStr;
+
++(NSString *)dateToStringHumanReadable:(NSDate*)date;
+////////////////////////////////////////////////////
 
 // utility function print a frame
 + (NSString*)getFrameString:(CGRect)frame;

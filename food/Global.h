@@ -10,6 +10,7 @@
 #import "FoodItem.h"
 #import "totServerCommController.h"
 #import "totUser.h"
+#import "totUtility.h"
 
 @interface Global : NSObject
 

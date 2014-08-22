@@ -90,14 +90,14 @@
 {
     OrderCell *cell = (OrderCell*)[tableView dequeueReusableCellWithIdentifier:@"OrderCell" forIndexPath:indexPath];
     
-    long cnt = global.order.count;
-    
-    NSLog(@"%ld", indexPath.row);
-    FoodItem *f = global.order[indexPath.row];
-    
-    cell.f_name.text = f.food_name;
-    cell.f_desc.text = f.food_description;
-    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.food_price] forState:UIControlStateNormal];
+//    long cnt = global.order.count;
+//    
+//    NSLog(@"%ld", indexPath.row);
+//    FoodItem *f = global.order[indexPath.row];
+//    
+//    cell.f_name.text = f.food_name;
+//    cell.f_desc.text = f.food_description;
+//    [cell.f_price setTitle:[NSString stringWithFormat:@"￥%.0f", f.food_price] forState:UIControlStateNormal];
     
     return cell;
 }

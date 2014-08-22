@@ -88,8 +88,8 @@
     food.food_description   = item[@"food_description"];
     food.food_price         = [item[@"food_price"] doubleValue];
     food.food_quantity      = [item[@"food_quantity"] integerValue];
-    food.food_start_time    = item[@"food_start_time"];
-    food.food_end_time      = item[@"food_end_time"];
+    food.food_start_time    = [totUtility stringToDateFull:item[@"food_start_time"]];
+    food.food_end_time      = [totUtility stringToDateFull:item[@"food_end_time"]];
     if( item[@"food_image_url"] != nil && [item[@"food_image_url"] length] > 0 ) {
         UIImage* img = [totUtility stringToImage:item[@"food_image_url"]];
         NSString* path = [totUtility saveImage:img filename:food.food_name];
@@ -106,14 +106,17 @@
     dict[@"seller_location"]    = food.seller_location;
     dict[@"seller_phone"]       = food.seller_phone;
     
-//    dict[@"food_id"]            = food.food_id;
     dict[@"food_name"]          = food.food_name;
     dict[@"food_description"]   = food.food_description;
     dict[@"food_image_url"]     = @"";//[totUtility imageToString:[UIImage imageNamed:food.food_image_url]];
     dict[@"food_price"]         = [NSNumber numberWithDouble:food.food_price];
     dict[@"food_quantity"]      = [NSNumber numberWithLong:food.food_quantity];
-    dict[@"food_start_time"]    = [food.food_start_time description];
-    dict[@"food_end_time"]      = [food.food_end_time description];
+    dict[@"food_start_time"]    = [totUtility dateToStringFull:food.food_start_time];
+    dict[@"food_end_time"]      = [totUtility dateToStringFull:food.food_end_time];
+
+    if( food.food_id != nil )
+        dict[@"food_id"]        = food.food_id;
+    
     return dict;
 }
 

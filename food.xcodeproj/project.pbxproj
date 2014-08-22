@@ -54,6 +54,7 @@
 		3FC2FA241990B01400457F6D /* RNOpenSSLDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1C1990B01400457F6D /* RNOpenSSLDecryptor.m */; };
 		3FC2FA251990B01400457F6D /* RNOpenSSLEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */; };
 		3FC2FA271990B13600457F6D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2FA261990B13600457F6D /* libsqlite3.dylib */; };
+		3FC361C219A6F67E0076EEA2 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC361C119A6F67E0076EEA2 /* order.png */; };
 		3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6CC63197F7D070082354E /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		3FC2FA1D1990B01400457F6D /* RNOpenSSLEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNOpenSSLEncryptor.h; sourceTree = "<group>"; };
 		3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNOpenSSLEncryptor.m; sourceTree = "<group>"; };
 		3FC2FA261990B13600457F6D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3FC361C119A6F67E0076EEA2 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
 		3FD6CC62197F7D070082354E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = src/MenuViewController.h; sourceTree = "<group>"; };
 		3FD6CC63197F7D070082354E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = src/MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +322,7 @@
 		3F8ABBFA195F8C7E00A9C7DE /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				3FC361C119A6F67E0076EEA2 /* order.png */,
 				3F59F9DF196F9ABE00D67428 /* comm.json */,
 				3FABA63F195F9BDB0058F6D3 /* food.png */,
 				3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */,
@@ -437,6 +440,7 @@
 				3FABA640195F9BDB0058F6D3 /* food.png in Resources */,
 				3F59F9E0196F9ABE00D67428 /* comm.json in Resources */,
 				3F25439C1952BA690000E6C9 /* Main_iPhone.storyboard in Resources */,
+				3FC361C219A6F67E0076EEA2 /* order.png in Resources */,
 				3F2543931952BA690000E6C9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

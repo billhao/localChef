@@ -55,6 +55,14 @@
 }
 
 +(NSString *)dateToString:(NSDate*)date{
+    return [totUtility dateToStringFull:date];
+}
+
++(NSDate *)stringToDate:(NSString*)dateStr{
+    return [totUtility stringToDateFull:dateStr];
+}
+
++(NSString *)dateToStringShort:(NSDate*)date{
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSString *dateString;
 	[formatter setDateStyle:NSDateFormatterShortStyle];
@@ -63,13 +71,40 @@
     return  dateString;
 }
 
-+(NSDate *)stringToDate:(NSString*)dateStr{
++(NSDate *)stringToDateShort:(NSString*)dateStr{
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateStyle:NSDateFormatterFullStyle];
-	[formatter setTimeStyle:NSDateFormatterFullStyle];
+	[formatter setDateStyle:NSDateFormatterShortStyle];
+	[formatter setTimeStyle:NSDateFormatterShortStyle];
     NSDate* date = [formatter dateFromString:dateStr];
     return  date;
 }
+
++(NSString *)dateToStringFull:(NSDate*)date{
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSString *dateString;
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+	dateString =[formatter stringFromDate:date];
+    return  dateString;
+}
+
++(NSDate *)stringToDateFull:(NSString*)dateStr{
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    NSDate* date = [formatter dateFromString:dateStr];
+    return  date;
+}
+
++(NSString *)dateToStringHumanReadable:(NSDate*)date{
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSString *dateString;
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setDateFormat:@"M/d h:mm a"];
+	dateString =[formatter stringFromDate:date];
+    return  dateString;
+}
+
 
 // utility function print a frame
 + (NSString*)getFrameString:(CGRect)frame {

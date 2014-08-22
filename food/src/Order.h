@@ -10,6 +10,10 @@
 #import "FoodItem.h"
 #import "totUser.h"
 
+#define ORDER_STATUS_ORDERED    @"ordered"
+#define ORDER_STATUS_CONFIRMED  @"confirmed"
+#define ORDER_STATUS_COMPLETED  @"completed"
+
 @interface Order : NSObject
 
 @property(nonatomic, retain) NSString* order_id;

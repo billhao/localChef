@@ -145,9 +145,12 @@
 
     FoodItem *f = objects[indexPath.row];
     
-    cell.f_name.text = f.food_name;
-    cell.f_desc.text = f.food_description;
-    cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
+    cell.f_name.text = [NSString stringWithFormat:@"%@", f.food_name];
+    cell.f_desc.selectable = YES; // an iOS bug workaround
+    cell.f_desc.contentInset = UIEdgeInsetsMake(-2,-2,0,0);
+    cell.f_desc.text = [NSString stringWithFormat:@"By %@\n%@\nAvailable between\n%@\n%@\n%@", f.seller_name, f.food_description, [totUtility dateToStringShort:f.food_start_time], [totUtility dateToStringShort:f.food_end_time], f.seller_address];
+    cell.f_desc.selectable = NO; // an iOS bug workaround
+    cell.f_price.text = [NSString stringWithFormat:@"$ %.0f", f.food_price];
     
     return cell;
 }
@@ -218,8 +221,8 @@
 }
 
 - (void)placeOrder {
-    BOOL re = [global.server addOrder:currentOrder.food_id];
-    if( re ) {
+    NSString* order_id = [global.server addOrder:currentOrder.food_id];
+    if( order_id != nil ) {
         // order successful, go to order list page
         [self performSegueWithIdentifier:@"goToBuyerOrderListPage" sender:self];
     }
