@@ -102,7 +102,7 @@
 
     NSString* status;
     if( [order.order_status isEqualToString:ORDER_STATUS_ORDERED] )
-        status = [NSString stringWithFormat:@"Waiting for %@'s confirmation", order.seller.email];
+        status = [NSString stringWithFormat:@"Waiting for %@'s confirmation", order.seller.name];
     else if( [order.order_status isEqualToString:ORDER_STATUS_CONFIRMED] )
         status = @"Confirmed";
     else if( [order.order_status isEqualToString:ORDER_STATUS_COMPLETED] )
@@ -110,7 +110,7 @@
     else
         status = @"Status Unknown";
     cell.f_time_status.text = [NSString stringWithFormat:@"  Ordered on %@\n  %@", [totUtility dateToStringHumanReadable:order.created_at], status];
-    cell.f_name.text = [NSString stringWithFormat:@"$ %.0f %@\nBy %@\n%@\n%@", f.food_price, f.food_name, order.seller.email, @"Blossom Hill Rd & Lean Ave", @"213-784-2526"];
+    cell.f_name.text = [NSString stringWithFormat:@"$ %.0f %@\nBy %@\n%@\n%@", f.food_price, f.food_name, order.seller.name, @"Blossom Hill Rd & Lean Ave", @"213-784-2526"];
     cell.f_start_end_time.text = [NSString stringWithFormat:@"Available %@ - %@", [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time]];
 //    [cell.f_name sizeToFit];
     

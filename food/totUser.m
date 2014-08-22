@@ -32,6 +32,19 @@ static totModel* _model;
     return self;
 }
 
+-(id) initWithDict:(NSDictionary*)dict {
+    self = [super init];
+    if( self && dict != nil ) {
+        self.id_str     = dict[@"seller_id"];
+        self.name       = dict[@"seller_name"];
+        self.email      = dict[@"seller_phone"];
+        self.phone      = dict[@"seller_phone"];
+        self.location   = dict[@"seller_location"];
+        self.address    = dict[@"seller_address"];
+    }
+    return self;
+}
+
 +(BOOL) addAccount:(NSString*)email password:(NSString*)pwd {
     NSString* pwdhash = [self getPasswordHash:pwd salt:nil];
     NSString* account_pref = [NSString stringWithFormat:PREFERENCE_ACCOUNT, email];

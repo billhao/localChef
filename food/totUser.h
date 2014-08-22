@@ -12,12 +12,17 @@
 }
 
 @property(nonatomic,retain) NSString* email;
+@property(nonatomic,retain) NSString* phone;
+@property(nonatomic,retain) NSString* name;
+@property(nonatomic,retain) NSString* address;
+@property(nonatomic,retain) NSString* location; // zip code
 @property(nonatomic,retain) NSString* secret;
 @property(nonatomic,retain) NSString* id_str;
 @property(nonatomic,retain) NSString* passcode;
 
 // initializer
 -(id) initWithID:(NSString*)_email;    // init to an existing user
+-(id) initWithDict:(NSDictionary*)dict;
 
 -(void) persistUser;
 

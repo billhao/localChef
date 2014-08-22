@@ -18,8 +18,8 @@
         //self.created_at     = [totUtility stringToDate:dict[@"created_at"]];
         self.order_status   = dict[@"order_status"];
         self.food           = [FoodItem fromDictionary:dict[@"item"] food_id:@"food-id"];
-//        self.seller         = dict[@"seller"];
-//        self.buyer          = dict[@"buyer"];
+        self.seller         = [[totUser alloc] initWithDict:dict[@"seller"]];
+        self.buyer          = [[totUser alloc] initWithDict:dict[@"buyer"]];
     }
     return self;
 }
