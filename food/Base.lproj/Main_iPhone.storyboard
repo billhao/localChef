@@ -516,37 +516,6 @@ my neighbors</string>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOl-z1-hXo" userLabel="locationPicker">
-                                        <rect key="frame" x="1000" y="576" width="320" height="162"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="qHJ-XA-YtT" id="dHK-pQ-Ou6"/>
-                                            <outlet property="delegate" destination="qHJ-XA-YtT" id="u0z-zx-itF"/>
-                                        </connections>
-                                    </pickerView>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="ag4-jo-MHo" userLabel="startTimePicker">
-                                        <rect key="frame" x="1000" y="576" width="320" height="162"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="427868404.45778102">
-                                            <!--2014-07-24 04:20:04 +0000-->
-                                        </date>
-                                        <date key="minimumDate" timeIntervalSinceReferenceDate="410266800">
-                                            <!--2014-01-01 11:00:00 +0000-->
-                                        </date>
-                                        <date key="maximumDate" timeIntervalSinceReferenceDate="441716400">
-                                            <!--2014-12-31 11:00:00 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="NJI-Sc-xSp" userLabel="endTimePicker">
-                                        <rect key="frame" x="1000" y="576" width="320" height="162"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="427868404.45778102">
-                                            <!--2014-07-24 04:20:04 +0000-->
-                                        </date>
-                                        <date key="minimumDate" timeIntervalSinceReferenceDate="410266800">
-                                            <!--2014-01-01 11:00:00 +0000-->
-                                        </date>
-                                        <date key="maximumDate" timeIntervalSinceReferenceDate="441716400">
-                                            <!--2014-12-31 11:00:00 +0000-->
-                                        </date>
-                                    </datePicker>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-YX-Zd3">
                                         <rect key="frame" x="246" y="435" width="46" height="30"/>
                                         <state key="normal" title="Button">
@@ -579,7 +548,6 @@ my neighbors</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="endTimePicker" destination="NJI-Sc-xSp" id="bgZ-WY-zgL"/>
                         <outlet property="food_description" destination="KN9-CY-Byb" id="WIQ-ea-bKJ"/>
                         <outlet property="food_image" destination="Cem-LX-3S4" id="nUi-KF-Zog"/>
                         <outlet property="food_name" destination="Z2a-Sm-gsq" id="Q4d-2I-y7e"/>
@@ -587,14 +555,12 @@ my neighbors</string>
                         <outlet property="food_quantity" destination="ItJ-t6-1io" id="rDK-cf-OAi"/>
                         <outlet property="food_start_time" destination="sst-aa-3JF" id="ydi-To-nLn"/>
                         <outlet property="food_time" destination="Ueh-fm-mwI" id="KEi-fi-5Zt"/>
-                        <outlet property="locationPicker" destination="cOl-z1-hXo" id="awh-bl-8pw"/>
                         <outlet property="priceStepper" destination="tEa-ra-dHe" id="Yap-vr-qYQ"/>
                         <outlet property="publishButton" destination="V3u-ft-d6y" id="bad-8D-bQE"/>
                         <outlet property="quantityStepper" destination="QXs-xV-61Y" id="dje-5G-jrJ"/>
                         <outlet property="scrollView" destination="AEw-0e-8ST" id="0Sf-6L-q2G"/>
                         <outlet property="seller_address" destination="mkn-7T-kH2" id="mUB-1n-Sg8"/>
                         <outlet property="seller_location" destination="JPm-Ku-pUa" id="hhI-Fo-Msq"/>
-                        <outlet property="startTimePicker" destination="ag4-jo-MHo" id="AUH-mu-5eD"/>
                         <outlet property="takePhotoButton" destination="pdT-qr-JdJ" id="UuQ-im-uaS"/>
                     </connections>
                 </viewController>
@@ -1041,7 +1007,7 @@ More address</string>
     <inferredMetricsTieBreakers>
         <segue reference="aBw-P8-4Ly"/>
         <segue reference="7CP-fM-KtX"/>
-        <segue reference="FS2-Zc-7Jo"/>
+        <segue reference="kpq-ma-ikf"/>
         <segue reference="joA-Sr-uUI"/>
         <segue reference="v1a-UG-MNm"/>
     </inferredMetricsTieBreakers>

@@ -18,7 +18,7 @@
 
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
     quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
-    publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton,
+    publishButton, locations, startTimePicker, endTimePicker, takePhotoButton,
     food_description;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,6 +64,8 @@
     start_time = nil;
     end_time = nil;
 
+    [self createDatePicker];
+    
     UIView* doneButton = [self createInputAccessoryView1];
     food_start_time.inputView = startTimePicker;
     food_start_time.inputAccessoryView = doneButton;
@@ -166,17 +168,17 @@
     timeStepper.value = [sender.text intValue];
 }
 
-- (IBAction)locationTouchUpInside:(id)sender {
-    // show location picker
-    CGRect f = locationPicker.frame;
-    f.origin.y = self.view.bounds.size.height;
-    locationPicker.frame = f;
-    [UIView animateWithDuration:0.4 animations:^{
-        CGRect f1 = f;
-        f1.origin.y = f1.size.height;
-        locationPicker.frame = f1;
-    }];
-}
+//- (IBAction)locationTouchUpInside:(id)sender {
+//    // show location picker
+//    CGRect f = locationPicker.frame;
+//    f.origin.y = self.view.bounds.size.height;
+//    locationPicker.frame = f;
+//    [UIView animateWithDuration:0.4 animations:^{
+//        CGRect f1 = f;
+//        f1.origin.y = f1.size.height;
+//        locationPicker.frame = f1;
+//    }];
+//}
 
 - (IBAction)takePhotoButtonPressed:(UIButton *)sender {
     [self takePhoto];
@@ -224,6 +226,24 @@
     food_time.text = @"";
     //seller_location.text = @"";
     //seller_address.text = @"";
+}
+
+- (void)createDatePicker {
+    NSDate* now = [NSDate date];
+    
+    startTimePicker = [[UIDatePicker alloc] init];
+    startTimePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    startTimePicker.minuteInterval = 15;
+    startTimePicker.date = now;
+    startTimePicker.minimumDate = now;
+    startTimePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:oneHour * 24 * 7]; // 7 days from now
+
+    endTimePicker = [[UIDatePicker alloc] init];
+    endTimePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    endTimePicker.minuteInterval = 15;
+    endTimePicker.date = [startTimePicker.date dateByAddingTimeInterval: oneHour * 5];
+    endTimePicker.minimumDate = now;
+    endTimePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:oneHour * 24 * 7]; // 7 days from now
 }
 
 //- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -280,10 +300,10 @@
     [food_description resignFirstResponder];
 }
 
-- (void)pickerDoneClicked: (UIButton *)button {
-    [seller_location resignFirstResponder];
-    seller_location.text = locations[[locationPicker selectedRowInComponent:0]];
-}
+//- (void)pickerDoneClicked: (UIButton *)button {
+//    [seller_location resignFirstResponder];
+//    seller_location.text = locations[[locationPicker selectedRowInComponent:0]];
+//}
 
 - (UIView*)createInputAccessoryView1 {
     // create a done view + done button, attach to it a doneClicked action, and place it in a toolbar as an accessory input view...

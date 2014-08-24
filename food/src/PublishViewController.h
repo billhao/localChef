@@ -45,9 +45,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *food_description;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
-@property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
-@property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;
-@property (weak, nonatomic) IBOutlet UIPickerView *locationPicker;
 @property (weak, nonatomic) IBOutlet UIButton *publishButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *food_name;
@@ -61,6 +58,9 @@
 @property (weak, nonatomic) IBOutlet UIStepper *quantityStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *priceStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *timeStepper;
+
+@property (retain, nonatomic) UIDatePicker *startTimePicker;
+@property (retain, nonatomic) UIDatePicker *endTimePicker;
 
 @property (strong, nonatomic) NSArray *locations;
 
