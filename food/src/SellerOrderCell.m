@@ -6,15 +6,18 @@
 //  Copyright (c) 2014 food. All rights reserved.
 //
 
-#import "MenuCell.h"
+#import "SellerOrderCell.h"
 
-@implementation MenuCell
+@implementation SellerOrderCell
+
+@synthesize order;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        order = nil;
     }
     return self;
 }

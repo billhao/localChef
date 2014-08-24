@@ -32,6 +32,8 @@
 		3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9D7196F95E600D67428 /* totURLConnection.m */; };
 		3F59F9DE196F99F700D67428 /* totUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59F9DD196F99F700D67428 /* totUtility.m */; };
 		3F59F9E0196F9ABE00D67428 /* comm.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F59F9DF196F9ABE00D67428 /* comm.json */; };
+		3F81693F19AA82710062F6EC /* SellerOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F81693E19AA82710062F6EC /* SellerOrderCell.m */; };
+		3F81694119AA84490062F6EC /* soldout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F81694019AA84490062F6EC /* soldout.jpg */; };
 		3F84EC9E19A3047800765B0F /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F84EC9D19A3047800765B0F /* NotificationManager.m */; };
 		3F8ABBF6195F858600A9C7DE /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF5195F858600A9C7DE /* FoodItem.m */; };
 		3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF8195F880600A9C7DE /* FoodItemView.m */; };
@@ -111,6 +113,9 @@
 		3F59F9DC196F99F700D67428 /* totUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totUtility.h; sourceTree = "<group>"; };
 		3F59F9DD196F99F700D67428 /* totUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totUtility.m; sourceTree = "<group>"; };
 		3F59F9DF196F9ABE00D67428 /* comm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comm.json; sourceTree = "<group>"; };
+		3F81693D19AA82710062F6EC /* SellerOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SellerOrderCell.h; path = src/SellerOrderCell.h; sourceTree = "<group>"; };
+		3F81693E19AA82710062F6EC /* SellerOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SellerOrderCell.m; path = src/SellerOrderCell.m; sourceTree = "<group>"; };
+		3F81694019AA84490062F6EC /* soldout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soldout.jpg; sourceTree = "<group>"; };
 		3F84EC9C19A3047800765B0F /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = src/NotificationManager.h; sourceTree = "<group>"; };
 		3F84EC9D19A3047800765B0F /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = src/NotificationManager.m; sourceTree = "<group>"; };
 		3F8ABBF4195F858600A9C7DE /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItem.h; path = src/FoodItem.h; sourceTree = "<group>"; };
@@ -223,6 +228,8 @@
 		3F25438E1952BA690000E6C9 /* food */ = {
 			isa = PBXGroup;
 			children = (
+				3F81693D19AA82710062F6EC /* SellerOrderCell.h */,
+				3F81693E19AA82710062F6EC /* SellerOrderCell.m */,
 				3F3D6BD219A145CC00115655 /* OrderListViewController.h */,
 				3F3D6BD319A145CC00115655 /* OrderListViewController.m */,
 				3F9C8613199C8704003340E9 /* totLoginController.h */,
@@ -331,6 +338,7 @@
 		3F8ABBFA195F8C7E00A9C7DE /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				3F81694019AA84490062F6EC /* soldout.jpg */,
 				3FB0D76319A99CB100A519C5 /* confirmed1.png */,
 				3FB0D76119A99B0100A519C5 /* confirmed.png */,
 				3FC361C119A6F67E0076EEA2 /* order.png */,
@@ -444,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F81694119AA84490062F6EC /* soldout.jpg in Resources */,
 				3F25439F1952BA690000E6C9 /* Main_iPad.storyboard in Resources */,
 				3F8ABBFE195F8C7E00A9C7DE /* fish.jpg in Resources */,
 				3F2543A71952BA690000E6C9 /* Images.xcassets in Resources */,
@@ -473,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F81693F19AA82710062F6EC /* SellerOrderCell.m in Sources */,
 				3F2543991952BA690000E6C9 /* AppDelegate.m in Sources */,
 				3FC2FA241990B01400457F6D /* RNOpenSSLDecryptor.m in Sources */,
 				3F59F9DA196F95E600D67428 /* totURLConnection.m in Sources */,

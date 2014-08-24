@@ -26,6 +26,7 @@
 @property(nonatomic, assign) long       food_quantity;
 @property(nonatomic, retain) NSDate*    food_start_time;
 @property(nonatomic, retain) NSDate*    food_end_time;
+@property(nonatomic, assign) long       food_stock;
 
 // pickup/delivery
 

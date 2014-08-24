@@ -92,8 +92,9 @@
         for (NSDictionary* seller in data) {
             NSDictionary* items = seller[@"items"];
             for (NSDictionary* item in items) {
-                NSDictionary* dict = [totUtility JSONToObject:item[@"dish_data"]];
+                NSDictionary* dict = (NSDictionary*)[totUtility JSONToObject:item[@"dish_data"]];
                 FoodItem* food = [FoodItem fromDictionary:dict food_id:item[@"dish_id"]];
+                food.food_stock              = [item[@"stock"] integerValue];
                 food.seller_id          = seller[@"seller_id"];
                 food.seller_name        = seller[@"seller_name"];
                 food.seller_address     = seller[@"seller_address"];
@@ -145,6 +146,14 @@
 
     FoodItem *f = objects[indexPath.row];
     
+    if( f.food_stock == 0 ) {
+        cell.soldoutImg.hidden  = false;
+        cell.orderButton.hidden = true;
+    }
+    else {
+        cell.soldoutImg.hidden  = true;
+        cell.orderButton.hidden = false;
+    }
     cell.f_name.text = [NSString stringWithFormat:@"%@", f.food_name];
     cell.f_desc.selectable = YES; // an iOS bug workaround
     cell.f_desc.contentInset = UIEdgeInsetsMake(-2,-2,0,0);

@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Order.h"
 
-@interface MenuCell : UITableViewCell
+@interface SellerOrderCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *f_image;
 @property (weak, nonatomic) IBOutlet UILabel *f_name;
 @property (weak, nonatomic) IBOutlet UITextView *f_desc;
 @property (weak, nonatomic) IBOutlet UILabel *f_price;
-@property (weak, nonatomic) IBOutlet UIButton *orderButton;
-@property (weak, nonatomic) IBOutlet UIImageView *soldoutImg;
+@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *confirmedButton;
+@property (retain, nonatomic) Order* order;
 
 
 @end

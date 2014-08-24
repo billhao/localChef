@@ -11,7 +11,7 @@
 
 #import "FoodItem.h"
 #import "FoodItemView.h"
-#import "MenuCell.h"
+#import "SellerOrderCell.h"
 #import "Global.h"
 #import "totUtility.h"
 #import "SellerSectionHeaderCell.h"
@@ -122,7 +122,7 @@
 {
     //NSLog(@"%@", indexPath);
     
-    MenuCell *cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
+    SellerOrderCell *cell = (SellerOrderCell*)[tableView dequeueReusableCellWithIdentifier:@"SellerOrderCell" forIndexPath:indexPath];
     
     FoodItem *f = _objects[0];
     
@@ -230,18 +230,18 @@
     int i = 5;
     UIView* v = sender.superview;
     while( i > 0 ) {
-        if( [v isKindOfClass:[MenuCell class]] )
+        if( [v isKindOfClass:[SellerOrderCell class]] )
             break;
         v = v.superview;
         i--;
     }
     if( i == 0 ) {
-        NSLog(@"Cannot find MenuCell of the confirm button");
+        NSLog(@"Cannot find SellerOrderCell of the confirm button");
         return;
     }
     
     // handle the confirm button
-    MenuCell* cell = (MenuCell*)v;
+    SellerOrderCell* cell = (SellerOrderCell*)v;
     Order* order = cell.order;
     NSLog(@"%@", order.order_id);
     order.order_status = ORDER_STATUS_CONFIRMED;

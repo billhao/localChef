@@ -47,6 +47,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="soldout.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Nry-wH-3UQ">
+                                                    <rect key="frame" x="199" y="79" width="108" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-sL-aJA">
                                                     <rect key="frame" x="253" y="79" width="54" height="48"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
@@ -73,6 +77,8 @@
                                     <outlet property="f_image" destination="P9V-nK-Jf2" id="2hI-7l-zdo"/>
                                     <outlet property="f_name" destination="4iI-Eq-eDz" id="QJ4-Do-OnF"/>
                                     <outlet property="f_price" destination="HKw-f0-1Ay" id="GXX-V5-7Gm"/>
+                                    <outlet property="orderButton" destination="U4a-sL-aJA" id="KM8-cT-fj8"/>
+                                    <outlet property="soldoutImg" destination="Nry-wH-3UQ" id="Vsd-Ug-JkF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -701,7 +707,7 @@ description</string>
                                     <outlet property="food_name" destination="7QI-av-8D2" id="v8e-zL-TGX"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="114" id="hJy-HV-ttp" customClass="MenuCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SellerOrderCell" rowHeight="114" id="hJy-HV-ttp" customClass="SellerOrderCell">
                                 <rect key="frame" x="0.0" y="181" width="320" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJy-HV-ttp" id="kPk-pE-eUK">
@@ -998,6 +1004,7 @@ More address</string>
         <image name="food.png" width="102" height="102"/>
         <image name="order.png" width="128" height="113"/>
         <image name="rou.jpg" width="482" height="308"/>
+        <image name="soldout.jpg" width="216" height="96"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1005,10 +1012,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aBw-P8-4Ly"/>
-        <segue reference="7CP-fM-KtX"/>
-        <segue reference="kpq-ma-ikf"/>
-        <segue reference="joA-Sr-uUI"/>
         <segue reference="v1a-UG-MNm"/>
+        <segue reference="joA-Sr-uUI"/>
+        <segue reference="xsL-GD-E5T"/>
+        <segue reference="7CP-fM-KtX"/>
+        <segue reference="aBw-P8-4Ly"/>
     </inferredMetricsTieBreakers>
 </document>
