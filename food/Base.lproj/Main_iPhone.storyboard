@@ -408,7 +408,7 @@ my neighbors</string>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fish" borderStyle="roundedRect" placeholder="菜名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq" userLabel="name">
                                         <rect key="frame" x="20" y="6" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                         <connections>
                                             <action selector="foodNameTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="ICy-mZ-D9t"/>
                                         </connections>
@@ -1014,8 +1014,8 @@ More address</string>
     <inferredMetricsTieBreakers>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
-        <segue reference="xsL-GD-E5T"/>
-        <segue reference="7CP-fM-KtX"/>
         <segue reference="aBw-P8-4Ly"/>
+        <segue reference="7CP-fM-KtX"/>
+        <segue reference="FS2-Zc-7Jo"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -159,7 +159,17 @@
     cell.f_desc.contentInset = UIEdgeInsetsMake(-2,-2,0,0);
     cell.f_desc.text = [NSString stringWithFormat:@"By %@\n%@\nAvailable between\n%@\n%@\n%@", f.seller_name, f.food_description, [totUtility dateToStringShort:f.food_start_time], [totUtility dateToStringShort:f.food_end_time], f.seller_address];
     cell.f_desc.selectable = NO; // an iOS bug workaround
-    cell.f_price.text = [NSString stringWithFormat:@"$ %.0f", f.food_price];
+    double price = f.food_price;
+    if( price > 0 ) {
+        if( price != (price*100)/100 )
+            cell.f_price.text = [NSString stringWithFormat:@"$ %.2f", f.food_price];
+        if( price != (price*10)/10 )
+            cell.f_price.text = [NSString stringWithFormat:@"$ %.1f", f.food_price];
+        else
+            cell.f_price.text = [NSString stringWithFormat:@"$ %.0f", f.food_price];
+    }
+    else
+        cell.f_price.text = @"Free";
     
     return cell;
 }
