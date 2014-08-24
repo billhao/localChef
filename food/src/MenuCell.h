@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *f_desc;
 @property (weak, nonatomic) IBOutlet UILabel *f_price;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *confirmedButton;
 @property (retain, nonatomic) Order* order;
 
 

@@ -120,15 +120,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", indexPath);
+    //NSLog(@"%@", indexPath);
     
     MenuCell *cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
     FoodItem *f = _objects[0];
     
-    cell.order = [[Order alloc] init];
-    cell.order.order_id = @"d0030cf6c33f0624b9a59a713b15d086";
-    cell.order.order_status = ORDER_STATUS_ORDERED;
+    Order* order = [[Order alloc] init];
+    order.order_id = @"d0030cf6c33f0624b9a59a713b15d086";
+    order.order_status = ORDER_STATUS_CONFIRMED;
+    cell.order = order;
+    
+    if( [order.order_status isEqualToString:ORDER_STATUS_ORDERED] ) {
+        cell.confirmButton.hidden = false;
+        cell.confirmedButton.hidden = true;
+    }
+    else {
+        cell.confirmButton.hidden = true;
+        cell.confirmedButton.hidden = false;
+    }
     cell.f_name.text = [NSString stringWithFormat:@"Ordered on %@\nHao Wang\n213-784-2526\nBlossom Hill Rd And\nLean Ave", [totUtility dateToStringHumanReadable:[NSDate date]]];//], f.seller_name, f.seller_phone, f.seller_address];
     
     

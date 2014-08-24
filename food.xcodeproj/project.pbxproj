@@ -44,6 +44,8 @@
 		3FABA646195FBBDF0058F6D3 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA645195FBBDF0058F6D3 /* MenuCell.m */; };
 		3FABA649195FBEFB0058F6D3 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA648195FBEFB0058F6D3 /* Global.m */; };
 		3FABA64C195FC2B60058F6D3 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABA64B195FC2B60058F6D3 /* OrderCell.m */; };
+		3FB0D76219A99B0100A519C5 /* confirmed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0D76119A99B0100A519C5 /* confirmed.png */; };
+		3FB0D76419A99CB100A519C5 /* confirmed1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0D76319A99CB100A519C5 /* confirmed1.png */; };
 		3FC2FA061990AF3C00457F6D /* totUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA051990AF3C00457F6D /* totUser.m */; };
 		3FC2FA091990AF7400457F6D /* totModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA081990AF7400457F6D /* totModel.m */; };
 		3FC2FA0D1990AFC100457F6D /* totEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA0B1990AFC100457F6D /* totEvent.m */; };
@@ -130,6 +132,8 @@
 		3FABA648195FBEFB0058F6D3 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		3FABA64A195FC2B60058F6D3 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderCell.h; path = src/OrderCell.h; sourceTree = "<group>"; };
 		3FABA64B195FC2B60058F6D3 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderCell.m; path = src/OrderCell.m; sourceTree = "<group>"; };
+		3FB0D76119A99B0100A519C5 /* confirmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmed.png; sourceTree = "<group>"; };
+		3FB0D76319A99CB100A519C5 /* confirmed1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmed1.png; sourceTree = "<group>"; };
 		3FC2FA041990AF3C00457F6D /* totUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totUser.h; sourceTree = "<group>"; };
 		3FC2FA051990AF3C00457F6D /* totUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totUser.m; sourceTree = "<group>"; };
 		3FC2FA071990AF7400457F6D /* totModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totModel.h; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 		3F8ABBFA195F8C7E00A9C7DE /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				3FB0D76319A99CB100A519C5 /* confirmed1.png */,
+				3FB0D76119A99B0100A519C5 /* confirmed.png */,
 				3FC361C119A6F67E0076EEA2 /* order.png */,
 				3F59F9DF196F9ABE00D67428 /* comm.json */,
 				3FABA63F195F9BDB0058F6D3 /* food.png */,
@@ -445,6 +451,8 @@
 				3FABA640195F9BDB0058F6D3 /* food.png in Resources */,
 				3F59F9E0196F9ABE00D67428 /* comm.json in Resources */,
 				3F25439C1952BA690000E6C9 /* Main_iPhone.storyboard in Resources */,
+				3FB0D76419A99CB100A519C5 /* confirmed1.png in Resources */,
+				3FB0D76219A99B0100A519C5 /* confirmed.png in Resources */,
 				3FC361C219A6F67E0076EEA2 /* order.png in Resources */,
 				3F2543931952BA690000E6C9 /* InfoPlist.strings in Resources */,
 			);
