@@ -15,7 +15,7 @@
     self = [super init];
     if( self && dict != nil ) {
         self.order_id       = dict[@"order_id"];
-        //self.created_at     = [totUtility stringToDate:dict[@"created_at"]];
+        self.created_at     = [totUtility stringToDate:dict[@"created_at"]];
         self.order_status   = dict[@"order_status"];
         self.food           = [FoodItem fromDictionary:dict[@"item"] food_id:@"food-id"];
         self.seller         = [[totUser alloc] initWithDict:dict[@"seller"]];

@@ -19,7 +19,7 @@
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
     quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
     publishButton, locationPicker, locations, startTimePicker, endTimePicker, takePhotoButton,
-    seller_phone, food_description;
+    food_description;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +46,6 @@
     food_price.text = @"$ 8";
     priceStepper.value = 8.0;
     seller_address.text = @"Blossom Hill Rd And Lean Ave";
-    seller_phone.text = @"213-784-2526";
     food_description.text = @"Delicious fish";
     food_name.text = @"Fried fish";
     
@@ -59,7 +58,6 @@
 //    seller_location.text = locations[0];
     
     seller_location.inputAccessoryView = [self createInputAccessoryView];
-    seller_phone.inputAccessoryView = [self createInputAccessoryView];
     food_description.inputAccessoryView = [self createInputAccessoryView];
 
     // start time
@@ -135,7 +133,7 @@
     item.seller_name = global.user.email;
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
-    item.seller_phone = seller_phone.text;
+    item.seller_phone = @"2139059092";//global.user.phone;
     
     // send the item to server
     item.food_id = [global.server publishItem:item];
@@ -278,7 +276,6 @@
 }
 
 - (void)textFieldDoneButtonClicked: (id *)control {
-    [seller_phone resignFirstResponder];
     [seller_location resignFirstResponder];
     [food_description resignFirstResponder];
 }

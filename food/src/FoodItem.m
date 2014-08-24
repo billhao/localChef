@@ -19,18 +19,18 @@
     i = 0;
     if( i == 0 ) {
         f.food_id = @"1";
-        f.food_name = @"红烧肉";
-        f.food_description = @"不好吃不要钱";
-        f.food_image_url = @"rou";
+        f.food_name = @"Fried fish";
+        f.food_description = @"Delicious fish";
+        f.food_image_url = @"fish";
         f.food_quantity = 2;
-        f.food_price = 20;
+        f.food_price = 12;
         f.food_start_time = [NSDate date];
         f.food_end_time = [NSDate dateWithTimeIntervalSinceNow:3600];
-        f.seller_name = @"王阿姨";
+        f.seller_name = @"Hao Wang";
         f.seller_id = @"1";
-        f.seller_address = @"王府井1号";
+        f.seller_address = @"Blossom Hill Rd and Lean Ave";
         f.seller_location = @"95123";
-        f.seller_phone = @"13810018888";
+        f.seller_phone = @"2139059092";
     }
 //    else if( i == 1 ) {
 //        f.food_id = 2;

@@ -445,17 +445,7 @@ my neighbors</string>
                                             <action selector="locationTouchUpInside:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="rFf-HP-nhO"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95123" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
-                                        <rect key="frame" x="20" y="558" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
-                                        <connections>
-                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="jje-g4-2VF"/>
-                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="5xF-EW-TvU"/>
-                                            <action selector="textFieldReturn:" destination="qHJ-XA-YtT" eventType="editingDidEndOnExit" id="gmJ-Ra-utx"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
                                         <rect key="frame" x="20" y="481" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -464,15 +454,28 @@ my neighbors</string>
                                             <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="7D7-N4-diE"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2Q-D0-WRb" userLabel="phone #">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95123" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
                                         <rect key="frame" x="20" y="519" width="280" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ZL1-yB-hHk"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
-                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="dkj-fa-hoF"/>
-                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="u6r-X5-UGM"/>
+                                            <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="jje-g4-2VF"/>
+                                            <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="5xF-EW-TvU"/>
+                                            <action selector="textFieldReturn:" destination="qHJ-XA-YtT" eventType="editingDidEndOnExit" id="gmJ-Ra-utx"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
+                                        <rect key="frame" x="20" y="558" width="280" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Publish"/>
+                                        <connections>
+                                            <action selector="publish:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="3wI-yu-I0A"/>
+                                        </connections>
+                                    </button>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-ra-dHe">
                                         <rect key="frame" x="206" y="80" width="94" height="29"/>
                                         <connections>
@@ -513,14 +516,6 @@ my neighbors</string>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-ft-d6y">
-                                        <rect key="frame" x="20" y="588" width="280" height="36"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="立即发布"/>
-                                        <connections>
-                                            <action selector="publish:" destination="qHJ-XA-YtT" eventType="touchUpInside" id="3wI-yu-I0A"/>
-                                        </connections>
-                                    </button>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOl-z1-hXo" userLabel="locationPicker">
                                         <rect key="frame" x="1000" y="576" width="320" height="162"/>
                                         <connections>
@@ -563,8 +558,8 @@ my neighbors</string>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JPm-Ku-pUa" firstAttribute="top" secondItem="h2Q-D0-WRb" secondAttribute="bottom" constant="8" symbolic="YES" id="jWf-xB-6Uz"/>
-                                    <constraint firstItem="V3u-ft-d6y" firstAttribute="top" secondItem="JPm-Ku-pUa" secondAttribute="bottom" constant="8" symbolic="YES" id="jr3-ko-Qsl"/>
+                                    <constraint firstItem="V3u-ft-d6y" firstAttribute="top" secondItem="JPm-Ku-pUa" secondAttribute="bottom" constant="8" id="jr3-ko-Qsl"/>
+                                    <constraint firstItem="JPm-Ku-pUa" firstAttribute="top" secondItem="mkn-7T-kH2" secondAttribute="bottom" constant="8" id="vBC-JQ-pKx"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -599,7 +594,6 @@ my neighbors</string>
                         <outlet property="scrollView" destination="AEw-0e-8ST" id="0Sf-6L-q2G"/>
                         <outlet property="seller_address" destination="mkn-7T-kH2" id="mUB-1n-Sg8"/>
                         <outlet property="seller_location" destination="JPm-Ku-pUa" id="hhI-Fo-Msq"/>
-                        <outlet property="seller_phone" destination="h2Q-D0-WRb" id="7RI-GH-FzT"/>
                         <outlet property="startTimePicker" destination="ag4-jo-MHo" id="AUH-mu-5eD"/>
                         <outlet property="takePhotoButton" destination="pdT-qr-JdJ" id="UuQ-im-uaS"/>
                     </connections>
@@ -1047,7 +1041,7 @@ More address</string>
     <inferredMetricsTieBreakers>
         <segue reference="aBw-P8-4Ly"/>
         <segue reference="7CP-fM-KtX"/>
-        <segue reference="kpq-ma-ikf"/>
+        <segue reference="FS2-Zc-7Jo"/>
         <segue reference="joA-Sr-uUI"/>
         <segue reference="v1a-UG-MNm"/>
     </inferredMetricsTieBreakers>
