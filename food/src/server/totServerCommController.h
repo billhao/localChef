@@ -46,7 +46,7 @@ enum SERVER_RESPONSE_CODE {
 - (totUser*) register:(NSString*)username phone:(NSString*)phone passcode:(NSString*)passcode returnMessage:(NSString**)message;
 - (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message;
 - (BOOL)updateDeviceToken:(NSString*)devToken;
-- (NSArray*)listOrderForSeller;
+- (NSMutableArray*)listOrderForSeller;
 - (NSArray*)listOrderForBuyer;
 - (NSArray*)listOrderFor:(NSString*)user_type; // do not use this one directly
 

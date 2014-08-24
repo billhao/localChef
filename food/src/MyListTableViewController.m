@@ -21,7 +21,7 @@
 @end
 
 @implementation MyListTableViewController {
-    NSMutableArray *_objects;
+    NSMutableArray *foodItems;
 }
 
 - (void)awakeFromNib
@@ -67,38 +67,16 @@
 
 
 - (void)refreshData {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    
-    NSArray* items = [global.server getPublishedItems:global.user.id_str secret:global.user.secret];
-    
-    
-    for (NSDictionary* item in items) {
-        FoodItem* food = [[FoodItem alloc] init];
-        
-        food.food_id            = item[@"dish_id"];
-        NSString* str           = item[@"dish_data"];
-        NSDictionary* item1     = (NSDictionary*)[totUtility JSONToObject:str];
-        food.food_name          = item1[@"food_name"];
-        food.food_description   = item1[@"food_description"];
-        food.food_image_url     = item1[@"food_image_url"];
-        food.food_price         = [item1[@"food_price"] doubleValue];
-        food.food_quantity      = [item[@"stock"] integerValue];
-        food.food_start_time    = item1[@"food_start_time"];
-        food.food_end_time      = item1[@"food_end_time"];
-        
-        [_objects addObject:food];
-    }
+    foodItems = [global.server listOrderForSeller];
 }
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!foodItems) {
+        foodItems = [[NSMutableArray alloc] init];
     }
     
-    [_objects insertObject:[FoodItem getRandomFood] atIndex:0];
+    [foodItems insertObject:[FoodItem getRandomFood] atIndex:0];
     //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -109,13 +87,17 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return foodItems.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return section+2;// _objects.count;
+    FoodItem* food = foodItems[section];
+    if( food == nil || food.orders == nil )
+        return 0;
+    else
+        return food.orders.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,11 +106,11 @@
     
     SellerOrderCell *cell = (SellerOrderCell*)[tableView dequeueReusableCellWithIdentifier:@"SellerOrderCell" forIndexPath:indexPath];
     
-    FoodItem *f = _objects[0];
-    
-    Order* order = [[Order alloc] init];
-    order.order_id = @"d0030cf6c33f0624b9a59a713b15d086";
-    order.order_status = ORDER_STATUS_CONFIRMED;
+    FoodItem* food = foodItems[indexPath.section];
+    Order* order = food.orders[indexPath.row];
+//    Order* order = [[Order alloc] init];
+//    order.order_id = @"d0030cf6c33f0624b9a59a713b15d086";
+//    order.order_status = ORDER_STATUS_CONFIRMED;
     cell.order = order;
     
     if( [order.order_status isEqualToString:ORDER_STATUS_ORDERED] ) {
@@ -139,14 +121,8 @@
         cell.confirmButton.hidden = true;
         cell.confirmedButton.hidden = false;
     }
-    cell.f_name.text = [NSString stringWithFormat:@"Ordered on %@\nHao Wang\n213-784-2526\nBlossom Hill Rd And\nLean Ave", [totUtility dateToStringHumanReadable:[NSDate date]]];//], f.seller_name, f.seller_phone, f.seller_address];
-    
-    
-    //FoodItem *f = _objects[indexPath.row];
-    //cell.f_name.text = f.food_name;
-    //cell.f_desc.text = f.food_description;
-    //cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
-    
+    cell.f_name.text = [NSString stringWithFormat:@"Ordered on %@\nBy %@\n%@\n%@", [totUtility dateToStringHumanReadable:order.created_at], order.buyer.name, order.buyer.phone, order.buyer.address];
+
     return cell;
 }
 
@@ -159,7 +135,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [foodItems removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -170,7 +146,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     SellerSectionHeaderCell *cell = (SellerSectionHeaderCell*)[tableView dequeueReusableCellWithIdentifier:@"SellerSectionHeaderCell"];
     
-    FoodItem* f = [FoodItem getRandomFood];
+    FoodItem* f = foodItems[section];
     
     cell.food_name.text = [NSString stringWithFormat:@"$ %.0f %@\nQuantity: %ld\nAvailable between\n%@ - %@\n%@", f.food_price, f.food_name, f.food_quantity, [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time], f.food_description];
     return cell;
@@ -204,7 +180,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
+        NSDate *object = foodItems[indexPath.row];
         //self.detailViewController.detailItem = object;
     }
 }
@@ -249,6 +225,7 @@
     
     // reload the data from server
     [self refreshData];
+    [self.tableView reloadData];
 }
 
 @end

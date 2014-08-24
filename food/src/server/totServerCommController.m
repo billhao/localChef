@@ -285,16 +285,41 @@
     return false;
 }
 
-- (NSArray*)listOrderForSeller {
-    return [self listOrderFor:@"seller"];
+
+// return array of FoodItem
+- (NSMutableArray*)listOrderForSeller {
+    NSString* req = [NSString stringWithFormat:@"type=listorder&secret=%@&user_type=seller", global.user.secret];
+    id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSArray class]]) {
+        NSMutableArray* itemList = [[NSMutableArray alloc] initWithCapacity:((NSArray*)resp).count];
+        for (NSDictionary* dict in resp) {
+            FoodItem* food = [FoodItem fromDictionary:dict[@"dish_data"] food_id:dict[@"dish_id"]];
+            food.food_stock = [dict[@"stock"] integerValue];
+            NSMutableArray* orderList = [[NSMutableArray alloc] init];
+            for( NSDictionary* orderDict in dict[@"orders"] ) {
+                Order* order = [[Order alloc] initWithDict:orderDict];
+                [orderList addObject:order];
+            }
+            food.orders = orderList;
+            [itemList addObject:food];
+        }
+        return itemList;
+    }
+    else if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 0 )
+                return nil;
+        }
+    }
+    
+    return nil;
 }
+
 
 - (NSArray*)listOrderForBuyer {
-    return [self listOrderFor:@"buyer"];
-}
-
-- (NSArray*)listOrderFor:(NSString*)user_type {
-    NSString* req = [NSString stringWithFormat:@"type=listorder&secret=%@&user_type=%@", global.user.secret, user_type];
+    NSString* req = [NSString stringWithFormat:@"type=listorder&secret=%@&user_type=buyer", global.user.secret];
     id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
     
     if( [resp isKindOfClass:[NSArray class]]) {

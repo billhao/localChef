@@ -11,6 +11,14 @@
 
 @implementation FoodItem
 
+-(id) init{
+    self = [super init];
+    if( self ) {
+        self.orders = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 + (FoodItem*)getRandomFood {
     FoodItem* f = [[FoodItem alloc] init];
 //    return f;

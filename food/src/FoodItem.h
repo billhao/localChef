@@ -28,6 +28,9 @@
 @property(nonatomic, retain) NSDate*    food_end_time;
 @property(nonatomic, assign) long       food_stock;
 
+@property(nonatomic, retain) NSMutableArray* orders;
+
+
 // pickup/delivery
 
 + (FoodItem*)getRandomFood;
