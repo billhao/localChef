@@ -1,23 +1,20 @@
 //
-//  MenuCell.m
+//  sellerHeaderCell.m
 //  food
 //
-//  Created by Hao Wang on 6/28/14.
+//  Created by Hao Wang on 8/23/14.
 //  Copyright (c) 2014 food. All rights reserved.
 //
 
-#import "MenuCell.h"
+#import "SellerSectionHeaderCell.h"
 
-@implementation MenuCell
-
-@synthesize order;
+@implementation SellerSectionHeaderCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        order = nil;
     }
     return self;
 }

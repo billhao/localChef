@@ -24,5 +24,6 @@
 @property(nonatomic, retain) totUser*  buyer;
 
 -(id) initWithDict:(NSDictionary*)dict;
+-(NSDictionary*) toDictionary;
 
 @end

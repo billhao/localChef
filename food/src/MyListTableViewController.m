@@ -14,6 +14,7 @@
 #import "MenuCell.h"
 #import "Global.h"
 #import "totUtility.h"
+#import "SellerSectionHeaderCell.h"
 
 @interface MyListTableViewController ()
 
@@ -108,23 +109,32 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _objects.count;
+    return section+2;// _objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%@", indexPath);
+    
     MenuCell *cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
-    FoodItem *f = _objects[indexPath.row];
+    FoodItem *f = _objects[0];
     
-    cell.f_name.text = f.food_name;
-    cell.f_desc.text = f.food_description;
+    cell.order = [[Order alloc] init];
+    cell.order.order_id = @"d0030cf6c33f0624b9a59a713b15d086";
+    cell.order.order_status = ORDER_STATUS_ORDERED;
+    cell.f_name.text = [NSString stringWithFormat:@"Ordered on %@\nHao Wang\n213-784-2526\nBlossom Hill Rd And\nLean Ave", [totUtility dateToStringHumanReadable:[NSDate date]]];//], f.seller_name, f.seller_phone, f.seller_address];
+    
+    
+    //FoodItem *f = _objects[indexPath.row];
+    //cell.f_name.text = f.food_name;
+    //cell.f_desc.text = f.food_description;
     //cell.f_price.text = [NSString stringWithFormat:@"￥%.0f", f.food_price];
     
     return cell;
@@ -144,6 +154,25 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    SellerSectionHeaderCell *cell = (SellerSectionHeaderCell*)[tableView dequeueReusableCellWithIdentifier:@"SellerSectionHeaderCell"];
+    
+    FoodItem* f = [FoodItem getRandomFood];
+    
+    cell.food_name.text = [NSString stringWithFormat:@"$ %.0f %@\nQuantity: %ld\nAvailable between\n%@ - %@\n%@", f.food_price, f.food_name, f.food_quantity, [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time], f.food_description];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    SellerSectionHeaderCell *cell = (SellerSectionHeaderCell*)[tableView dequeueReusableCellWithIdentifier:@"SellerSectionHeaderCell"];
+    return cell.frame.size.height;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 114;
 }
 
 /*
@@ -185,6 +214,31 @@
 
 - (IBAction)goToMyList:(UIStoryboardSegue *)segue {
     PublishViewController* publishVC = (PublishViewController*)[segue sourceViewController];
+}
+
+- (IBAction)confirmOrder:(UIButton*)sender {
+    int i = 5;
+    UIView* v = sender.superview;
+    while( i > 0 ) {
+        if( [v isKindOfClass:[MenuCell class]] )
+            break;
+        v = v.superview;
+        i--;
+    }
+    if( i == 0 ) {
+        NSLog(@"Cannot find MenuCell of the confirm button");
+        return;
+    }
+    
+    // handle the confirm button
+    MenuCell* cell = (MenuCell*)v;
+    Order* order = cell.order;
+    NSLog(@"%@", order.order_id);
+    order.order_status = ORDER_STATUS_CONFIRMED;
+    [global.server updateOrder:order];
+    
+    // reload the data from server
+    [self refreshData];
 }
 
 @end

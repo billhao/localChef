@@ -23,6 +23,7 @@
 		3F2543B01952BA690000E6C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F25438C1952BA690000E6C9 /* UIKit.framework */; };
 		3F2543B81952BA690000E6C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F2543B61952BA690000E6C9 /* InfoPlist.strings */; };
 		3F2543BA1952BA690000E6C9 /* foodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2543B91952BA690000E6C9 /* foodTests.m */; };
+		3F26263319A8751F000ACB6F /* SellerSectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */; };
 		3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CB86D196FBBAD00C32AED /* PublishViewController.m */; };
 		3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385703198B68DA005F9A09 /* MyListTableViewController.m */; };
 		3F3D6BD419A145CC00115655 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3D6BD319A145CC00115655 /* OrderListViewController.m */; };
@@ -91,6 +92,8 @@
 		3F2543B51952BA690000E6C9 /* foodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "foodTests-Info.plist"; sourceTree = "<group>"; };
 		3F2543B71952BA690000E6C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F2543B91952BA690000E6C9 /* foodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = foodTests.m; sourceTree = "<group>"; };
+		3F26263119A8751F000ACB6F /* SellerSectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerSectionHeaderCell.h; sourceTree = "<group>"; };
+		3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerSectionHeaderCell.m; sourceTree = "<group>"; };
 		3F2CB86C196FBBAD00C32AED /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublishViewController.h; path = src/PublishViewController.h; sourceTree = "<group>"; };
 		3F2CB86D196FBBAD00C32AED /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PublishViewController.m; path = src/PublishViewController.m; sourceTree = "<group>"; };
 		3F385702198B68DA005F9A09 /* MyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyListTableViewController.h; path = src/MyListTableViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				3F9C8617199F3153003340E9 /* Order.m */,
 				3F84EC9C19A3047800765B0F /* NotificationManager.h */,
 				3F84EC9D19A3047800765B0F /* NotificationManager.m */,
+				3F26263119A8751F000ACB6F /* SellerSectionHeaderCell.h */,
+				3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				3FC2FA1F1990B01400457F6D /* RNCryptor.m in Sources */,
 				3F2543951952BA690000E6C9 /* main.m in Sources */,
 				3F59F9D9196F95E600D67428 /* totServerCommController.m in Sources */,
+				3F26263319A8751F000ACB6F /* SellerSectionHeaderCell.m in Sources */,
 				3F2543A51952BA690000E6C9 /* DetailViewController.m in Sources */,
 				3FC2FA231990B01400457F6D /* RNOpenSSLCryptor.m in Sources */,
 			);

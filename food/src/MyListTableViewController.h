@@ -11,5 +11,6 @@
 @interface MyListTableViewController : UITableViewController
 
 - (IBAction)goToMyList:(UIStoryboardSegue *)segue;
+- (IBAction)confirmOrder:(UIButton*)sender;
 
 @end

@@ -416,7 +416,7 @@
 
 // for seller confirmation
 - (BOOL)updateOrder:(Order*)order {
-    NSString* order_json = @"{\"order_id\":\"\", \"order_status\":\"\"}";
+    NSString* order_json = [totUtility ObjectToJSON:[order toDictionary]];
     NSString* req = [NSString stringWithFormat:@"type=updateorder&secret=%@&order=%@", global.user.secret, order_json];
     id resp = [self sendStr:req toURL:m_order_url returnMessage:nil];
     

@@ -24,4 +24,11 @@
     return self;
 }
 
+-(NSDictionary*) toDictionary {
+    NSMutableDictionary* d = [[NSMutableDictionary alloc] init];
+    d[@"order_id"] = self.order_id;
+    d[@"order_status"] = self.order_status;
+    return d;
+}
+
 @end
