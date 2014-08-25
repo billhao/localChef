@@ -42,12 +42,26 @@
 
     activeTextField = nil;
     
+    // init the input fields
     // price
-    food_price.text = @"$ 8";
-    priceStepper.value = 8.0;
-    seller_address.text = @"Blossom Hill Rd And Lean Ave";
-    food_description.text = @"Delicious fish";
-    food_name.text = @"Fried fish";
+    food_price.text = @"$ 5";
+    priceStepper.value = 5.0;
+    seller_address.text = @"";
+    food_name.text = @"";
+    
+    // add border to description box
+    food_description.layer.borderWidth = 0.5;
+    food_description.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    food_description.layer.cornerRadius = 4;
+    food_description.clipsToBounds = true;
+    
+    // load last address & location
+    NSString* lastAddress = [totUtility getSetting:@"lastAddress"];
+    NSString* lastLocation = [totUtility getSetting:@"lastLocation"];
+    if( lastAddress != nil && lastAddress.length > 0 )
+        seller_address.text = lastAddress;
+    if( lastLocation != nil && lastLocation.length > 0 )
+        seller_location.text = lastLocation;
     
     // location
 //    locations = @[@"Mountain View, CA",
@@ -69,19 +83,19 @@
     UIView* doneButton = [self createInputAccessoryView1];
     food_start_time.inputView = startTimePicker;
     food_start_time.inputAccessoryView = doneButton;
-    NSDate* d1 = [NSDate date];
-    NSDate* d2 = [NSDate dateWithTimeIntervalSinceNow: oneHour * 24 * 3]; // 3 days from now
-    startTimePicker.date = d1;
-    startTimePicker.minimumDate = d1;
-//    startTimePicker.maximumDate = d1;
+//    NSDate* d1 = [NSDate date];
+//    NSDate* d2 = [NSDate dateWithTimeIntervalSinceNow: oneHour * 24 * 3]; // 3 days from now
+//    startTimePicker.date = d1;
+//    startTimePicker.minimumDate = d1;
+////    startTimePicker.maximumDate = d1;
     [self startTimePickerDoneClicked:nil];
     
     // end time
     UIView* doneButton2 = [self createInputAccessoryView2];
     food_time.inputView = endTimePicker;
     food_time.inputAccessoryView = doneButton2;
-    endTimePicker.minimumDate = d1;
-    endTimePicker.date = [d1 dateByAddingTimeInterval: oneHour * 3];
+//    endTimePicker.minimumDate = d1;
+//    endTimePicker.date = [d1 dateByAddingTimeInterval: oneHour * 3];
     [self endTimePickerDoneClicked:nil];
     
     keyboardShown = false;
@@ -112,7 +126,7 @@
 }
 
 - (IBAction)quantityValueChanged:(UIStepper *)sender {
-    food_quantity.text = [NSString stringWithFormat:@"%.0f", sender.value];
+    food_quantity.text = [NSString stringWithFormat:@"Quantity: %.0f", sender.value];
 }
 
 - (IBAction)publish:(UIButton *)sender {
@@ -127,8 +141,8 @@
     item.food_name = food_name.text;
     item.food_description = food_description.text;
     item.food_image_url = @"fish.jpg";
-    item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$" withString:@""] doubleValue];
-    item.food_quantity = [food_quantity.text intValue];
+    item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] doubleValue];
+    item.food_quantity = [[food_quantity.text stringByReplacingOccurrencesOfString:@"Quantity: " withString:@""] intValue];
     item.food_start_time = start_time;
     item.food_end_time = end_time;
     item.seller_id = global.user.id_str;
@@ -136,6 +150,11 @@
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
     item.seller_phone = @"2139059092";//global.user.phone;
+    
+    // save zip code and address
+    [totUtility setSetting:@"lastAddress" value:seller_address.text];
+    [totUtility setSetting:@"lastLocation" value:seller_location.text];
+    
     
     // send the item to server
     item.food_id = [global.server publishItem:item];
@@ -330,7 +349,7 @@
 
 - (void)startTimePickerDoneClicked: (UIButton *)button {
     [food_start_time resignFirstResponder];
-    food_start_time.text = [totUtility dateToStringHumanReadable:startTimePicker.date];
+    food_start_time.text = [NSString stringWithFormat:@"Available from %@", [totUtility dateToStringHumanReadable:startTimePicker.date]];
     start_time = startTimePicker.date;
 }
 
@@ -360,7 +379,7 @@
 
 - (void)endTimePickerDoneClicked: (UIButton *)button {
     [food_time resignFirstResponder];
-    food_time.text = [totUtility dateToStringHumanReadable:endTimePicker.date];
+    food_time.text = [NSString stringWithFormat:@"Until %@", [totUtility dateToStringHumanReadable:endTimePicker.date]];
     end_time = endTimePicker.date;
 }
 

@@ -35,7 +35,6 @@
 - (IBAction)quantityTextValueChanged:(UITextField *)sender;
 - (IBAction)priceTextValueChanged:(UITextField *)sender;
 - (IBAction)timeTextValueChanged:(UITextField *)sender;
-- (IBAction)locationTouchUpInside:(id)sender;
 - (IBAction)takePhotoButtonPressed:(UIButton *)sender;
 
 - (IBAction)textFieldDidBeginEditing:(UITextField *)textField;

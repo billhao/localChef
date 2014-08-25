@@ -405,38 +405,38 @@ my neighbors</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="AEw-0e-8ST">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fish" borderStyle="roundedRect" placeholder="菜名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq" userLabel="name">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Sm-gsq" userLabel="name">
                                         <rect key="frame" x="20" y="6" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                         <connections>
                                             <action selector="foodNameTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="ICy-mZ-D9t"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="份数" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ItJ-t6-1io">
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Quantity: 1" borderStyle="roundedRect" placeholder="Quantity" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ItJ-t6-1io">
                                         <rect key="frame" x="20" y="42" width="176" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
                                             <action selector="quantityTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="T7u-sS-w4J"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$ 8" borderStyle="roundedRect" placeholder="价格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$ 5" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-l2-YIR">
                                         <rect key="frame" x="20" y="80" width="176" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                         <connections>
                                             <action selector="priceTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="iTd-Ym-M1O"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="开始提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sst-aa-3JF">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Available from" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sst-aa-3JF">
                                         <rect key="frame" x="20" y="117" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="提供时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Available to" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-fm-mwI">
                                         <rect key="frame" x="20" y="154" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
                                             <action selector="timeTextValueChanged:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="RQN-je-xQ8"/>
@@ -453,19 +453,19 @@ my neighbors</string>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-7T-kH2">
                                         <rect key="frame" x="20" y="481" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
                                             <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="Svd-JP-BNq"/>
                                             <action selector="textFieldDidEndEditing:" destination="qHJ-XA-YtT" eventType="editingDidEnd" id="7D7-N4-diE"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95123" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-Ku-pUa">
                                         <rect key="frame" x="20" y="519" width="280" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ZL1-yB-hHk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
                                             <action selector="textFieldDidBeginEditing:" destination="qHJ-XA-YtT" eventType="editingDidBegin" id="jje-g4-2VF"/>
@@ -509,8 +509,8 @@ my neighbors</string>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" text="Some simple description" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-CY-Byb" userLabel="description">
                                         <rect key="frame" x="20" y="360" width="280" height="67"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="qHJ-XA-YtT" id="Zai-1g-bDM"/>
@@ -1012,10 +1012,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="FS2-Zc-7Jo"/>
+        <segue reference="7CP-fM-KtX"/>
+        <segue reference="ZfB-JR-nPP"/>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
-        <segue reference="aBw-P8-4Ly"/>
-        <segue reference="7CP-fM-KtX"/>
-        <segue reference="FS2-Zc-7Jo"/>
     </inferredMetricsTieBreakers>
 </document>
