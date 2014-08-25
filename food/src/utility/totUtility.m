@@ -111,6 +111,9 @@
     return [NSString stringWithFormat:@"x=%f y=%f w=%f h=%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height];
 }
 
++ (NSString*)trimString:(NSString*)str {
+    return[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
 
 void print(NSString* str) {
 

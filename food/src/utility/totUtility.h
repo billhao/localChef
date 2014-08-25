@@ -33,6 +33,8 @@
 // utility function print a frame
 + (NSString*)getFrameString:(CGRect)frame;
 
++ (NSString*)trimString:(NSString*)str;
+
 + (void)enableBorder:(UIView*)v;
 
 + (CGSize)getScreenSize;

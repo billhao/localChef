@@ -129,17 +129,45 @@
     food_quantity.text = [NSString stringWithFormat:@"Quantity: %.0f", sender.value];
 }
 
+// verify the input
+- (BOOL)checkInput {
+    int maxlen = 30; // max length
+    
+    if( [totUtility trimString:food_name.text].length == 0 ) {
+        [totUtility showAlert:@"Please type in food name"];
+        return false;
+    }
+    if( food_name.text.length > maxlen ) {
+        [totUtility showAlert:[NSString stringWithFormat:@"Food name can't be more than %d characters", maxlen]];
+        return false;
+    }
+    if( [totUtility trimString:seller_address.text].length == 0 ) {
+        [totUtility showAlert:@"Please type in your address or location"];
+        return false;
+    }
+    if( seller_address.text.length > maxlen ) {
+        [totUtility showAlert:[NSString stringWithFormat:@"Address can't be more than %d characters", maxlen]];
+        return false;
+    }
+    if( [totUtility trimString:seller_location.text].length == 0 ) {
+        [totUtility showAlert:@"Please type in your Zip Code"];
+        return false;
+    }
+    if( [totUtility trimString:seller_location.text].length != 5 ) {
+        [totUtility showAlert:@"Zip Code must be 5 digits"];
+        return false;
+    }
+    return true;
+}
+
 - (IBAction)publish:(UIButton *)sender {
     // verify the input
-    if( food_name.text.length == 0 ) {
-        [totUtility showAlert:@"Food name is empty!"];
-        return;
-    }
+    if( ![self checkInput] ) return;
     
     FoodItem* item = [[FoodItem alloc] init];
     
-    item.food_name = food_name.text;
-    item.food_description = food_description.text;
+    item.food_name = [totUtility trimString:food_name.text];
+    item.food_description = [totUtility trimString:food_description.text];
     item.food_image_url = @"fish.jpg";
     item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] doubleValue];
     item.food_quantity = [[food_quantity.text stringByReplacingOccurrencesOfString:@"Quantity: " withString:@""] intValue];
@@ -530,10 +558,20 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     activeTextField = textView;
+    
+    if( textView == food_description && [textView.text isEqualToString:@"Some simple description"] ) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     activeTextField = nil;
+    
+    if( textView == food_description && [totUtility trimString:food_description.text].length == 0 ) {
+        textView.text = @"Some simple description";
+        textView.textColor = [UIColor lightGrayColor];
+    }
 }
 
 /*
