@@ -106,6 +106,8 @@
         }
     }
     [self.tableView reloadData];
+    // scroll to top
+    [self.tableView setContentOffset:CGPointMake(0, 0 - self.tableView.contentInset.top) animated:TRUE];
     
     if( objects.count == 0 ) {
         if( location.length == 0 )
