@@ -115,11 +115,15 @@
     cell.f_start_end_time.text = [NSString stringWithFormat:@"Available %@ - %@", [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time]];
 //    [cell.f_name sizeToFit];
     
+    UIImage* placeHolderImage = [UIImage imageNamed:@"fish.jpg"];
     if( f.food_image_url && f.food_image_url.length > 0 ) {
 //        UIImage* img = [global.server downloadPhoto:f.food_image_url];
 //        cell.f_image.image = img;
-        [cell.f_image sd_setImageWithURL:[global.server getImageURL:f.food_image_url] placeholderImage:[UIImage imageNamed:@"fish.jpg"]];
+        [cell.f_image sd_setImageWithURL:[global.server getImageURL:f.food_image_url] placeholderImage:placeHolderImage];
     }
+    else
+        cell.f_image.image = placeHolderImage;
+    
     return cell;
 }
 
