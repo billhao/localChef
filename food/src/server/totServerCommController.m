@@ -13,7 +13,9 @@
 #import "Global.h"
 
 // class extention for private method declaration
-@interface totServerCommController()
+@interface totServerCommController() {
+    NSMutableDictionary* images;
+}
 
 - (id) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message;
 - (void) sendStrAsync:(NSString*)post toURL:(NSString *)dest_url returnMessage:(NSString**)message
@@ -552,6 +554,11 @@
 }
 
 - (BOOL)saveImageToDisk:(UIImage*)img imageFilename:(NSString*)imageFilename {
+    if( images == nil )
+        images = [[NSMutableDictionary alloc] init];
+    [images setValue:img forKey:imageFilename];
+    NSLog(@"image %@: saved to in-memory cache (cache size is %d now)", imageFilename, images.count);
+
     // save the image to file first
     NSString* jpegFilePath = [NSString stringWithFormat:@"%@/imageCache/%@", [totUtility GetDocumentDirectory], imageFilename];
     NSData* imgData = [NSData dataWithData:UIImageJPEGRepresentation(img, 1.0f)];//1.0f = 100% quality
@@ -559,8 +566,28 @@
 }
 
 - (UIImage*)loadImageFromDisk:(NSString*)imageFilename {
+    if( images == nil )
+        images = [[NSMutableDictionary alloc] init];
+    else {
+        UIImage* img = images[imageFilename];
+        if( img ) {
+            NSLog(@"image %@: found in in-memory cache", imageFilename);
+            return img;
+        }
+    }
+    
+    NSLog(@"image %@: not found in in-memory cache", imageFilename);
+
     NSString* jpegFilePath = [NSString stringWithFormat:@"%@/imageCache/%@", [totUtility GetDocumentDirectory], imageFilename];
-    return [UIImage imageWithContentsOfFile:jpegFilePath];
+    UIImage* img = [UIImage imageWithContentsOfFile:jpegFilePath];
+    [images setValue:img forKey:imageFilename];
+    NSLog(@"image %@: saved to in-memory cache (cache size is %d now)", imageFilename, images.count);
+    
+    return img;
+}
+
+- (NSURL*)getImageURL:(NSString*)imageFilename {
+    return [NSURL URLWithString: [NSString stringWithFormat:@"%@/%@", PHOTO_BASE_URL, imageFilename]];
 }
 
 @end

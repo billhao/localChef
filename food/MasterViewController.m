@@ -14,6 +14,7 @@
 #import "MenuCell.h"
 #import "Global.h"
 #import "totUtility.h"
+#import "UIImageView+WebCache.h"
 
 @interface MasterViewController () {
     NSMutableArray *objects;
@@ -172,8 +173,9 @@
         cell.f_price.text = @"Free";
     
     if( f.food_image_url && f.food_image_url.length > 0 ) {
-        UIImage* img = [global.server downloadPhoto:f.food_image_url];
-        cell.f_image.image = img;
+//        UIImage* img = [global.server downloadPhoto:f.food_image_url];
+//        cell.f_image.image = img;
+        [cell.f_image sd_setImageWithURL:[global.server getImageURL:f.food_image_url] placeholderImage:[UIImage imageNamed:@"fish.jpg"]];
     }
     
     return cell;

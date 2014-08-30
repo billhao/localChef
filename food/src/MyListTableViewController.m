@@ -15,6 +15,7 @@
 #import "Global.h"
 #import "totUtility.h"
 #import "SellerSectionHeaderCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyListTableViewController ()
 
@@ -150,8 +151,9 @@
     
     cell.food_name.text = [NSString stringWithFormat:@"$ %.0f %@\nQuantity: %ld\nAvailable between\n%@ - %@\n%@", f.food_price, f.food_name, f.food_quantity, [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time], f.food_description];
     if( f.food_image_url && f.food_image_url.length > 0 ) {
-        UIImage* img = [global.server downloadPhoto:f.food_image_url];
-        cell.food_image.image = img;
+        //UIImage* img = [global.server downloadPhoto:f.food_image_url];
+        //cell.food_image.image = img;
+        [cell.food_image sd_setImageWithURL:[global.server getImageURL:f.food_image_url] placeholderImage:[UIImage imageNamed:@"fish.jpg"]];
     }
     
     return cell;

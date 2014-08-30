@@ -68,6 +68,7 @@ enum SERVER_RESPONSE_CODE {
 - (BOOL)updateOrder:(Order*)order; // for seller confirmation
 - (NSString*)uploadPhoto:(UIImage*)img imageFilename:(NSString*)imageFilename;
 - (UIImage*)downloadPhoto:(NSString*)imageFilename;
+- (NSURL*)getImageURL:(NSString*)imageFilename;
 
 #pragma mark - old ones from tot
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;
