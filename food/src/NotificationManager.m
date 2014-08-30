@@ -20,10 +20,11 @@
 
 -(void) updateDeviceToken:(NSData*)devToken {
     NSString* token = [self tokenToString:devToken];
-    NSLog(@"new device token = %@", token);
+    //NSLog(@"received device token = %@", token);
     
     NSString* oldToken = [totUtility getSetting:@"deviceToken"];
     if( ![oldToken isEqualToString:token] ) {
+        NSLog(@"new device token = %@", token);
         BOOL re = [global.server updateDeviceToken:token];
         if( re ) {
             [totUtility setSetting:@"deviceToken" value:token];

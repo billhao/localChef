@@ -8,6 +8,7 @@
 
 #import "totUtility.h"
 #import <QuartzCore/QuartzCore.h>
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation totUtility
 
@@ -259,4 +260,43 @@ void print(NSString* str) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
+
+
+
+
+
+
++ (NSString *) md5:(NSString *) input {
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+
+
+
+
+
+
+
+
++(NSString *)GetDocumentDirectory{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0]; // Get documents folder
+}
+
++ (void)createImageCacheDirectory {
+    NSString* imageCache = [[totUtility GetDocumentDirectory] stringByAppendingPathComponent:@"imageCache"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:imageCache])
+        [[NSFileManager defaultManager] createDirectoryAtPath:imageCache withIntermediateDirectories:NO attributes:nil error:nil];
+}
+
 @end

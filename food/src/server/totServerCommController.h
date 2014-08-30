@@ -24,6 +24,10 @@
 #define HOSTNAME @"http://54.187.194.66"
 #define HOSTNAME_SHORT @"54.187.194.66"
 
+// photo related constants
+#define PHOTO_BASE_URL @"https://s3-us-west-1.amazonaws.com/auntiewang-photo"
+#define BOUNDARY @"0xKhTmLbOuNdArY"
+
 enum SERVER_RESPONSE_CODE {
     SERVER_RESPONSE_CODE_FAIL = -1,
     SERVER_RESPONSE_CODE_SUCCESS = 0,
@@ -39,6 +43,7 @@ enum SERVER_RESPONSE_CODE {
 
     NSString *m_data_url;
     NSString *m_order_url;
+    NSString *m_photo_url;
     NSString *m_notification_url;
 }
 
@@ -61,7 +66,8 @@ enum SERVER_RESPONSE_CODE {
 - (NSString*)publishItem:(FoodItem*)food_item;
 - (NSArray*)getPublishedItems:(NSString*)seller_id secret:(NSString*)secret;
 - (BOOL)updateOrder:(Order*)order; // for seller confirmation
-
+- (NSString*)uploadPhoto:(UIImage*)img imageFilename:(NSString*)imageFilename;
+- (UIImage*)downloadPhoto:(NSString*)imageFilename;
 
 #pragma mark - old ones from tot
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;

@@ -38,6 +38,7 @@
 
         m_data_url           = [NSString stringWithFormat:@"%@/data",     HOSTNAME];
         m_order_url          = [NSString stringWithFormat:@"%@/order",    HOSTNAME];
+        m_photo_url          = [NSString stringWithFormat:@"%@/attach",   HOSTNAME];
         m_notification_url   = [NSString stringWithFormat:@"%@/notification", HOSTNAME];
     }
     return self;
@@ -124,17 +125,31 @@
     [self sendStrAsync:actInfo toURL:m_sendUsrAct_url returnMessage:message callback:callback];
 }
 
-
 // -----------------------------------------------
 //  basic func to send POST req to server
 //    -> remember to check whether the return is nil
 //  returns NSDictionary or NSArray
 // -----------------------------------------------
-- (id) sendStr: (NSString*) post toURL: (NSString *) dest_url returnMessage: (NSString**)message {
-    NSLog(@"post string: %@", post);
+
+- (id) sendStr:(NSString*)post toURL:(NSString *)dest_url returnMessage:(NSString**)message {
+    return [self sendStr:post image:nil imageFilename:nil toURL:dest_url returnMessage:message];
+}
+
+- (id) sendStr:(NSString*)post image:(UIImage*)img imageFilename:(NSString*)imageFilename toURL: (NSString *) dest_url returnMessage: (NSString**)message {
+    if( img )
+        NSLog(@"image %@: upload %@ to server", imageFilename, img);
+    else
+        NSLog(@"post string: %@", post);
     
     // TODO add try catch here
     NSMutableURLRequest* request = [self getRequest:post toURL:dest_url];
+
+    // upload image
+    if( img != nil ) {
+        NSData* imageData = [self getRequestBodyForImage:img filename:imageFilename];
+        if( imageData == nil ) return nil;
+        [request setHTTPBody:imageData];
+    }
 
     // Send the req syncrhonously [will be async later]
     //NSURLResponse *response;
@@ -169,8 +184,8 @@
 - (void) sendStrAsync:(NSString*)post toURL:(NSString *)dest_url returnMessage:(NSString**)message
              callback:(totURLConnectionCallback)callback {
     // TODO add try catch here
-    NSMutableURLRequest* request = [self getRequest:post toURL:dest_url];
-    totURLConnection* conn = [[totURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES callback:callback];
+    //NSMutableURLRequest* request = [self getRequest:post toURL:dest_url];
+    //totURLConnection* conn = [[totURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES callback:callback];
 }
 
 - (NSMutableURLRequest*)getRequest:(NSString*)post toURL: (NSString *)dest_url {
@@ -181,13 +196,22 @@
     [request setURL:[NSURL URLWithString:dest_url]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLen forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+
+    NSString *contentType;
+    if( post.length == 0 )
+        // post image content
+        contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", BOUNDARY];
+    else
+        // post text
+        contentType = @"application/x-www-form-urlencoded";
+    
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     [request setCachePolicy:NSURLCacheStorageNotAllowed];
     [request setTimeoutInterval:20.0];
 
     // ignore SSL certificate error
-    NSURL* destURL = [NSURL URLWithString:dest_url];
+    //NSURL* destURL = [NSURL URLWithString:dest_url];
     
     // add HTTP basic authentication header to the request
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", @"totdev", @"0000"];
@@ -199,6 +223,29 @@
     return request;
 }
 
+- (NSData*)getRequestBodyForImage:(UIImage*)img filename:(NSString*)filename {
+    NSMutableData *body = [NSMutableData data];
+
+    // add image data
+    NSData *imageData = UIImageJPEGRepresentation(img, 1.0);
+    if (!imageData)
+        return nil;
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BOUNDARY] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:imageData];
+    [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BOUNDARY] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // for debug
+//    NSString *strData = [[NSString alloc]initWithData:body encoding:NSASCIIStringEncoding];
+//    NSLog(@"%@", strData);
+    
+    return body;
+}
+
+
 #pragma mark - NSURLConnection delegate
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
@@ -207,7 +254,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        NSString* s = challenge.protectionSpace.host;
+        //NSString* s = challenge.protectionSpace.host;
         if ([challenge.protectionSpace.host isEqualToString:HOSTNAME_SHORT]) {
             [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
         }
@@ -456,7 +503,91 @@
     return false;
 }
 
+- (NSString*)uploadPhoto:(UIImage*)img imageFilename:(NSString*)imageFilename {
+    // save to disk
+    BOOL re = [self saveImageToDisk:img imageFilename:imageFilename];
+    if( re )
+        NSLog(@"image %@: saved to local cache", imageFilename);
+    else
+        NSLog(@"image %@: failed to save to cache", imageFilename);
+
+    id resp = [self sendStr:@"" image:img imageFilename:imageFilename toURL:m_photo_url returnMessage:nil];
+    
+    if( [resp isKindOfClass:[NSDictionary class]]) {
+        if( resp[@"status"] != nil ) {
+            long status = [resp[@"status"] intValue];
+            if( status == 1 )
+                return resp[@"url"];
+        }
+    }
+    return @"";
+}
+
+- (UIImage*)downloadPhoto:(NSString*)imageFilename {
+    NSLog(@"image %@: download", imageFilename);
+    
+    // check local cache first
+    UIImage* img = [self loadImageFromDisk:imageFilename];
+    if( img ) {
+        NSLog(@"image %@: found in local cache", imageFilename);
+        return img;
+    }
+    
+    // if not cached, load from servr
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@/%@", PHOTO_BASE_URL, imageFilename]];
+    img = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+    if( img ) {
+        NSLog(@"image %@: loaded from server", imageFilename);
+        // cache the image
+        BOOL re = [self saveImageToDisk:img imageFilename:imageFilename];
+        if( re )
+            NSLog(@"image %@: saved to local cache", imageFilename);
+        else
+            NSLog(@"image %@: failed to save to cache", imageFilename);
+    }
+    else
+        NSLog(@"image %@: not found on server, return nil", imageFilename);
+
+    return img;
+}
+
+- (BOOL)saveImageToDisk:(UIImage*)img imageFilename:(NSString*)imageFilename {
+    // save the image to file first
+    NSString* jpegFilePath = [NSString stringWithFormat:@"%@/imageCache/%@", [totUtility GetDocumentDirectory], imageFilename];
+    NSData* imgData = [NSData dataWithData:UIImageJPEGRepresentation(img, 1.0f)];//1.0f = 100% quality
+    return [imgData writeToFile:jpegFilePath atomically:NO];
+}
+
+- (UIImage*)loadImageFromDisk:(NSString*)imageFilename {
+    NSString* jpegFilePath = [NSString stringWithFormat:@"%@/imageCache/%@", [totUtility GetDocumentDirectory], imageFilename];
+    return [UIImage imageWithContentsOfFile:jpegFilePath];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

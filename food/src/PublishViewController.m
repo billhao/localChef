@@ -168,7 +168,6 @@
     
     item.food_name = [totUtility trimString:food_name.text];
     item.food_description = [totUtility trimString:food_description.text];
-    item.food_image_url = @"fish.jpg";
     item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] doubleValue];
     item.food_quantity = [[food_quantity.text stringByReplacingOccurrencesOfString:@"Quantity: " withString:@""] intValue];
     item.food_start_time = start_time;
@@ -183,6 +182,15 @@
     [totUtility setSetting:@"lastAddress" value:seller_address.text];
     [totUtility setSetting:@"lastLocation" value:seller_location.text];
     
+    if( food_image.image != nil ) {
+        item.food_image_url = [self getUniqueString];
+
+        // send image to server
+        NSString* imgURL = [global.server uploadPhoto:food_image.image imageFilename:item.food_image_url];
+        if( imgURL == nil ) {
+            NSLog(@"image upload failed");
+        }
+    }
     
     // send the item to server
     item.food_id = [global.server publishItem:item];
@@ -256,7 +264,7 @@
     }
 }
 
-#pragma mark - helper functions
+#pragma mark - Helper functions
 
 - (void)publishMore {
     // if publish more, clean content of this page
@@ -299,6 +307,14 @@
 //
 //    [food_quantity resignFirstResponder];
 //}
+
+// return a unique string for image filename
+-(NSString*)getUniqueString {
+    NSString* uuid = [[NSUUID UUID] UUIDString];
+    NSString* date = [[NSDate date] description];
+    NSString* str  = [NSString stringWithFormat:@"%@,%@,%@,%@", uuid, date, global.user.name, global.user.id_str];
+    return [totUtility md5:str];
+}
 
 
 #pragma mark - PickerView DataSource

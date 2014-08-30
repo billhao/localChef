@@ -10,5 +10,6 @@
 
 @interface SellerSectionHeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *food_name;
+@property (weak, nonatomic) IBOutlet UIImageView *food_image;
 
 @end

@@ -69,6 +69,13 @@
 + (void)removeSetting:(NSString*)key;
 + (void)resetSettings;
 
+
++ (NSString *) GetDocumentDirectory;
++ (void)createImageCacheDirectory;
+
+
++ (NSString *) md5:(NSString *) input;
+
 @end
 
 extern void print(NSString* str);

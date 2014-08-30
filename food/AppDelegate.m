@@ -18,6 +18,8 @@
     // Override point for customization after application launch.
     global = [[Global alloc] init];
 
+    [totUtility createImageCacheDirectory];
+    
     totUser* user = [totUser getLoggedInUser];
 
     nm = [[NotificationManager alloc] init];

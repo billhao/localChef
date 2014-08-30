@@ -705,6 +705,7 @@ description</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
+                                    <outlet property="food_image" destination="wLg-oH-FPI" id="43o-p2-BtP"/>
                                     <outlet property="food_name" destination="7QI-av-8D2" id="v8e-zL-TGX"/>
                                 </connections>
                             </tableViewCell>
@@ -974,7 +975,7 @@ More address</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="f_image" destination="RIi-LP-4VL" id="bNm-PT-mfa"/>
+                                    <outlet property="f_image" destination="Y6u-fE-fcJ" id="o5t-nO-uXX"/>
                                     <outlet property="f_name" destination="BBS-zo-1oy" id="Fcw-pO-DJl"/>
                                     <outlet property="f_start_end_time" destination="rEF-8f-SoW" id="427-xL-mKB"/>
                                     <outlet property="f_time_status" destination="L22-GD-kUX" id="jm9-lP-lf1"/>
@@ -1013,10 +1014,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FS2-Zc-7Jo"/>
-        <segue reference="7CP-fM-KtX"/>
-        <segue reference="ZfB-JR-nPP"/>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
+        <segue reference="xsL-GD-E5T"/>
+        <segue reference="7CP-fM-KtX"/>
+        <segue reference="ZfB-JR-nPP"/>
     </inferredMetricsTieBreakers>
 </document>

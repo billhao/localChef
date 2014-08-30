@@ -69,6 +69,13 @@ totServerCommController* server;
     NSLog(@"cnt = %lu", items.count);
 }
 
+- (void)test_5_UploadPhoto {
+    UIImage* img = [UIImage imageNamed:@"rou.jpg"];
+    NSString* url = [global.server uploadPhoto:img];
+    NSLog(@"URL for image is %@", url);
+}
+
+
 - (void)printLine {
     NSLog(@"============================================");
 }
