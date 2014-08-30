@@ -13,5 +13,6 @@
 -(void) register;
 -(void) updateDeviceToken:(NSData*)devToken;
 -(void) processNotification:(NSDictionary*)dict source:(int)source;
+- (void)clearBadge;
 
 @end

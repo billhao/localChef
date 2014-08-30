@@ -80,4 +80,8 @@
     return newToken;
 }
 
+- (void)clearBadge {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 @end
