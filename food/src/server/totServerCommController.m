@@ -52,9 +52,8 @@
 //    -> call sendUsrName to send the usr reg info
 //       to reg handler on server side
 // -----------------------------------------------
-- (totUser*) register:(NSString*)username phone:(NSString*)phone passcode:(NSString*)passcode returnMessage:(NSString**)message
-{
-    NSString* data = [NSString stringWithFormat:@"type=register&usr=%@&name=%@&phone=%@&pwd=%@", phone, username, phone, passcode];
+- (totUser*) registerUser:(NSString*)username phone:(NSString*)phone passcode:(NSString*)passcode returnMessage:(NSString**)message {
+    NSString* data = [NSString stringWithFormat:@"type=register&name=%@&phone=%@&pwd=%@", username, phone, passcode];
     NSDictionary* resp = (NSDictionary*)[self sendStr:data toURL:m_reg_url returnMessage:message];
     
     if( resp[@"status"] != nil ) {
@@ -74,8 +73,8 @@
 //    -> call sendUsrName to send the usr login
 //       info to login handler on server side
 // -----------------------------------------------
-- (totUser*) login: (NSString*) email withPasscode: (NSString*) passcode returnMessage:(NSString**)message {
-    NSString* data = [NSString stringWithFormat:@"type=login&usr=%@&pwd=%@", email, passcode];
+- (totUser*) login: (NSString*)phone withPasscode:(NSString*)passcode returnMessage:(NSString**)message {
+    NSString* data = [NSString stringWithFormat:@"type=login&phone=%@&pwd=%@", phone, passcode];
     NSDictionary* resp = [self sendStr:data toURL:m_login_url returnMessage:message];
 
     if( resp[@"status"] != nil ) {
@@ -84,7 +83,8 @@
             return nil;
     }
     totUser* user = [[totUser alloc] init];
-    user.email = resp[@"username"];
+    user.name = resp[@"username"];
+    user.phone = resp[@"phone"];
     user.secret = resp[@"secret"];
     user.id_str = resp[@"id"];
     

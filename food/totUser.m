@@ -52,28 +52,28 @@ static totModel* _model;
 }
 
 // add a new user
-+(totUser*) newUser:(NSString*)name phone:(NSString*)phone password:(NSString*)pwd message:(NSString**)message {
-    // clean the email
-    name  = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    phone = [phone stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    // register with server
-    totServerCommController* server = [[totServerCommController alloc] init];
-    return [server register:name phone:phone passcode:pwd returnMessage:message];
-    
-//    if( retCode == SERVER_RESPONSE_CODE_SUCCESS ) {
-//        BOOL re = [self addAccount:email password:pwd];
-//        if( re ) {
-//            return [[totUser alloc] initWithID:email];
-//        } else {
-//            *message = @"Cannot add user to database";
-//            // TODO should we delete this user from server? otherwise it wouldn't be possible to create the user next time
-//            return nil;
-//        }
-//    } else {
-//        return nil;
-//    }
-}
+//+(totUser*) newUser:(NSString*)name phone:(NSString*)phone password:(NSString*)pwd message:(NSString**)message {
+//    // clean the email
+//    name  = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    phone = [phone stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    
+//    // register with server
+//    totServerCommController* server = [[totServerCommController alloc] init];
+//    return [server registerUser:name phone:phone passcode:pwd returnMessage:message];
+//    
+////    if( retCode == SERVER_RESPONSE_CODE_SUCCESS ) {
+////        BOOL re = [self addAccount:email password:pwd];
+////        if( re ) {
+////            return [[totUser alloc] initWithID:email];
+////        } else {
+////            *message = @"Cannot add user to database";
+////            // TODO should we delete this user from server? otherwise it wouldn't be possible to create the user next time
+////            return nil;
+////        }
+////    } else {
+////        return nil;
+////    }
+//}
 
 +(BOOL)verifyPassword:(NSString*)pwd email:(NSString*)email message:(NSString**)message {
 //    NSString* pwdhash_db = @"";
@@ -157,29 +157,32 @@ static totModel* _model;
 
 // get the user that is logged in last time, this function is used at startup
 +(totUser*) getLoggedInUser {
-    NSString* email  = [totUtility getSetting:@"email"];
+    NSString* name   = [totUtility getSetting:@"name"];
+    NSString* phone  = [totUtility getSetting:@"phone"];
     NSString* secret = [totUtility getSetting:@"secret"];
     NSString* id_str = [totUtility getSetting:@"id_str"];
     NSString* passcode = [totUtility getSetting:@"passcode"];
     
-    if( email == nil || secret == nil || id_str == nil || passcode == nil )
+    if( name == nil || phone == nil || secret == nil || id_str == nil || passcode == nil )
         return nil;
 
-    totUser* user = [global.server login:email withPasscode:passcode returnMessage:nil];
+    totUser* user = [global.server login:phone withPasscode:passcode returnMessage:nil];
     global.user = user;
 
     return user;
 }
 
 -(void) persistUser {
-    [totUtility setSetting:@"email"  value:self.email];
+    [totUtility setSetting:@"name"   value:self.name];
+    [totUtility setSetting:@"phone"  value:self.phone];
     [totUtility setSetting:@"secret" value:self.secret];
     [totUtility setSetting:@"id_str" value:self.id_str];
     [totUtility setSetting:@"passcode" value:self.passcode];
 }
 
 -(void) removePersistedUser {
-    [totUtility removeSetting:@"email"];
+    [totUtility removeSetting:@"name"];
+    [totUtility removeSetting:@"phone"];
     [totUtility removeSetting:@"secret"];
     [totUtility removeSetting:@"id_str"];
     [totUtility removeSetting:@"passcode"];

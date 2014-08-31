@@ -144,7 +144,7 @@
     
     totUser* user = [global.server login:phone withPasscode:pwd returnMessage:nil];
     if( user == nil )
-        [self showAlert:@"Phone number or passcode does not match"];
+        [self showAlert:@"Phone number and passcode do not match"];
     else {
         user.passcode = pwd;
         global.user = user;
@@ -159,12 +159,13 @@
     NSString* pwd = mPwd.text;
     
     // check validity of email and pwd
+    if( ![self checkName] ) return;
     if( ![self checkEmail] ) return;
     if( ![totLoginController checkPwd:pwd] ) return;
     
-    totUser* user = [global.server register:name phone:phone passcode:pwd returnMessage:nil];
+    totUser* user = [global.server registerUser:name phone:phone passcode:pwd returnMessage:nil];
     if( user == nil )
-        [self showAlert:@"Fail to add user"];
+        [self showAlert:@"This phone number has already signed up"];
     else {
         user.passcode = pwd;
         global.user = user;
@@ -206,10 +207,14 @@
 - (void)PrivacyButtonClicked: (UIButton *)button {
 }
 
-// check email against a regex
+// check phone against a regex
 - (BOOL)checkEmail {
     NSString* email = mPhone.text;
     email = [email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if( email.length == 0 ) {
+        [self showAlert:@"Please type in your phone number"];
+        return FALSE;
+    }
     
     // check
 //    NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -218,6 +223,28 @@
     
     if ([emailTest evaluateWithObject:email] == NO) {
         [self showAlert:@"Invalid email address"];
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+// check email against a regex
+- (BOOL)checkName {
+    NSString* name = mName.text;
+    name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if( name.length == 0 ) {
+        [self showAlert:@"Please type in your name"];
+        return FALSE;
+    }
+    
+    // check
+    //    NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSString *nameRegEx = @"[\\w]{2,20}";
+    NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegEx];
+    
+    if ([nameTest evaluateWithObject:name] == NO) {
+        [self showAlert:@"Please check the name"];
         return FALSE;
     }
     

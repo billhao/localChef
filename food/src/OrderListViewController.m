@@ -111,7 +111,8 @@
     else
         status = @"Status Unknown";
     cell.f_time_status.text = [NSString stringWithFormat:@"  Ordered on %@\n  %@", [totUtility dateToStringHumanReadable:order.created_at], status];
-    cell.f_name.text = [NSString stringWithFormat:@"$ %.0f %@\nBy %@\n%@\n%@", f.food_price, f.food_name, order.seller.name, @"Blossom Hill Rd & Lean Ave", @"213-784-2526"];
+    cell.f_name.text = [NSString stringWithFormat:@"$ %.0f %@\nBy %@\n%@\n%@\n%@", f.food_price, f.food_name, order.seller.name, order.seller.address, order.seller.phone,
+                        [NSString stringWithFormat:@"Available %@ - %@", [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time]]];
     cell.f_start_end_time.text = [NSString stringWithFormat:@"Available %@ - %@", [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time]];
 //    [cell.f_name sizeToFit];
     
@@ -127,6 +128,9 @@
     return cell;
 }
 
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 280;
+//}
 
 /*
 // Override to support conditional editing of the table view.
