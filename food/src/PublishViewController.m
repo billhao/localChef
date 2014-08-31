@@ -173,7 +173,7 @@
     item.food_start_time = start_time;
     item.food_end_time = end_time;
     item.seller_id = global.user.id_str;
-    item.seller_name = global.user.email;
+    item.seller_name = global.user.name;
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
     item.seller_phone = @"2139059092";//global.user.phone;
@@ -190,6 +190,8 @@
         if( imgURL == nil ) {
             NSLog(@"image upload failed");
         }
+    } else {
+        item.food_image_url = @"";
     }
     
     // send the item to server
