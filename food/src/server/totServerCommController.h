@@ -21,8 +21,8 @@
 #import "Order.h"
 #import "totUser.h"
 
-#define HOSTNAME @"http://localchefapp.com"
-#define HOSTNAME_SHORT @"localchefapp.com"
+#define HOSTNAME @"http://server.localchefapp.com"
+#define HOSTNAME_SHORT @"server.localchefapp.com"
 
 // photo related constants
 #define PHOTO_BASE_URL @"https://s3-us-west-1.amazonaws.com/auntiewang-photo"
