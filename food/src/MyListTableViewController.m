@@ -151,7 +151,7 @@
     
     cell.food_name.text = [NSString stringWithFormat:@"$ %.0f %@\nQuantity: %ld\nAvailable between\n%@ - %@\n%@", f.food_price, f.food_name, f.food_quantity, [totUtility dateToStringHumanReadable:f.food_start_time], [totUtility dateToStringHumanReadable:f.food_end_time], f.food_description];
 
-    UIImage* placeHolderImage = [UIImage imageNamed:@"fish.jpg"];
+    UIImage* placeHolderImage = [UIImage imageNamed:@"place_holder_seller_list_page"];
     if( f.food_image_url && f.food_image_url.length > 0 ) {
         //UIImage* img = [global.server downloadPhoto:f.food_image_url];
         //cell.food_image.image = img;

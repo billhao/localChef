@@ -167,7 +167,6 @@
     FoodItem* item = [[FoodItem alloc] init];
     
     item.food_name = [totUtility trimString:food_name.text];
-    item.food_description = [totUtility trimString:food_description.text];
     item.food_price = [[food_price.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] doubleValue];
     item.food_quantity = [[food_quantity.text stringByReplacingOccurrencesOfString:@"Quantity: " withString:@""] intValue];
     item.food_start_time = start_time;
@@ -177,6 +176,12 @@
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
     item.seller_phone = @"2139059092";//global.user.phone;
+    // description
+    NSString* desc = [totUtility trimString:food_description.text];
+    if( [desc isEqualToString:@"Some simple description"] )
+        item.food_description = @"";
+    else
+        item.food_description = desc;
     
     // save zip code and address
     [totUtility setSetting:@"lastAddress" value:seller_address.text];

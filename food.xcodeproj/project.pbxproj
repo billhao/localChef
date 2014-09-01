@@ -24,6 +24,9 @@
 		3F2543B81952BA690000E6C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F2543B61952BA690000E6C9 /* InfoPlist.strings */; };
 		3F2543BA1952BA690000E6C9 /* foodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2543B91952BA690000E6C9 /* foodTests.m */; };
 		3F26263319A8751F000ACB6F /* SellerSectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */; };
+		3F295CB219B50F4F0039315D /* place_holder_buyer_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */; };
+		3F295CB319B50F4F0039315D /* place_holder_buyer_order_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */; };
+		3F295CB419B50F4F0039315D /* place_holder_seller_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */; };
 		3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CB86D196FBBAD00C32AED /* PublishViewController.m */; };
 		3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385703198B68DA005F9A09 /* MyListTableViewController.m */; };
 		3F3D6BD419A145CC00115655 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3D6BD319A145CC00115655 /* OrderListViewController.m */; };
@@ -114,6 +117,9 @@
 		3F2543B91952BA690000E6C9 /* foodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = foodTests.m; sourceTree = "<group>"; };
 		3F26263119A8751F000ACB6F /* SellerSectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerSectionHeaderCell.h; sourceTree = "<group>"; };
 		3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerSectionHeaderCell.m; sourceTree = "<group>"; };
+		3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_buyer_list_page.png; sourceTree = "<group>"; };
+		3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_buyer_order_page.png; sourceTree = "<group>"; };
+		3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_seller_list_page.png; sourceTree = "<group>"; };
 		3F2CB86C196FBBAD00C32AED /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublishViewController.h; path = src/PublishViewController.h; sourceTree = "<group>"; };
 		3F2CB86D196FBBAD00C32AED /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PublishViewController.m; path = src/PublishViewController.m; sourceTree = "<group>"; };
 		3F385702198B68DA005F9A09 /* MyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyListTableViewController.h; path = src/MyListTableViewController.h; sourceTree = "<group>"; };
@@ -388,6 +394,9 @@
 		3F8ABBFA195F8C7E00A9C7DE /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */,
+				3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */,
+				3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */,
 				3F81694019AA84490062F6EC /* soldout.jpg */,
 				3FB0D76319A99CB100A519C5 /* confirmed1.png */,
 				3FB0D76119A99B0100A519C5 /* confirmed.png */,
@@ -544,15 +553,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F81694119AA84490062F6EC /* soldout.jpg in Resources */,
+				3F295CB319B50F4F0039315D /* place_holder_buyer_order_page.png in Resources */,
 				3F25439F1952BA690000E6C9 /* Main_iPad.storyboard in Resources */,
 				3F8ABBFE195F8C7E00A9C7DE /* fish.jpg in Resources */,
 				3F2543A71952BA690000E6C9 /* Images.xcassets in Resources */,
+				3F295CB219B50F4F0039315D /* place_holder_buyer_list_page.png in Resources */,
 				3F8ABBFD195F8C7E00A9C7DE /* rou.jpg in Resources */,
 				3FABA640195F9BDB0058F6D3 /* food.png in Resources */,
 				3F59F9E0196F9ABE00D67428 /* comm.json in Resources */,
 				3F25439C1952BA690000E6C9 /* Main_iPhone.storyboard in Resources */,
 				3FB0D76419A99CB100A519C5 /* confirmed1.png in Resources */,
 				3FB0D76219A99B0100A519C5 /* confirmed.png in Resources */,
+				3F295CB419B50F4F0039315D /* place_holder_seller_list_page.png in Resources */,
 				3FC361C219A6F67E0076EEA2 /* order.png in Resources */,
 				3F2543931952BA690000E6C9 /* InfoPlist.strings in Resources */,
 			);

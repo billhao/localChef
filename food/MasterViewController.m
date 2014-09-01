@@ -174,7 +174,7 @@
     else
         cell.f_price.text = @"Free";
     
-    UIImage* placeHolderImage = [UIImage imageNamed:@"fish.jpg"];
+    UIImage* placeHolderImage = [UIImage imageNamed:@"place_holder_buyer_list_page"];
     if( f.food_image_url && f.food_image_url.length > 0 ) {
 //        UIImage* img = [global.server downloadPhoto:f.food_image_url];
 //        cell.f_image.image = img;
