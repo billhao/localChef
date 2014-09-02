@@ -175,7 +175,7 @@
     item.seller_name = global.user.name;
     item.seller_address = seller_address.text;
     item.seller_location = seller_location.text;
-    item.seller_phone = @"2139059092";//global.user.phone;
+    item.seller_phone = global.user.phone;
     // description
     NSString* desc = [totUtility trimString:food_description.text];
     if( [desc isEqualToString:@"Some simple description"] )

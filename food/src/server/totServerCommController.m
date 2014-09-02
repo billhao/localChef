@@ -62,7 +62,8 @@
             return 0;
     }
     totUser* user = [[totUser alloc] init];
-    user.email = resp[@"username"];
+    user.name   = resp[@"username"];
+    user.phone  = resp[@"phone"];
     user.secret = resp[@"secret"];
     user.id_str = resp[@"id"];
     return user;
@@ -83,8 +84,8 @@
             return nil;
     }
     totUser* user = [[totUser alloc] init];
-    user.name = resp[@"username"];
-    user.phone = resp[@"phone"];
+    user.name   = resp[@"username"];
+    user.phone  = resp[@"phone"];
     user.secret = resp[@"secret"];
     user.id_str = resp[@"id"];
     
