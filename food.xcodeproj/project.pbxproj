@@ -476,9 +476,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F2543841952BA690000E6C9 /* food */ = {
+		3F2543841952BA690000E6C9 /* Local Chef */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F2543BD1952BA690000E6C9 /* Build configuration list for PBXNativeTarget "food" */;
+			buildConfigurationList = 3F2543BD1952BA690000E6C9 /* Build configuration list for PBXNativeTarget "Local Chef" */;
 			buildPhases = (
 				3F2543811952BA690000E6C9 /* Sources */,
 				3F2543821952BA690000E6C9 /* Frameworks */,
@@ -488,7 +488,7 @@
 			);
 			dependencies = (
 			);
-			name = food;
+			name = "Local Chef";
 			productName = food;
 			productReference = 3F2543851952BA690000E6C9 /* food.app */;
 			productType = "com.apple.product-type.application";
@@ -541,7 +541,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F2543841952BA690000E6C9 /* food */,
+				3F2543841952BA690000E6C9 /* Local Chef */,
 				3F2543AB1952BA690000E6C9 /* foodTests */,
 			);
 		};
@@ -650,7 +650,7 @@
 /* Begin PBXTargetDependency section */
 		3F2543B21952BA690000E6C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3F2543841952BA690000E6C9 /* food */;
+			target = 3F2543841952BA690000E6C9 /* Local Chef */;
 			targetProxy = 3F2543B11952BA690000E6C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -853,7 +853,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F2543BD1952BA690000E6C9 /* Build configuration list for PBXNativeTarget "food" */ = {
+		3F2543BD1952BA690000E6C9 /* Build configuration list for PBXNativeTarget "Local Chef" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F2543BE1952BA690000E6C9 /* Debug */,
