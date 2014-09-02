@@ -222,7 +222,7 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegEx];
     
     if ([emailTest evaluateWithObject:email] == NO) {
-        [self showAlert:@"Invalid email address"];
+        [self showAlert:@"Phone number must be 9 digits"];
         return FALSE;
     }
     
@@ -240,7 +240,7 @@
     
     // check
     //    NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSString *nameRegEx = @"[\\w]{2,20}";
+    NSString *nameRegEx = @"[\\w\\s]{2,20}";
     NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegEx];
     
     if ([nameTest evaluateWithObject:name] == NO) {
