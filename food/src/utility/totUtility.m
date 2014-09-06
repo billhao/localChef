@@ -109,7 +109,7 @@
 
 // utility function print a frame
 + (NSString*)getFrameString:(CGRect)frame {
-    return [NSString stringWithFormat:@"x=%f y=%f w=%f h=%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height];
+    return [NSString stringWithFormat:@"x=%.0f y=%.0f w=%.0f h=%.0f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height];
 }
 
 + (NSString*)trimString:(NSString*)str {

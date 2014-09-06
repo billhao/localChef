@@ -368,6 +368,9 @@
 - (void)textFieldDoneButtonClicked: (id *)control {
     [seller_location resignFirstResponder];
     [food_description resignFirstResponder];
+
+    scrollView.contentInset = contentInset;
+    scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
 }
 
 //- (void)pickerDoneClicked: (UIButton *)button {
@@ -528,6 +531,23 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+    static int cnt = 0;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    // this function may be called twice when the textfield has an inputAccessoryView: one for keyboard and the second one for the inputAccessoryView
+    // we will just ignore the second here. inputAccessoryView height is 44 on iOS 7 so we skip anything less than 60
+    // see http://blog.seancarpenter.net/2012/10/07/uikeyboarddidshownotification-called-twice/
+    CGRect endRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if( endRect.size.height < 60 )
+        return;
+    
+
+    NSLog(@"\n\n");
+    NSLog(@"------------------------keyboardWasShown %d------------------------", cnt);
+    NSLog(@"keyboardWasShown=%d h=%.0f", keyboardShown, kbSize.height);
+    cnt++;
+    
     // save original insets
     if( !keyboardShown )
     {
@@ -535,27 +555,38 @@
         scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
     }
     
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    scrollView.contentInset = contentInsets;
-    scrollView.scrollIndicatorInsets = contentInsets;
+//    scrollView.contentInset = contentInsets;
+//    scrollView.scrollIndicatorInsets = contentInsets;
     
+    CGRect textFrame;
+    if( activeTextField )
+        textFrame = activeTextField.frame;
+    else
+        textFrame = food_description.frame;
+        
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your app might not need or want this behavior.
     int margin = 10;
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
-    CGPoint origin = activeTextField.frame.origin;
+    CGPoint origin = textFrame.origin;
     origin.y -= scrollView.contentOffset.y;
+    origin.y += textFrame.size.height;
+
+    NSLog(@"Contains %.0f in %.0f-%.0f", origin.y, aRect.origin.y, aRect.origin.y+aRect.size.height);
+
     if (!CGRectContainsPoint(aRect, origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, activeTextField.frame.origin.y+activeTextField.frame.size.height-(aRect.size.height) + margin);
+        CGPoint scrollPoint = CGPointMake(0.0, textFrame.origin.y + textFrame.size.height - (aRect.size.height) + margin);
         [scrollView setContentOffset:scrollPoint animated:YES];
+        NSLog(@"not in view x=%.0f y=%.0f arect=%@", scrollPoint.x, scrollPoint.y, [totUtility getFrameString:aRect]);
+        //NSLog(@"activeTextField %@ %@", activeTextField, [totUtility getFrameString:textFrame]);
     }
     else {
         scrollView.contentInset = contentInset;
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
+        NSLog(@"in view");
     }
     
     keyboardShown = true;
@@ -564,6 +595,8 @@
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
+    NSLog(@"\n\n");
+    NSLog(@"------------------------keyboardWillBeHidden------------------------");
     scrollView.contentInset = contentInset;
     scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
     keyboardShown = false;

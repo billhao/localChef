@@ -93,7 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F2543851952BA690000E6C9 /* food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = food.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2543851952BA690000E6C9 /* Local Chef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Local Chef.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2543881952BA690000E6C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F25438A1952BA690000E6C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3F25438C1952BA690000E6C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -262,7 +262,7 @@
 		3F2543861952BA690000E6C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F2543851952BA690000E6C9 /* food.app */,
+				3F2543851952BA690000E6C9 /* Local Chef.app */,
 				3F2543AC1952BA690000E6C9 /* foodTests.xctest */,
 			);
 			name = Products;
@@ -490,7 +490,7 @@
 			);
 			name = "Local Chef";
 			productName = food;
-			productReference = 3F2543851952BA690000E6C9 /* food.app */;
+			productReference = 3F2543851952BA690000E6C9 /* Local Chef.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3F2543AB1952BA690000E6C9 /* foodTests */ = {
