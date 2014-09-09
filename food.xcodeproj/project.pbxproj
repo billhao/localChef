@@ -24,9 +24,7 @@
 		3F2543B81952BA690000E6C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F2543B61952BA690000E6C9 /* InfoPlist.strings */; };
 		3F2543BA1952BA690000E6C9 /* foodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2543B91952BA690000E6C9 /* foodTests.m */; };
 		3F26263319A8751F000ACB6F /* SellerSectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */; };
-		3F295CB219B50F4F0039315D /* place_holder_buyer_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */; };
 		3F295CB319B50F4F0039315D /* place_holder_buyer_order_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */; };
-		3F295CB419B50F4F0039315D /* place_holder_seller_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */; };
 		3F2CB86E196FBBAD00C32AED /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CB86D196FBBAD00C32AED /* PublishViewController.m */; };
 		3F385704198B68DA005F9A09 /* MyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385703198B68DA005F9A09 /* MyListTableViewController.m */; };
 		3F3D6BD419A145CC00115655 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3D6BD319A145CC00115655 /* OrderListViewController.m */; };
@@ -40,8 +38,6 @@
 		3F84EC9E19A3047800765B0F /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F84EC9D19A3047800765B0F /* NotificationManager.m */; };
 		3F8ABBF6195F858600A9C7DE /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF5195F858600A9C7DE /* FoodItem.m */; };
 		3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF8195F880600A9C7DE /* FoodItemView.m */; };
-		3F8ABBFD195F8C7E00A9C7DE /* rou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */; };
-		3F8ABBFE195F8C7E00A9C7DE /* fish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */; };
 		3F9C8615199C8704003340E9 /* totLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8614199C8704003340E9 /* totLoginController.m */; };
 		3F9C8618199F3153003340E9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8617199F3153003340E9 /* Order.m */; };
 		3FABA640195F9BDB0058F6D3 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FABA63F195F9BDB0058F6D3 /* food.png */; };
@@ -63,6 +59,9 @@
 		3FC2FA251990B01400457F6D /* RNOpenSSLEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */; };
 		3FC2FA271990B13600457F6D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2FA261990B13600457F6D /* libsqlite3.dylib */; };
 		3FC361C219A6F67E0076EEA2 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC361C119A6F67E0076EEA2 /* order.png */; };
+		3FD165E619BED0F8009D62D8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD165E519BED0F8009D62D8 /* MobileCoreServices.framework */; };
+		3FD165ED19BEDE79009D62D8 /* place_holder_buyer_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD165EB19BEDE79009D62D8 /* place_holder_buyer_list_page.png */; };
+		3FD165EE19BEDE79009D62D8 /* place_holder_seller_list_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD165EC19BEDE79009D62D8 /* place_holder_seller_list_page.png */; };
 		3FD6CC64197F7D070082354E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6CC63197F7D070082354E /* MenuViewController.m */; };
 		3FF86DDD19B1A4E7000A6E21 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF86DBD19B1A4E7000A6E21 /* MKAnnotationView+WebCache.m */; };
 		3FF86DDE19B1A4E7000A6E21 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF86DBF19B1A4E7000A6E21 /* NSData+ImageContentType.m */; };
@@ -117,9 +116,7 @@
 		3F2543B91952BA690000E6C9 /* foodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = foodTests.m; sourceTree = "<group>"; };
 		3F26263119A8751F000ACB6F /* SellerSectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerSectionHeaderCell.h; sourceTree = "<group>"; };
 		3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerSectionHeaderCell.m; sourceTree = "<group>"; };
-		3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_buyer_list_page.png; sourceTree = "<group>"; };
 		3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_buyer_order_page.png; sourceTree = "<group>"; };
-		3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_seller_list_page.png; sourceTree = "<group>"; };
 		3F2CB86C196FBBAD00C32AED /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublishViewController.h; path = src/PublishViewController.h; sourceTree = "<group>"; };
 		3F2CB86D196FBBAD00C32AED /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PublishViewController.m; path = src/PublishViewController.m; sourceTree = "<group>"; };
 		3F385702198B68DA005F9A09 /* MyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyListTableViewController.h; path = src/MyListTableViewController.h; sourceTree = "<group>"; };
@@ -144,8 +141,6 @@
 		3F8ABBF5195F858600A9C7DE /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItem.m; path = src/FoodItem.m; sourceTree = "<group>"; };
 		3F8ABBF7195F880600A9C7DE /* FoodItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItemView.h; path = src/FoodItemView.h; sourceTree = "<group>"; };
 		3F8ABBF8195F880600A9C7DE /* FoodItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItemView.m; path = src/FoodItemView.m; sourceTree = "<group>"; };
-		3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rou.jpg; sourceTree = "<group>"; };
-		3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fish.jpg; sourceTree = "<group>"; };
 		3F9C8613199C8704003340E9 /* totLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totLoginController.h; sourceTree = "<group>"; };
 		3F9C8614199C8704003340E9 /* totLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totLoginController.m; sourceTree = "<group>"; };
 		3F9C8616199F3153003340E9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = src/Order.h; sourceTree = "<group>"; };
@@ -186,6 +181,9 @@
 		3FC2FA1E1990B01400457F6D /* RNOpenSSLEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNOpenSSLEncryptor.m; sourceTree = "<group>"; };
 		3FC2FA261990B13600457F6D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3FC361C119A6F67E0076EEA2 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
+		3FD165E519BED0F8009D62D8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3FD165EB19BEDE79009D62D8 /* place_holder_buyer_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_buyer_list_page.png; sourceTree = "<group>"; };
+		3FD165EC19BEDE79009D62D8 /* place_holder_seller_list_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place_holder_seller_list_page.png; sourceTree = "<group>"; };
 		3FD6CC62197F7D070082354E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = src/MenuViewController.h; sourceTree = "<group>"; };
 		3FD6CC63197F7D070082354E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = src/MenuViewController.m; sourceTree = "<group>"; };
 		3FF86DBC19B1A4E7000A6E21 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -228,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD165E619BED0F8009D62D8 /* MobileCoreServices.framework in Frameworks */,
 				3FC2FA271990B13600457F6D /* libsqlite3.dylib in Frameworks */,
 				3F25438B1952BA690000E6C9 /* CoreGraphics.framework in Frameworks */,
 				3F25438D1952BA690000E6C9 /* UIKit.framework in Frameworks */,
@@ -271,6 +270,7 @@
 		3F2543871952BA690000E6C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FD165E519BED0F8009D62D8 /* MobileCoreServices.framework */,
 				3FC2FA261990B13600457F6D /* libsqlite3.dylib */,
 				3F2543881952BA690000E6C9 /* Foundation.framework */,
 				3F25438A1952BA690000E6C9 /* CoreGraphics.framework */,
@@ -394,17 +394,15 @@
 		3F8ABBFA195F8C7E00A9C7DE /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				3F295CAF19B50F4F0039315D /* place_holder_buyer_list_page.png */,
+				3FD165EC19BEDE79009D62D8 /* place_holder_seller_list_page.png */,
+				3FD165EB19BEDE79009D62D8 /* place_holder_buyer_list_page.png */,
 				3F295CB019B50F4F0039315D /* place_holder_buyer_order_page.png */,
-				3F295CB119B50F4F0039315D /* place_holder_seller_list_page.png */,
 				3F81694019AA84490062F6EC /* soldout.jpg */,
 				3FB0D76319A99CB100A519C5 /* confirmed1.png */,
 				3FB0D76119A99B0100A519C5 /* confirmed.png */,
 				3FC361C119A6F67E0076EEA2 /* order.png */,
 				3F59F9DF196F9ABE00D67428 /* comm.json */,
 				3FABA63F195F9BDB0058F6D3 /* food.png */,
-				3F8ABBFB195F8C7E00A9C7DE /* rou.jpg */,
-				3F8ABBFC195F8C7E00A9C7DE /* fish.jpg */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -555,16 +553,14 @@
 				3F81694119AA84490062F6EC /* soldout.jpg in Resources */,
 				3F295CB319B50F4F0039315D /* place_holder_buyer_order_page.png in Resources */,
 				3F25439F1952BA690000E6C9 /* Main_iPad.storyboard in Resources */,
-				3F8ABBFE195F8C7E00A9C7DE /* fish.jpg in Resources */,
+				3FD165ED19BEDE79009D62D8 /* place_holder_buyer_list_page.png in Resources */,
 				3F2543A71952BA690000E6C9 /* Images.xcassets in Resources */,
-				3F295CB219B50F4F0039315D /* place_holder_buyer_list_page.png in Resources */,
-				3F8ABBFD195F8C7E00A9C7DE /* rou.jpg in Resources */,
 				3FABA640195F9BDB0058F6D3 /* food.png in Resources */,
 				3F59F9E0196F9ABE00D67428 /* comm.json in Resources */,
 				3F25439C1952BA690000E6C9 /* Main_iPhone.storyboard in Resources */,
 				3FB0D76419A99CB100A519C5 /* confirmed1.png in Resources */,
 				3FB0D76219A99B0100A519C5 /* confirmed.png in Resources */,
-				3F295CB419B50F4F0039315D /* place_holder_seller_list_page.png in Resources */,
+				3FD165EE19BEDE79009D62D8 /* place_holder_seller_list_page.png in Resources */,
 				3FC361C219A6F67E0076EEA2 /* order.png in Resources */,
 				3F2543931952BA690000E6C9 /* InfoPlist.strings in Resources */,
 			);

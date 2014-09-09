@@ -9,6 +9,7 @@
 #import "PublishViewController.h"
 #import "Global.h"
 #import "totUtility.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface PublishViewController ()
 
@@ -18,7 +19,7 @@
 
 @synthesize food_price, food_name, food_image, food_quantity, food_start_time, food_time,
     quantityStepper, priceStepper, timeStepper, seller_address, seller_location, scrollView,
-    publishButton, locations, startTimePicker, endTimePicker, takePhotoButton,
+    publishButton, locations, startTimePicker, endTimePicker, takePhotoButton, selectPhotoButton,
     food_description;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,6 +42,11 @@
     seller_address.delegate = self;
 
     activeTextField = nil;
+    
+    // move the title of the two buttons closer to each other
+    UIEdgeInsets insets = takePhotoButton.titleEdgeInsets;
+    takePhotoButton.titleEdgeInsets   = UIEdgeInsetsMake(40, 0, 0, 0);
+    selectPhotoButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 40, 0);
     
     // init the input fields
     // price
@@ -246,6 +252,10 @@
     [self takePhoto];
 }
 
+- (IBAction)selectPhotoButtonPressed:(UIButton *)sender {
+    [self selectPhotoFromLibrary];
+}
+
 - (IBAction)textFieldReturn:(UITextField *)sender {
 }
 
@@ -441,14 +451,29 @@
 
 
 - (void)takePhoto {
+    if( ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] )
+        return;
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.mediaTypes =[[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
 
     [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)selectPhotoFromLibrary {
+    if( ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] )
+        return;
     
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.mediaTypes =[[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+    
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
