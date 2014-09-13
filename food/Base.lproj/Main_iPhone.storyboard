@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="366-Ow-uFp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="366-Ow-uFp">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Master View Controller - Menu-->
+        <!--Menu-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Menu" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
@@ -30,7 +30,6 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-hI-Vih">
                                                     <rect key="frame" x="11" y="41" width="206" height="124"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -49,7 +48,6 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="soldout.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Nry-wH-3UQ">
                                                     <rect key="frame" x="199" y="79" width="108" height="48"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-sL-aJA">
                                                     <rect key="frame" x="253" y="79" width="54" height="48"/>
@@ -132,7 +130,7 @@
             </objects>
             <point key="canvasLocation" x="1027" y="274"/>
         </scene>
-        <!--Order View Controller - Orders-->
+        <!--Orders-->
         <scene sceneID="fCA-tT-Tna">
             <objects>
                 <tableViewController title="Orders" id="9zE-PB-xZ6" customClass="OrderViewController" sceneMemberID="viewController">
@@ -245,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="2494" y="274"/>
         </scene>
-        <!--Detail View Controller - Detail-->
+        <!--Detail-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
                 <viewController title="Detail" id="Ah7-4n-0Wa" customClass="DetailViewController" sceneMemberID="viewController">
@@ -419,7 +417,7 @@ my neighbors</string>
             </objects>
             <point key="canvasLocation" x="599" y="-537"/>
         </scene>
-        <!--Publish View Controller - Share Food-->
+        <!--Share Food-->
         <scene sceneID="cZ4-er-cAH">
             <objects>
                 <viewController id="qHJ-XA-YtT" customClass="PublishViewController" sceneMemberID="viewController">
@@ -727,7 +725,7 @@ my neighbors</string>
             </objects>
             <point key="canvasLocation" x="-609" y="-107"/>
         </scene>
-        <!--My List Table View Controller - Menu-->
+        <!--Menu-->
         <scene sceneID="URo-eo-Yvv">
             <objects>
                 <tableViewController title="Menu" id="rGr-TE-OBg" customClass="MyListTableViewController" sceneMemberID="viewController">
@@ -811,7 +809,6 @@ More address</string>
                                                 </button>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoQ-AB-m2x">
                                                     <rect key="frame" x="228" y="18" width="85" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Confirmed" image="confirmed1.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -965,7 +962,7 @@ More address</string>
             </objects>
             <point key="canvasLocation" x="2077" y="-537"/>
         </scene>
-        <!--Order List View Controller - Orders-->
+        <!--Orders-->
         <scene sceneID="yts-bY-5xS">
             <objects>
                 <tableViewController title="Orders" id="ST0-qJ-a9T" customClass="OrderListViewController" sceneMemberID="viewController">
@@ -984,7 +981,6 @@ More address</string>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-Jg-mRC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="L22-GD-kUX">
                                                     <rect key="frame" x="0.0" y="6" width="320" height="54"/>
@@ -994,7 +990,7 @@ More address</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" ambiguous="YES" image="place_holder_buyer_order_page.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-fE-fcJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="place_holder_buyer_order_page.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-fE-fcJ">
                                                     <rect key="frame" x="6" y="56" width="135" height="119"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="119" id="fL8-d0-W44"/>
@@ -1022,7 +1018,6 @@ More address</string>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="136" translatesAutoresizingMaskIntoConstraints="NO" id="rEF-8f-SoW">
                                                     <rect key="frame" x="149" y="138" width="136" height="48"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">Available xxxxxxxxx
 - yyyyyyyyy</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
@@ -1031,7 +1026,6 @@ More address</string>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svf-1o-ew5" userLabel="separator view">
                                                     <rect key="frame" x="0.0" y="53" width="320" height="1"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
@@ -1083,10 +1077,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kpq-ma-ikf"/>
-        <segue reference="ZfB-JR-nPP"/>
-        <segue reference="7CP-fM-KtX"/>
+        <segue reference="xsL-GD-E5T"/>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
+        <segue reference="7CP-fM-KtX"/>
+        <segue reference="ZfB-JR-nPP"/>
     </inferredMetricsTieBreakers>
 </document>
