@@ -54,6 +54,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    noItemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, self.view.bounds.size.width-20, 160)];
+    noItemLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    noItemLabel.numberOfLines = 0;
+    noItemLabel.font = [UIFont fontWithName:@"Helvetica Neue Thin" size:20];
+    noItemLabel.textColor = [UIColor grayColor];
+    noItemLabel.textAlignment = NSTextAlignmentCenter;
+    noItemLabel.hidden = true;
+    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
+
     // init activity indicator
     //activityIndicator = [[ActivityIndicatorView alloc] init];
     //[self.view addSubview:activityIndicator.view];
@@ -91,6 +100,13 @@
     foodItems = [global.server listOrderForSeller];
 
     [self.tableView reloadData];
+
+    if( foodItems.count == 0 ) {
+        noItemLabel.text = @"You have not shared anything yet. Try sharing what you are making today with the neighbors";
+        noItemLabel.hidden = false;
+    }
+    else
+        noItemLabel.hidden = true;
 
     //[activityIndicator stop];
 

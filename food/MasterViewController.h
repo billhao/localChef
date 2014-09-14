@@ -13,11 +13,10 @@
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController<UISearchBarDelegate, UIAlertViewDelegate> {
-    UILabel* noItemLabel;
-    
     FoodItem* currentOrder;
     
     // UI
+    UILabel* noItemLabel;
     //ActivityIndicatorView* activityIndicator;
 }
 

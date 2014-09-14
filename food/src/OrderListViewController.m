@@ -41,6 +41,15 @@
 
     orders = [[NSMutableArray alloc] init];
     
+    noItemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, self.view.bounds.size.width-20, 160)];
+    noItemLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    noItemLabel.numberOfLines = 0;
+    noItemLabel.font = [UIFont fontWithName:@"Helvetica Neue Thin" size:20];
+    noItemLabel.textColor = [UIColor grayColor];
+    noItemLabel.textAlignment = NSTextAlignmentCenter;
+    noItemLabel.hidden = true;
+    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
+
     // init activity indicator
     //activityIndicator = [[ActivityIndicatorView alloc] init];
     //[self.view addSubview:activityIndicator.view];
@@ -226,6 +235,13 @@
     
     orders = [[NSMutableArray alloc] initWithArray:[global.server listOrderForBuyer]];
     
+    if( orders.count == 0 ) {
+        noItemLabel.text = @"You have not placed an order. Try order something from a neighbor";
+        noItemLabel.hidden = false;
+    }
+    else
+        noItemLabel.hidden = true;
+
     //[activityIndicator stop];
     
     if( self.refreshControl.refreshing)

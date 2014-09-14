@@ -56,7 +56,7 @@
     noItemLabel.textColor = [UIColor grayColor];
     noItemLabel.textAlignment = NSTextAlignmentCenter;
     noItemLabel.hidden = true;
-//    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
+    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
 
     searchBar.inputAccessoryView = [self createInputAccessoryView];
 
@@ -141,7 +141,7 @@
         if( location.length == 0 )
             noItemLabel.text = @"Type in your zip code to start a search";
         else
-            noItemLabel.text = @"Nothing found in this area. Be the first one to share some food or drink with your neighbors";;
+            noItemLabel.text = @"Nothing found in this area. Be the first one to share some food or drink with the neighbors. Or try another Zip Code";
         noItemLabel.hidden = false;
     }
     else

@@ -13,6 +13,7 @@
     NSMutableArray* orders;
 
     // UI
+    UILabel* noItemLabel;
     //ActivityIndicatorView* activityIndicator;
 }
 

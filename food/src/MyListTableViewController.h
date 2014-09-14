@@ -11,6 +11,7 @@
 
 @interface MyListTableViewController : UITableViewController {
     // UI
+    UILabel* noItemLabel;
     //ActivityIndicatorView* activityIndicator;
 
 }
