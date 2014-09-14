@@ -966,7 +966,7 @@ More address</string>
         <scene sceneID="yts-bY-5xS">
             <objects>
                 <tableViewController title="Orders" id="ST0-qJ-a9T" customClass="OrderListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="204" sectionHeaderHeight="22" sectionFooterHeight="22" id="jii-Nn-nqp">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="204" sectionHeaderHeight="22" sectionFooterHeight="22" id="jii-Nn-nqp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1077,10 +1077,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xsL-GD-E5T"/>
+        <segue reference="kpq-ma-ikf"/>
+        <segue reference="ZfB-JR-nPP"/>
+        <segue reference="7CP-fM-KtX"/>
         <segue reference="v1a-UG-MNm"/>
         <segue reference="joA-Sr-uUI"/>
-        <segue reference="7CP-fM-KtX"/>
-        <segue reference="ZfB-JR-nPP"/>
     </inferredMetricsTieBreakers>
 </document>

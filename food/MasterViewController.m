@@ -55,16 +55,23 @@
     noItemLabel.font = [UIFont fontWithName:@"Helvetica Neue Thin" size:20];
     noItemLabel.textColor = [UIColor grayColor];
     noItemLabel.textAlignment = NSTextAlignmentCenter;
-    noItemLabel.text = @"No item found in this area\nBe the first one to share some food or drink with your neighbor";
     noItemLabel.hidden = true;
-    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
+//    [self.view insertSubview:noItemLabel aboveSubview:self.tableView];
 
     searchBar.inputAccessoryView = [self createInputAccessoryView];
 
     // init activity indicator
-    activityIndicator = [[ActivityIndicatorView alloc] init];
-    [self.view addSubview:activityIndicator.view];
+    //activityIndicator = [[ActivityIndicatorView alloc] init];
+    //[self.view addSubview:activityIndicator.view];
     
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading..."];
+    self.refreshControl.backgroundColor = [UIColor grayColor];
+    self.refreshControl.alpha = 0.4;
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+
     // load search bar default zip code
     NSString* defaultZip = [totUtility getSetting:@"searchLocation"];
     if( defaultZip == nil ) defaultZip = @"";
@@ -72,7 +79,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self refreshData:searchBar.text];
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,13 +89,15 @@
 }
 
 
-- (void)refreshData:(NSString*)location {
+- (void)refreshData {
     if (!objects) {
         objects = [[NSMutableArray alloc] init];
     }
     else
         [objects removeAllObjects];
 
+    NSString* location = searchBar.text;
+    
     if( location.length > 0 ) {
         NSLog(@"Loading dishes from %@", location);
 
@@ -96,8 +105,15 @@
         [totUtility setSetting:@"searchLocation" value:location];
 
         // start activity indicator
-        [activityIndicator start];
-        
+        //[activityIndicator start];
+
+        if( !self.refreshControl.refreshing) {
+            [self.refreshControl beginRefreshing];
+            int h = self.refreshControl.frame.size.height;
+            int hh = self.tableView.contentOffset.y;
+            [self.tableView setContentOffset:CGPointMake(0, hh-h) animated:NO];
+        }
+
         NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
         
         for (NSDictionary* seller in data) {
@@ -117,21 +133,25 @@
         
         // stop it
         //[NSThread sleepForTimeInterval:20]; // test activity
-        [activityIndicator stop];
+        //[activityIndicator stop];
     }
     [self.tableView reloadData];
-    // scroll to top
-    [self.tableView setContentOffset:CGPointMake(0, 0 - self.tableView.contentInset.top) animated:TRUE];
     
     if( objects.count == 0 ) {
         if( location.length == 0 )
             noItemLabel.text = @"Type in your zip code to start a search";
         else
-            noItemLabel.text = @"No item found in this area\nBe the first one to share some food or drink with your neighbor";
+            noItemLabel.text = @"Nothing found in this area. Be the first one to share some food or drink with your neighbors";;
         noItemLabel.hidden = false;
     }
     else
         noItemLabel.hidden = true;
+    
+    if( self.refreshControl.refreshing)
+        [self.refreshControl endRefreshing];
+
+    // scroll to top
+    [self.tableView setContentOffset:CGPointMake(0, 0 - self.tableView.contentInset.top) animated:TRUE];
 }
 
 - (void)insertNewObject:(id)sender
@@ -279,8 +299,7 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)search {
-    NSString* location = search.text;
-    [self refreshData:location];
+    [self refreshData];
     [search resignFirstResponder];
 }
 

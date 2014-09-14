@@ -13,7 +13,7 @@
     NSMutableArray* orders;
 
     // UI
-    ActivityIndicatorView* activityIndicator;
+    //ActivityIndicatorView* activityIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;

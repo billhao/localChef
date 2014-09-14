@@ -55,8 +55,16 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     // init activity indicator
-    activityIndicator = [[ActivityIndicatorView alloc] init];
-    [self.view addSubview:activityIndicator.view];
+    //activityIndicator = [[ActivityIndicatorView alloc] init];
+    //[self.view addSubview:activityIndicator.view];
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading..."];
+    self.refreshControl.backgroundColor = [UIColor grayColor];
+    self.refreshControl.alpha = 0.4;
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
 
 }
 
@@ -72,13 +80,23 @@
 
 
 - (void)refreshData {
-    [activityIndicator start];
+    //[activityIndicator start];
+    if( !self.refreshControl.refreshing) {
+        [self.refreshControl beginRefreshing];
+        int h = self.refreshControl.frame.size.height;
+        int hh = self.tableView.contentOffset.y;
+        [self.tableView setContentOffset:CGPointMake(0, hh-h) animated:NO];
+    }
     
     foodItems = [global.server listOrderForSeller];
-    
-    [activityIndicator stop];
-    
+
     [self.tableView reloadData];
+
+    //[activityIndicator stop];
+
+    if( self.refreshControl.refreshing)
+        [self.refreshControl endRefreshing];
+
 }
 
 - (void)insertNewObject:(id)sender
@@ -246,7 +264,6 @@
     
     // reload the data from server
     [self refreshData];
-    [self.tableView reloadData];
 }
 
 @end

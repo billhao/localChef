@@ -18,7 +18,7 @@
     FoodItem* currentOrder;
     
     // UI
-    ActivityIndicatorView* activityIndicator;
+    //ActivityIndicatorView* activityIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

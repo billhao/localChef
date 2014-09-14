@@ -42,8 +42,16 @@
     orders = [[NSMutableArray alloc] init];
     
     // init activity indicator
-    activityIndicator = [[ActivityIndicatorView alloc] init];
-    [self.view addSubview:activityIndicator.view];
+    //activityIndicator = [[ActivityIndicatorView alloc] init];
+    //[self.view addSubview:activityIndicator.view];
+
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading..."];
+    self.refreshControl.backgroundColor = [UIColor grayColor];
+    self.refreshControl.alpha = 0.4;
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(loadOrders) forControlEvents:UIControlEventValueChanged];
 
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
 //    self.tableView.contentInset = inset;
@@ -207,11 +215,23 @@
 }
 
 - (void)loadOrders {
-    [activityIndicator start];
+    //[activityIndicator start];
+    
+    if( !self.refreshControl.refreshing) {
+        [self.refreshControl beginRefreshing];
+        int h = self.refreshControl.frame.size.height;
+        int hh = self.tableView.contentOffset.y;
+        [self.tableView setContentOffset:CGPointMake(0, hh-h) animated:NO];
+    }
     
     orders = [[NSMutableArray alloc] initWithArray:[global.server listOrderForBuyer]];
     
-    [activityIndicator stop];
+    //[activityIndicator stop];
+    
+    if( self.refreshControl.refreshing)
+        [self.refreshControl endRefreshing];
+    
+    [self.tableView reloadData];
 }
 
 @end
