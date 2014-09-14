@@ -78,4 +78,8 @@
 
 @end
 
+// just print the string if DEBUG is defined
 extern void print(NSString* str);
+// print with format if DEBUG is defined
+extern void printfm(NSString* format, ...);
+

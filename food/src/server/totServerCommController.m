@@ -140,9 +140,9 @@
 
 - (id) sendStr:(NSString*)post image:(UIImage*)img imageFilename:(NSString*)imageFilename toURL: (NSString *) dest_url returnMessage: (NSString**)message {
     if( img )
-        NSLog(@"image %@: upload %@ to server", imageFilename, img);
+        printfm(@"image %@: upload %@ to server", imageFilename, img);
     else
-        NSLog(@"post string: %@", post);
+        printfm(@"post string: %@", post);
     
     // TODO add try catch here
     NSMutableURLRequest* request = [self getRequest:post toURL:dest_url];
@@ -173,10 +173,10 @@
                                                 encoding:NSASCIIStringEncoding];
     // Debug printout
     if (strReply == nil) {
-        NSLog(@"post response: empty");
+        print(@"post response: empty");
         return nil;
     } else {
-        NSLog(@"post response: %@", strReply);
+        printfm(@"post response: %@", strReply);
     }
 
     // parse the response

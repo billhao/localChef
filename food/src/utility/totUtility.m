@@ -117,11 +117,19 @@
 }
 
 void print(NSString* str) {
-
 #ifdef DEBUG
     NSLog(@"%@", str);
 #endif
-    
+}
+
+// print with format
+void printfm(NSString* format, ...) {
+#ifdef DEBUG
+    va_list args;
+    va_start(args, format);
+    NSLogv(format, args);
+    va_end(args);
+#endif
 }
 
 
