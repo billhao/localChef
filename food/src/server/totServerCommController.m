@@ -455,6 +455,7 @@
 
     NSDictionary* req = [FoodItem toDictionary:food];
     NSString* reqStr = [totUtility ObjectToJSON:req];
+    reqStr = [reqStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]; // escape the input
     NSString* data = [NSString stringWithFormat:@"type=dish&data=%@&secret=%@", reqStr, global.user.secret];
     NSDictionary* resp = [self sendStr:data toURL:m_data_url returnMessage:nil];
     

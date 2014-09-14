@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityIndicatorView.h"
 
-@interface MyListTableViewController : UITableViewController
+@interface MyListTableViewController : UITableViewController {
+    // UI
+    ActivityIndicatorView* activityIndicator;
+
+}
 
 - (IBAction)goToMyList:(UIStoryboardSegue *)segue;
 - (IBAction)confirmOrder:(UIButton*)sender;

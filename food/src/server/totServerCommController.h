@@ -53,7 +53,6 @@ enum SERVER_RESPONSE_CODE {
 - (BOOL)updateDeviceToken:(NSString*)devToken;
 - (NSMutableArray*)listOrderForSeller;
 - (NSArray*)listOrderForBuyer;
-- (NSArray*)listOrderFor:(NSString*)user_type; // do not use this one directly
 
 
 #pragma mark - for buyer

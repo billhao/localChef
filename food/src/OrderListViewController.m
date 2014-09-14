@@ -41,6 +41,10 @@
 
     orders = [[NSMutableArray alloc] init];
     
+    // init activity indicator
+    activityIndicator = [[ActivityIndicatorView alloc] init];
+    [self.view addSubview:activityIndicator.view];
+
 //    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 80, 0);
 //    self.tableView.contentInset = inset;
 //    self.tableView.scrollIndicatorInsets = inset;
@@ -54,9 +58,8 @@
 //    [self.view.superview.superview bringSubviewToFront:totalView];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated {
     [self loadOrders];
-
 }
 
 - (void)doneButtonTapped:(id)sender {
@@ -204,7 +207,11 @@
 }
 
 - (void)loadOrders {
+    [activityIndicator start];
+    
     orders = [[NSMutableArray alloc] initWithArray:[global.server listOrderForBuyer]];
+    
+    [activityIndicator stop];
 }
 
 @end

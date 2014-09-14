@@ -61,11 +61,18 @@
 
     searchBar.inputAccessoryView = [self createInputAccessoryView];
 
+    // init activity indicator
+    activityIndicator = [[ActivityIndicatorView alloc] init];
+    [self.view addSubview:activityIndicator.view];
+    
     // load search bar default zip code
     NSString* defaultZip = [totUtility getSetting:@"searchLocation"];
     if( defaultZip == nil ) defaultZip = @"";
     searchBar.text = defaultZip;
-    [self refreshData:defaultZip];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self refreshData:searchBar.text];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,6 +95,9 @@
         // save as default location
         [totUtility setSetting:@"searchLocation" value:location];
 
+        // start activity indicator
+        [activityIndicator start];
+        
         NSArray* data = [global.server getDataForLocation:location secret:global.user.secret];
         
         for (NSDictionary* seller in data) {
@@ -104,6 +114,10 @@
                 [objects addObject:food];
             }
         }
+        
+        // stop it
+        //[NSThread sleepForTimeInterval:20]; // test activity
+        [activityIndicator stop];
     }
     [self.tableView reloadData];
     // scroll to top

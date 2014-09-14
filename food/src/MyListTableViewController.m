@@ -54,9 +54,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    // init activity indicator
+    activityIndicator = [[ActivityIndicatorView alloc] init];
+    [self.view addSubview:activityIndicator.view];
+
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated {
     [self refreshData];
 }
 
@@ -68,7 +72,13 @@
 
 
 - (void)refreshData {
+    [activityIndicator start];
+    
     foodItems = [global.server listOrderForSeller];
+    
+    [activityIndicator stop];
+    
+    [self.tableView reloadData];
 }
 
 - (void)insertNewObject:(id)sender

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FoodItem.h"
+#import "ActivityIndicatorView.h"
 
 @class DetailViewController;
 
@@ -15,6 +16,9 @@
     UILabel* noItemLabel;
     
     FoodItem* currentOrder;
+    
+    // UI
+    ActivityIndicatorView* activityIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

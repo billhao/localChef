@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityIndicatorView.h"
 
 @interface OrderListViewController : UITableViewController {
     NSMutableArray* orders;
+
+    // UI
+    ActivityIndicatorView* activityIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;

@@ -38,6 +38,7 @@
 		3F84EC9E19A3047800765B0F /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F84EC9D19A3047800765B0F /* NotificationManager.m */; };
 		3F8ABBF6195F858600A9C7DE /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF5195F858600A9C7DE /* FoodItem.m */; };
 		3F8ABBF9195F880600A9C7DE /* FoodItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8ABBF8195F880600A9C7DE /* FoodItemView.m */; };
+		3F9AC4A719C550E100F7AE8F /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9AC4A619C550E100F7AE8F /* ActivityIndicatorView.m */; };
 		3F9C8615199C8704003340E9 /* totLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8614199C8704003340E9 /* totLoginController.m */; };
 		3F9C8618199F3153003340E9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C8617199F3153003340E9 /* Order.m */; };
 		3FABA640195F9BDB0058F6D3 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FABA63F195F9BDB0058F6D3 /* food.png */; };
@@ -141,6 +142,8 @@
 		3F8ABBF5195F858600A9C7DE /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItem.m; path = src/FoodItem.m; sourceTree = "<group>"; };
 		3F8ABBF7195F880600A9C7DE /* FoodItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItemView.h; path = src/FoodItemView.h; sourceTree = "<group>"; };
 		3F8ABBF8195F880600A9C7DE /* FoodItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItemView.m; path = src/FoodItemView.m; sourceTree = "<group>"; };
+		3F9AC4A519C550E100F7AE8F /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityIndicatorView.h; path = src/ActivityIndicatorView.h; sourceTree = "<group>"; };
+		3F9AC4A619C550E100F7AE8F /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityIndicatorView.m; path = src/ActivityIndicatorView.m; sourceTree = "<group>"; };
 		3F9C8613199C8704003340E9 /* totLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = totLoginController.h; sourceTree = "<group>"; };
 		3F9C8614199C8704003340E9 /* totLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = totLoginController.m; sourceTree = "<group>"; };
 		3F9C8616199F3153003340E9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = src/Order.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				3F84EC9D19A3047800765B0F /* NotificationManager.m */,
 				3F26263119A8751F000ACB6F /* SellerSectionHeaderCell.h */,
 				3F26263219A8751F000ACB6F /* SellerSectionHeaderCell.m */,
+				3F9AC4A519C550E100F7AE8F /* ActivityIndicatorView.h */,
+				3F9AC4A619C550E100F7AE8F /* ActivityIndicatorView.m */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -630,6 +635,7 @@
 				3FF86DDD19B1A4E7000A6E21 /* MKAnnotationView+WebCache.m in Sources */,
 				3F2543A51952BA690000E6C9 /* DetailViewController.m in Sources */,
 				3FC2FA231990B01400457F6D /* RNOpenSSLCryptor.m in Sources */,
+				3F9AC4A719C550E100F7AE8F /* ActivityIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
