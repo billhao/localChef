@@ -538,7 +538,7 @@
     }
     
     // if not cached, load from servr
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@/%@", PHOTO_BASE_URL, imageFilename]];
+    NSURL *url = [self getImageURL:imageFilename];
     img = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
     if( img ) {
         NSLog(@"image %@: loaded from server", imageFilename);
@@ -588,8 +588,8 @@
     return img;
 }
 
-- (NSURL*)getImageURL:(NSString*)imageFilename {
-    return [NSURL URLWithString: [NSString stringWithFormat:@"%@/%@", PHOTO_BASE_URL, imageFilename]];
+- (NSURL*)getImageURL:(NSString*)imageURLString {
+    return [NSURL URLWithString: imageURLString];
 }
 
 @end

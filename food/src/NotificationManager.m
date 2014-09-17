@@ -20,14 +20,16 @@
 
 -(void) updateDeviceToken:(NSData*)devToken {
     NSString* token = [self tokenToString:devToken];
-    //NSLog(@"received device token = %@", token);
+    printfm(@"received device token = %@", token);
     
     NSString* oldToken = [totUtility getSetting:@"deviceToken"];
-    if( ![oldToken isEqualToString:token] ) {
+    NSString* oldTokenUser = [totUtility getSetting:@"deviceTokenUser"];
+    if( !([oldToken isEqualToString:token] && [oldTokenUser isEqualToString:global.user.id_str] ) ) {
         NSLog(@"new device token = %@", token);
         BOOL re = [global.server updateDeviceToken:token];
         if( re ) {
             [totUtility setSetting:@"deviceToken" value:token];
+            [totUtility setSetting:@"deviceTokenUser" value:global.user.id_str];
         }
         else
             NSLog(@"update device token failed");
@@ -43,7 +45,7 @@
     if( dict != nil && dict[@"aps"] != nil && dict[@"aps"][@"type"] != nil )
         type = [dict[@"aps"][@"type"] intValue];
 
-    NSLog(@"source=%d type=%d\n%@", source, type, dict);
+    NSLog(@"Received notification source=%d type=%d\n%@", source, type, dict);
 
     if( source == 1 && global.user != nil ) {
         if( type == 2 ) {
@@ -66,9 +68,10 @@
             if( [vc isKindOfClass:PublishViewController.class] ) {
                 [vc performSegueWithIdentifier:@"goToSellerOrderListPage" sender:sellerNavigationController];
             }
-            
-
         }
+    }
+    else if (source == 2 && global.user != nil ) {
+        
     }
 }
 

@@ -201,6 +201,7 @@
 }
 
 - (void)showHomeView {
+    [[totUtility getAppDelegate] initNotification];
     [self performSegueWithIdentifier:@"nextPageSegue" sender:self];
 }
 

@@ -25,7 +25,6 @@
 #define HOSTNAME_SHORT @"server.localchefapp.com"
 
 // photo related constants
-#define PHOTO_BASE_URL @"https://s3-us-west-1.amazonaws.com/auntiewang-photo"
 #define BOUNDARY @"0xKhTmLbOuNdArY"
 
 enum SERVER_RESPONSE_CODE {
@@ -67,7 +66,7 @@ enum SERVER_RESPONSE_CODE {
 - (BOOL)updateOrder:(Order*)order; // for seller confirmation
 - (NSString*)uploadPhoto:(UIImage*)img imageFilename:(NSString*)imageFilename;
 - (UIImage*)downloadPhoto:(NSString*)imageFilename;
-- (NSURL*)getImageURL:(NSString*)imageFilename;
+- (NSURL*)getImageURL:(NSString*)imageURLString;
 
 #pragma mark - old ones from tot
 - (int) sendResetPasscodeForUser: (NSString*) email from: (NSString*) old_passcode to: (NSString*) new_passcode returnMessage: (NSString**)message;

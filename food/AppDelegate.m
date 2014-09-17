@@ -24,16 +24,11 @@
 
     nm = [[NotificationManager alloc] init];
     
-    [nm clearBadge];
-    
-    [nm register];
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
-    
 
     // test
 //    [self testLogin];
@@ -48,6 +43,8 @@
         [self.window makeKeyAndVisible];
         return YES;
     }
+    
+    [self initNotification];
     
     if (launchOptions != nil)
 	{
@@ -103,7 +100,7 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"Received notification: %@", userInfo);
+    //printfm(@"Received notification: %@", userInfo);
     int source;
     if( application.applicationState == UIApplicationStateActive )
         source = 2; // active
@@ -116,6 +113,9 @@
     NSLog(@"Failed to get token, error: %@", error);
 }
 
-
+- (void)initNotification {
+    [nm clearBadge];
+    [nm register];
+}
 
 @end
