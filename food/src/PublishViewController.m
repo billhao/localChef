@@ -568,9 +568,9 @@
         return;
     
 
-    NSLog(@"\n\n");
-    NSLog(@"------------------------keyboardWasShown %d------------------------", cnt);
-    NSLog(@"keyboardWasShown=%d h=%.0f", keyboardShown, kbSize.height);
+//    NSLog(@"\n\n");
+//    NSLog(@"------------------------keyboardWasShown %d------------------------", cnt);
+//    NSLog(@"keyboardWasShown=%d h=%.0f", keyboardShown, kbSize.height);
     cnt++;
     
     // save original insets
@@ -605,7 +605,7 @@
     if (!CGRectContainsPoint(aRect, origin) ) {
         CGPoint scrollPoint = CGPointMake(0.0, textFrame.origin.y + textFrame.size.height - (aRect.size.height) + margin);
         [scrollView setContentOffset:scrollPoint animated:YES];
-        NSLog(@"not in view x=%.0f y=%.0f arect=%@", scrollPoint.x, scrollPoint.y, [totUtility getFrameString:aRect]);
+        //NSLog(@"not in view x=%.0f y=%.0f arect=%@", scrollPoint.x, scrollPoint.y, [totUtility getFrameString:aRect]);
         //NSLog(@"activeTextField %@ %@", activeTextField, [totUtility getFrameString:textFrame]);
     }
     else {
@@ -620,8 +620,8 @@
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    NSLog(@"\n\n");
-    NSLog(@"------------------------keyboardWillBeHidden------------------------");
+//    NSLog(@"\n\n");
+//    NSLog(@"------------------------keyboardWillBeHidden------------------------");
     scrollView.contentInset = contentInset;
     scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
     keyboardShown = false;

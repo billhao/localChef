@@ -11,6 +11,7 @@
 #import "totUtility.h"
 #import "MasterViewController.h"
 #import "PublishViewController.h"
+#import "MenuViewController.h"
 
 @implementation NotificationManager
 
@@ -42,19 +43,22 @@
 // 3. other - inactive or background
 -(void) processNotification:(NSDictionary*)dict source:(int)source {
     int type = 0;
-    if( dict != nil && dict[@"aps"] != nil && dict[@"aps"][@"type"] != nil )
-        type = [dict[@"aps"][@"type"] intValue];
+    if( dict != nil && dict[@"type"] != nil )
+        type = [dict[@"type"] intValue];
 
     NSLog(@"Received notification source=%d type=%d\n%@", source, type, dict);
+    return; // do not handle push notification until i find out how to go to the correct view
 
-    if( source == 1 && global.user != nil ) {
+    if( (source == 1 || source == 3) && global.user != nil ) {
         if( type == 2 ) {
             // seller confirmed an order, go to buyer's order page
             NSLog(@"go to buyer's order page");
-            UINavigationController* root = (UINavigationController*)[totUtility getAppDelegate].window.rootViewController;
-            UIViewController* vc = root.topViewController;
-            if( [vc isKindOfClass:MasterViewController.class] ) {
-                [vc performSegueWithIdentifier:@"goToBuyerOrderListPage" sender:root];
+            UIViewController* vc = [totUtility getAppDelegate].window.rootViewController;
+            print([vc.class description]);
+            //UINavigationController* root = (UINavigationController*)[totUtility getAppDelegate].window.rootViewController;
+            //UIViewController* vc = root.topViewController;
+            if( [vc isKindOfClass:MenuViewController.class] ) {
+                [vc performSegueWithIdentifier:@"goToBuyerOrderListPage" sender:vc];
             }
         }
         else if( type == 1 || type == 3 ) {

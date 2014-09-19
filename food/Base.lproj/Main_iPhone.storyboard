@@ -396,6 +396,7 @@ my neighbors</string>
                     <navigationItem key="navigationItem" id="BYk-q5-AE7"/>
                     <connections>
                         <segue destination="HFA-Ws-Tnp" kind="modal" identifier="goToLoginPage" id="WNA-gB-oQn"/>
+                        <segue destination="ST0-qJ-a9T" kind="modal" identifier="goToBuyerOrderListPage" id="EXq-20-5eG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSq-qh-7va" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1077,10 +1078,10 @@ More address</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kpq-ma-ikf"/>
+        <segue reference="EXq-20-5eG"/>
+        <segue reference="xsL-GD-E5T"/>
+        <segue reference="p2s-G3-qEA"/>
         <segue reference="ZfB-JR-nPP"/>
         <segue reference="7CP-fM-KtX"/>
-        <segue reference="v1a-UG-MNm"/>
-        <segue reference="joA-Sr-uUI"/>
     </inferredMetricsTieBreakers>
 </document>
