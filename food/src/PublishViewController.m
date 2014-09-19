@@ -199,7 +199,7 @@
         // send image to server
         NSString* imgURL = [global.server uploadPhoto:food_image.image imageFilename:item.food_image_url];
         if( imgURL == nil ) {
-            NSLog(@"image upload failed");
+            print(@"image upload failed");
         }
     } else {
         item.food_image_url = @"";
@@ -600,7 +600,7 @@
     origin.y -= scrollView.contentOffset.y;
     origin.y += textFrame.size.height;
 
-    NSLog(@"Contains %.0f in %.0f-%.0f", origin.y, aRect.origin.y, aRect.origin.y+aRect.size.height);
+    //NSLog(@"Contains %.0f in %.0f-%.0f", origin.y, aRect.origin.y, aRect.origin.y+aRect.size.height);
 
     if (!CGRectContainsPoint(aRect, origin) ) {
         CGPoint scrollPoint = CGPointMake(0.0, textFrame.origin.y + textFrame.size.height - (aRect.size.height) + margin);
@@ -611,7 +611,7 @@
     else {
         scrollView.contentInset = contentInset;
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
-        NSLog(@"in view");
+        //NSLog(@"in view");
     }
     
     keyboardShown = true;
