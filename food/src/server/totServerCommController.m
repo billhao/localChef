@@ -32,6 +32,8 @@
 - (id) init {
     self = [super init];
     if (self) {
+        NSLog(@"Use Server: %@", HOSTNAME);
+        
         m_reg_url            = [NSString stringWithFormat:@"%@/login",    HOSTNAME];
         m_login_url          = [NSString stringWithFormat:@"%@/login",    HOSTNAME];
         m_changePasscode_url = [NSString stringWithFormat:@"%@/m/reset",  HOSTNAME];

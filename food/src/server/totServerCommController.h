@@ -21,8 +21,16 @@
 #import "Order.h"
 #import "totUser.h"
 
-#define HOSTNAME @"http://server.localchefapp.com"
-#define HOSTNAME_SHORT @"server.localchefapp.com"
+#ifdef DEBUG
+    // use dev server
+    #define HOSTNAME @"http://dev.localchefapp.com"
+    #define HOSTNAME_SHORT @"dev.localchefapp.com"
+#else
+    // use production server
+    #define HOSTNAME @"http://server.localchefapp.com"
+    #define HOSTNAME_SHORT @"server.localchefapp.com"
+#endif
+
 
 // photo related constants
 #define BOUNDARY @"0xKhTmLbOuNdArY"
